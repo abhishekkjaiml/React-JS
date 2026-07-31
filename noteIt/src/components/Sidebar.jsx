@@ -12,11 +12,12 @@ const Sidebar = () => {
     return isActive ? `bg-violet-600 text-white shadow-md ${styles}` : `text-slate-700 hover:bg-violet-100 hover:text-violet-600 ${styles}`
   }
   return (
-    <aside className="flex flex-col gap-3 border border-slate-200 bg-white w-[19%] h-screen p-3 mt-[-50.5px]">
+    <aside className="flex flex-col gap-3 border-r border-slate-200 bg-white w-[19%] h-screen p-3 mt-[-58px]">
       <div  className="">
         <img  src={logo} className="flex w-35 " />
       </div>
-      <NavLink className={getStyle} to={"/"}>
+      <div  className="flex flex-col gap-3 mt-2">
+        <NavLink className={getStyle} to={"/"}>
         <HomeOutlinedIcon/>
         <span>Home</span>
       </NavLink>
@@ -32,6 +33,7 @@ const Sidebar = () => {
         <DeleteOutlinedIcon/>
         <span>Bin</span>
       </NavLink>
+      </div>
     </aside>
   )
 }

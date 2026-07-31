@@ -5,7 +5,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 
 const Navbar = () => {
   return (
-    <header className="h-15 bg-transparent border-b border-slate-200  flex items-center justify-between p-1 px-8 w-[81%] ml-auto">
+    <header className="h-15 bg-transparent border-b border-slate-200  flex items-center justify-between p-2 px-8 w-[81%] ml-auto">
 
       {/* Right */}
 
@@ -13,7 +13,7 @@ const Navbar = () => {
 
         {/* Search */}
 
-        <div className="flex items-center bg-white border border-slate-200  rounded-full px-3 py-2 w-80">
+        <div className="flex items-center bg-white border border-slate-300  rounded-full px-3 py-2 w-80">
 
           <SearchOutlinedIcon
             className="text-slate-400"
@@ -31,7 +31,7 @@ const Navbar = () => {
         {/* Notification */}
 
         <button
-          className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center"
+          className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center cursor-pointer"
         >
           <NotificationsNoneOutlinedIcon />
         </button>
@@ -39,7 +39,7 @@ const Navbar = () => {
         {/* Theme */}
 
         <button
-          className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center"
+          className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center cursor-pointer"
         >
           <DarkModeOutlinedIcon />
         </button>
@@ -47,7 +47,7 @@ const Navbar = () => {
         {/* Profile */}
 
         <button
-          className="w-10 h-10 rounded-full border border-slate-200 hover:bg-violet-600 hover:text-white flex items-center justify-center"
+          className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-violet-600 hover:text-white flex items-center justify-center cursor-pointer"
         >
           <AccountCircleOutlinedIcon />
         </button>
