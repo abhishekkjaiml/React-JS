@@ -57,7 +57,7 @@ const HomePage = () => {
             value={text}
             onChange={onTextChange}
             placeholder="Write your note here..."
-            className="w-[67vw]  bg-white  text-[18px] p-2 mt-2 min-h-[20vh] outline-none placeholder-gray-500  text-gray-700"
+            className="w-[67vw]  bg-white  text-[18px] p-2 mt-2 min-h-[20vh] outline-none placeholder-gray-500  text-gray-700 placeholder:text-[15px]"
           />
 
           <div className="flex flex-wrap justify-between mt-5 p-2 relative">
