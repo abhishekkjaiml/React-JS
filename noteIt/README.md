@@ -13,7 +13,7 @@ A modern web application built with **React.js** and **Vite**, designed to deliv
 
 ## 🌐 Live Demo
 
-🔗 **Live Demo:** Add your deployment link here.
+🔗 **Live Demo:** https://react-js-noteapp.vercel.app/
 
 ---
 
