@@ -12,7 +12,7 @@ const Sidebar = () => {
     return isActive ? `bg-violet-600 text-white shadow-md ${styles}` : `text-slate-700 hover:bg-violet-100 hover:text-violet-600 ${styles}`
   }
   return (
-    <aside className="flex flex-col gap-3 border-r border-slate-200 bg-white w-[19%] h-screen p-3 mt-[-58px]">
+    <aside className="flex flex-col gap-3 border-r border-slate-200 bg-white w-[19%] min-h-screen p-3 mt-[-58px]">
       <div  className="">
         <img  src={logo} className="flex w-35 " />
       </div>
