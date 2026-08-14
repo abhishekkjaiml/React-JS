@@ -1,0 +1,57 @@
+:root {
+  /* Primary */
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --primary-light: #eef2ff;
+
+  /* Secondary */
+  --secondary: #7c3aed;
+  --secondary-light: #f5f3ff;
+
+  /* Background */
+  --background: #ffffff;
+  --background-soft: #f8fafc;
+  --background-section: #f5f7ff;
+
+  /* Text */
+  --text-primary: #111827;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  /* Border */
+  --border: #e2e8f0;
+  --border-light: #eef2f7;
+
+  /* Status */
+  --success: #16a34a;
+  --success-light: #dcfce7;
+
+  --danger: #dc2626;
+  --danger-light: #fee2e2;
+
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+
+  --info: #2563eb;
+  --info-light: #dbeafe;
+
+  /* Product */
+  --sale: #ef4444;
+  --rating: #f59e0b;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
+
+  /* Container */
+  --container-width: 1280px;
+}
