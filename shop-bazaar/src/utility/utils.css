@@ -5,19 +5,16 @@
   --primary-dark: #4338ca;
   --primary-light: #eef2ff;
 
-
   /* ================= SECONDARY ================= */
 
   --secondary: #7c3aed;
   --secondary-light: #f5f3ff;
-
 
   /* ================= BACKGROUND ================= */
 
   --background: #ffffff;
   --background-soft: #f8fafc;
   --background-section: #f5f7ff;
-
 
   /* ================= TEXT ================= */
 
@@ -26,12 +23,10 @@
   --text-muted: #64748b;
   --text-light: #94a3b8;
 
-
   /* ================= BORDER ================= */
 
   --border: #e2e8f0;
   --border-light: #eef2f7;
-
 
   /* ================= STATUS ================= */
 
@@ -47,12 +42,10 @@
   --info: #2563eb;
   --info-light: #dbeafe;
 
-
   /* ================= PRODUCT ================= */
 
   --sale: #ef4444;
   --rating: #f59e0b;
-
 
   /* ================= RADIUS ================= */
 
@@ -62,13 +55,11 @@
   --radius-xl: 20px;
   --radius-2xl: 28px;
 
-
   /* ================= SHADOW ================= */
 
   --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
   --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
-
 
   /* ================= CONTAINER ================= */
 

@@ -1,31 +1,67 @@
+import { useWishlist } from "../context/wishlist-context";
+import { useCart } from "../context/cart-context";
 import { useState } from "react";
+
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import { useCart } from "../context/cart-context";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
+import { findProductInCart } from "../utility/findProductIn";
+import { useNavigate } from "react-router-dom";
 
-const HorizontalProductCard = ({ product }) => {
+const WishlistProductCard = ({ product }) => {
 
-  const { cartDispatch } = useCart()
+  const navigate = useNavigate()
+
   const [productQuantity, setProductQuantity] = useState(1);
+
+  const { wishDispatch } = useWishlist();
+  const { cart ,cartDispatch } = useCart();
+
+
+  // ================= QUANTITY =================
 
   const onAddQuantityClick = () => {
     setProductQuantity((count) => count + 1);
   };
 
+
   const onRemoveQuantityClick = () => {
     setProductQuantity((count) => (count > 1 ? count - 1 : 1));
   };
 
-  const onRemoveClick = (product) => {
-    cartDispatch({
-      type: 'REMOVE_FROM_CART',
+
+  // ================= REMOVE =================
+
+  const onRemoveWishlistClick = () => {
+
+    wishDispatch({
+      type: "REMOVE_FROM_WISHLIST",
       payload: {
-        id: product.id
-      }
-    })
-  }
+        id: product.id,
+      },
+    });
+
+  };
+
+
+  // ================= ADD TO CART =================
+
+  const isProductInCart = findProductInCart(cart, product.id)
+
+  const onAddToCartClick = () => {
+
+    !isProductInCart ? cartDispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        product,
+        quantity: productQuantity,
+      },
+    }): navigate('/cart')
+
+  };
+
 
   return (
     <div className="group flex w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
@@ -35,14 +71,17 @@ const HorizontalProductCard = ({ product }) => {
       <div className="flex w-44 shrink-0 items-center justify-center bg-background-soft p-4">
 
         <div className="flex h-32 w-32 items-center justify-center rounded-lg bg-background p-3">
+
           <img
             src={product.images}
             alt={product.title}
             className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
           />
+
         </div>
 
       </div>
+
 
       {/* ================= PRODUCT CONTENT ================= */}
 
@@ -65,6 +104,7 @@ const HorizontalProductCard = ({ product }) => {
               </p>
 
             </div>
+
 
             {/* Price */}
 
@@ -116,7 +156,10 @@ const HorizontalProductCard = ({ product }) => {
               Quantity
             </span>
 
+
             <div className="flex h-9 items-center overflow-hidden rounded-md border border-border bg-background">
+
+              {/* Minus */}
 
               <button
                 onClick={onRemoveQuantityClick}
@@ -126,9 +169,15 @@ const HorizontalProductCard = ({ product }) => {
                 <RemoveOutlinedIcon fontSize="small" />
               </button>
 
+
+              {/* Quantity */}
+
               <span className="flex h-full w-10 items-center justify-center border-x border-border text-sm font-semibold text-text-primary">
                 {productQuantity}
               </span>
+
+
+              {/* Plus */}
 
               <button
                 onClick={onAddQuantityClick}
@@ -146,19 +195,35 @@ const HorizontalProductCard = ({ product }) => {
 
           <div className="flex items-center gap-2">
 
-            <button
-              onClick={() => onRemoveClick(product)}
-              className="flex h-9 items-center gap-1.5 rounded-md border border-danger/30 px-3 text-sm font-semibold text-danger transition hover:bg-danger-light"
-            >
-              <DeleteOutlineOutlinedIcon fontSize="small" />
-              Remove
-            </button>
+            {/* Remove */}
 
             <button
+              onClick={onRemoveWishlistClick}
+              className="flex h-9 items-center gap-1.5 rounded-md border border-danger/30 px-3 text-sm font-semibold text-danger transition hover:bg-danger-light"
+            >
+
+              <DeleteOutlineOutlinedIcon fontSize="small" />
+
+              Remove
+
+            </button>
+
+
+            {/* Add To Cart */}
+
+            <button
+              onClick={onAddToCartClick}
               className="flex h-9 items-center gap-1.5 rounded-md bg-primary px-4 text-sm font-semibold text-white transition hover:bg-primary-dark"
             >
-              <ShoppingBagOutlinedIcon fontSize="small" />
-              Buy Now
+
+              {
+                !isProductInCart ? <ShoppingCartOutlinedIcon fontSize="small" /> : <ShoppingCartCheckoutOutlinedIcon  fontSize="small" />
+              }
+
+              {
+                !isProductInCart ? 'Add to Cart' : 'Go to Cart'
+              }
+
             </button>
 
           </div>
@@ -171,4 +236,4 @@ const HorizontalProductCard = ({ product }) => {
   );
 };
 
-export default HorizontalProductCard;
+export default WishlistProductCard;

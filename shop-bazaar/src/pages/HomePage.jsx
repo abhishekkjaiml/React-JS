@@ -16,7 +16,7 @@ import bg1 from "../assets/bg1.png";
 
 import {useNavigate} from 'react-router-dom'
 
-const HomePage2 = () => {
+const HomePage = () => {
 
   const navigate = useNavigate()
   const categories = [
@@ -491,4 +491,4 @@ const HomePage2 = () => {
   );
 };
 
-export default HomePage2;
+export default HomePage;

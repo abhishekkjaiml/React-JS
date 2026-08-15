@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import getAllProducts from '../api/getAllProducts'
 import ProductCard from '../components/ProductCard'
 import { useCart } from '../context/cart-context'
+import { useWishlist } from '../context/wishlist-context'
 
 const ShopPage = () => {
 
     const { cart } = useCart()
-    console.log({cart})
+    const { wishlist } = useWishlist()
+    // console.log({cart})
+    // console.log({wishlist})
 
     const [products, setPeoducts] = useState([])
 

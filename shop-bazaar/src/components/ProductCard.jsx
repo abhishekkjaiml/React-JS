@@ -1,16 +1,21 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import { useCart } from "../context/cart-context";
-import findProductInCart from "../utility/findProductInCart";
+import { useWishlist } from "../context/wishlist-context";
+import {findProductInCart, findProductInWishlist} from "../utility/findProductIn";
 import { useNavigate } from 'react-router-dom'
 
 const ProductCard = ({ product }) => {
 
   const { cart, cartDispatch } = useCart();
+  const { wishlist, wishDispatch } = useWishlist()
+
   const navigate = useNavigate()
 
   const isProductInCart = findProductInCart(cart, product.id)
+  const isProductInWishlist = findProductInWishlist(wishlist, product.id)
 
   const onCardClick = (product) => {
     !isProductInCart ?
@@ -18,6 +23,14 @@ const ProductCard = ({ product }) => {
       type: 'ADD_TO_CART',
       payload: { product }
     }) : navigate('/cart')
+  }
+
+  const onWishlistClick = (product) => {
+    !isProductInWishlist ?
+    wishDispatch({
+      type: 'ADD_TO_Wishlist',
+      payload: { product }
+    }) : navigate('/wishlist')
   }
   
   return (
@@ -66,10 +79,16 @@ const ProductCard = ({ product }) => {
       {/* Buttons */}
       <div className="flex flex-col gap-2 px-4 py-4">
         {/* Wishlist */}
-        <button className=" flex h-10 w-full items-center justify-center gap-2 rounded-md border border-primary text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary-light "
+        <button
+          onClick={() => onWishlistClick(product)}
+          className=" flex h-10 w-full items-center justify-center gap-2 rounded-md border border-primary text-sm font-semibold text-primary transition-all duration-200 hover:bg-primary-light "
         >
-          <FavoriteBorderOutlinedIcon fontSize="small" />
-          Add to Wishlist
+          {
+            !isProductInWishlist ? <FavoriteBorderOutlinedIcon fontSize="small" /> : <FavoriteOutlinedIcon  fontSize="small" />
+          }
+          {
+            !isProductInWishlist ? 'Add to Wishlist' : 'Go to Wishlist'
+          }
         </button>
 
         {/* Cart */}
