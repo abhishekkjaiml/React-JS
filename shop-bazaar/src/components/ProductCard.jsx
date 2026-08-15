@@ -1,7 +1,25 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
+import { useCart } from "../context/cart-context";
+import findProductInCart from "../utility/findProductInCart";
+import { useNavigate } from 'react-router-dom'
 
 const ProductCard = ({ product }) => {
+
+  const { cart, cartDispatch } = useCart();
+  const navigate = useNavigate()
+
+  const isProductInCart = findProductInCart(cart, product.id)
+
+  const onCardClick = (product) => {
+    !isProductInCart ?
+    cartDispatch({
+      type: 'ADD_TO_CART',
+      payload: { product }
+    }) : navigate('/cart')
+  }
+  
   return (
     <div className="group w-50 overflow-hidden rounded-md border border-border bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       {/* Product Image */}
@@ -56,10 +74,15 @@ const ProductCard = ({ product }) => {
 
         {/* Cart */}
         <button
+          onClick={() => onCardClick(product)}
           className="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-primary text-sm font-semibold text-white transition-all duration-200 hover:bg-primary-dark"
         >
-          <ShoppingCartOutlinedIcon fontSize="small" />
-          Add to Cart
+          {
+            !isProductInCart ? <ShoppingCartOutlinedIcon fontSize="small" /> : <ShoppingCartCheckoutOutlinedIcon />
+          }
+          {
+            !isProductInCart ? 'Add to Cart' : 'Go to Cart'
+          }
         </button>
       </div>
     </div>

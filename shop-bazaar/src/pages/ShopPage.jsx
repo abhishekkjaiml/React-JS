@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import getAllProducts from '../api/getAllProducts'
 import ProductCard from '../components/ProductCard'
+import { useCart } from '../context/cart-context'
 
 const ShopPage = () => {
 
+    const { cart } = useCart()
+    console.log({cart})
+
     const [products, setPeoducts] = useState([])
+
     useEffect(() => {
         (async () => {
             const data = await getAllProducts()

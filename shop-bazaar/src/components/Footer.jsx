@@ -15,42 +15,42 @@ const Footer = () => {
             </div>
             <div    className='flex flex-col w-[18vw]'>
                 <ul className='flex flex-col gap-2'>
-                    <li className='font-semibold'>Shop</li>
-                    <li>All Products</li>
-                    <li>New Arrivals</li>
-                    <li>Best Sellers</li>
-                    <li>Deals</li>
-                    <li>Gift Cards</li>
+                    <li className='font-semibold text-[20px]'>Shop</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>All Products</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>New Arrivals</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Best Sellers</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Deals</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Gift Cards</li>
                 </ul>
             </div>
             <div    className='flex flex-col w-[18vw]'>
                 <ul className='flex flex-col gap-2'>
-                    <li className='font-semibold'>Customer Service</li>
-                    <li>Track Order</li>
-                    <li>Returns & Refunds</li>
-                    <li>Shipping Info</li>
-                    <li>FAQs</li>
-                    <li>Contact Us</li>
+                    <li className='font-semibold text-[20px]'>Customer Service</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Track Order</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Returns & Refunds</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Shipping Info</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>FAQs</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Contact Us</li>
                 </ul>
             </div>
             <div    className='flex flex-col w-[18vw]'>
                 <ul className='flex flex-col gap-2'>
-                    <li className='font-semibold'>Company</li>
-                    <li>About Us</li>
-                    <li>Careers</li>
-                    <li>Blog</li>
-                    <li>Press</li>
-                    <li>Affiliate Program</li>
+                    <li className='font-semibold text-[20px]'>Company</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>About Us</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Careers</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Blog</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Press</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Affiliate Program</li>
                 </ul>
             </div>
             <div    className='flex flex-col w-[18vw]'>
                 <ul className='flex flex-col gap-2'>
-                    <li className='font-semibold'>Help</li>
-                    <li>Help Center</li>
-                    <li>Tearms & Condition</li>
-                    <li>Privacy Policy</li>
-                    <li>Deals</li>
-                    <li>Cookie Policy</li>
+                    <li className='font-semibold text-[20px]'>Help</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Help Center</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Tearms & Condition</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Privacy Policy</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Deals</li>
+                    <li className='hover:text-indigo-700 cursor-pointer'>Cookie Policy</li>
                 </ul>
             </div>
         </div>
