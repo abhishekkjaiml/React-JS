@@ -15,7 +15,7 @@ A modern and responsive **E-Commerce web application** built with **React.js** a
 
 ## 🌐 Live Demo
 
-🔗 **Live Demo:** `Coming Soon`
+🔗 **Live Demo:** `https://shopbazaar-ruddy.vercel.app/`
 
 ---
 
