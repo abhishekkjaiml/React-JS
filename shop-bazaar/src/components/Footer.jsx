@@ -3,13 +3,14 @@ import Gpay_logo from '../assets/Gpay_logo.png'
 import Mastercard_logo from '../assets/Mastercard_logo.webp'
 import paytm_logo from '../assets/paytm_logo.png'
 import apple_logo from '../assets/apple_logo.png'
+import logo from '../assets/logo.png'
 
 const Footer = () => {
   return (
-    <footer className='w-full h-auto flex flex-wrap bg-slate-900 text-white text-[15px] p-10 justify-center'>
+    <footer className=' w-full h-auto flex flex-wrap bg-slate-900 text-white text-[15px] p-10 justify-center'>
         <div    className='flex flex-wrap grid-5 border-b border-gray-600 pb-5'>
             <div    className='flex flex-col w-[18vw] gap-2'>
-                <img    src=''  alt='Logo'  className='size-10' />
+                <img    src={logo}  alt='Logo'  className='w-50 bg-gray-700 rounded-md' />
                 <p  className='w-[15vw]'>Your one-stop shop for the best products at the best prices. Shop more, save more</p>
             </div>
             <div    className='flex flex-col w-[18vw]'>

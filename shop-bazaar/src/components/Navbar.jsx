@@ -3,12 +3,15 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import logo from '../assets/logo.png'
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+
+  const navigate = useNavigate()
   return (
     <>
       <header className="flex flex-wrap justify-between w-full h-16 items-center bg-background text-text-primary-secondary">
-        <div className="flex flex-wrap ml-10">
+        <div className="flex flex-wrap ml-10" onClick={() => navigate('/')}>
           <img  src={logo} className="w-35 cursor-pointer"/>
         </div>
         <div className="flex flex-wrap w-[45vw] h-10 relative text-text-light">
@@ -23,9 +26,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex flex-wrap gap-6 mr-10">
-          <FavoriteBorderOutlinedIcon className="cursor-pointer" />
-          <ShoppingCartOutlinedIcon className="cursor-pointer" />
-          <AccountCircleOutlinedIcon className="cursor-pointer" />
+          <FavoriteBorderOutlinedIcon onClick={() => navigate('/wishlist')} className="cursor-pointer" />
+          <ShoppingCartOutlinedIcon   onClick={() => navigate('/cart')}    className="cursor-pointer" />
+          <AccountCircleOutlinedIcon  onClick={() => navigate('/auth/login')} className="cursor-pointer" />
         </div>
       </header>
     </>
