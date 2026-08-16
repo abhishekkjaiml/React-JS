@@ -270,28 +270,332 @@ src/
 
 # Step 6 — Build the Navbar
 
-Create:
+Create the Navbar component:
 
 ```text
 src/components/Navbar.jsx
 ```
 
-The Navbar provides the primary navigation of the application.
+The Navbar is one of the main reusable components of the application.
 
-It can contain:
+It contains:
 
-* Shop Bazaar logo
-* Home navigation
-* Shop navigation
-* Best Sellers
-* New Arrivals
-* Deals
-* Brands
-* Wishlist
-* Cart
-* Login / Signup
+- Shop Bazaar logo
+- Search bar
+- Wishlist icon
+- Cart icon
+- Account/Login icon
+- Navigation using React Router DOM
+- Material UI icons
+- Tailwind CSS styling
 
-The Navbar should remain reusable across different pages.
+---
+
+## Import Required Dependencies
+
+First, import the required Material UI icons, logo asset, and `useNavigate` from React Router DOM.
+
+```javascript
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import logo from '../assets/logo.png'
+import { useNavigate } from "react-router-dom";
+```
+
+---
+
+## Create the Navbar Component
+
+Create the `Navbar` functional component and initialize `useNavigate()`.
+
+```javascript
+const Navbar = () => {
+
+  const navigate = useNavigate()
+
+  return (
+    <>
+      {/* Navbar UI */}
+    </>
+  );
+};
+
+export default Navbar;
+```
+
+The `useNavigate()` hook is used to navigate between different pages without reloading the application.
+
+---
+
+## Add the Navbar Header
+
+Create the main header using Tailwind CSS classes.
+
+```javascript
+<header className="flex flex-wrap justify-between w-full h-16 items-center bg-background text-text-primary-secondary">
+
+</header>
+```
+
+The header uses:
+
+- Full width
+- Fixed height
+- Flexbox
+- Space between elements
+- Center alignment
+- Custom background color
+- Custom text color
+
+---
+
+## Add Shop Bazaar Logo
+
+Import the logo from the assets folder:
+
+```javascript
+import logo from '../assets/logo.png'
+```
+
+Then add the logo inside the Navbar:
+
+```javascript
+<div
+  className="flex flex-wrap ml-10"
+  onClick={() => navigate('/')}
+>
+  <img
+    src={logo}
+    className="w-35 cursor-pointer"
+  />
+</div>
+```
+
+When the user clicks the logo, the user is navigated to the Home page:
+
+```text
+/
+```
+
+---
+
+## Add Search Bar
+
+Create the search input in the center section of the Navbar.
+
+```javascript
+<div className="flex flex-wrap w-[45vw] h-10 relative text-text-light">
+
+  <input
+    type="text"
+    placeholder="Search for products, brands and more..."
+    className="w-screen outline-none border px-10 py-2 rounded-md"
+  />
+
+  <SearchOutlinedIcon className="top-2.5 left-3.5 flex absolute" />
+
+  <div className="cursor-pointer h-10.5 w-14 absolute right-0 rounded-md flex flex-wrap bg-indigo-600">
+
+    <SearchOutlinedIcon
+      className="top-2.5 right-3.5 flex absolute text-white outline-none"
+    />
+
+  </div>
+
+</div>
+```
+
+The search section contains:
+
+- Search input
+- Search icon
+- Search button
+- Placeholder text
+- Responsive width
+- Tailwind CSS styling
+
+The `SearchOutlinedIcon` is provided by Material UI Icons.
+
+---
+
+## Add Wishlist, Cart and Account Icons
+
+Create the action section on the right side of the Navbar.
+
+```javascript
+<div className="flex flex-wrap gap-6 mr-10">
+
+  <FavoriteBorderOutlinedIcon
+    onClick={() => navigate('/wishlist')}
+    className="cursor-pointer"
+  />
+
+  <ShoppingCartOutlinedIcon
+    onClick={() => navigate('/cart')}
+    className="cursor-pointer"
+  />
+
+  <AccountCircleOutlinedIcon
+    onClick={() => navigate('/auth/login')}
+    className="cursor-pointer"
+  />
+
+</div>
+```
+
+The three icons provide navigation to different sections.
+
+### Wishlist
+
+```javascript
+onClick={() => navigate('/wishlist')}
+```
+
+Navigates to:
+
+```text
+/wishlist
+```
+
+### Cart
+
+```javascript
+onClick={() => navigate('/cart')}
+```
+
+Navigates to:
+
+```text
+/cart
+```
+
+### Account
+
+```javascript
+onClick={() => navigate('/auth/login')}
+```
+
+Navigates to:
+
+```text
+/auth/login
+```
+
+---
+
+## Complete Navbar Code
+
+The final `Navbar.jsx` file:
+
+```javascript
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import logo from '../assets/logo.png'
+import { useNavigate } from "react-router-dom";
+
+const Navbar = () => {
+
+  const navigate = useNavigate()
+
+  return (
+    <>
+      <header className="flex flex-wrap justify-between w-full h-16 items-center bg-background text-text-primary-secondary">
+
+        <div
+          className="flex flex-wrap ml-10"
+          onClick={() => navigate('/')}
+        >
+          <img
+            src={logo}
+            className="w-35 cursor-pointer"
+          />
+        </div>
+
+        <div className="flex flex-wrap w-[45vw] h-10 relative text-text-light">
+
+          <input
+            type="text"
+            placeholder="Search for products, brands and more..."
+            className="w-screen outline-none border px-10 py-2 rounded-md"
+          />
+
+          <SearchOutlinedIcon className="top-2.5 left-3.5 flex absolute" />
+
+          <div className="cursor-pointer h-10.5 w-14 absolute right-0 rounded-md flex flex-wrap bg-indigo-600">
+
+            <SearchOutlinedIcon
+              className="top-2.5 right-3.5 flex absolute text-white outline-none"
+            />
+
+          </div>
+
+        </div>
+
+        <div className="flex flex-wrap gap-6 mr-10">
+
+          <FavoriteBorderOutlinedIcon
+            onClick={() => navigate('/wishlist')}
+            className="cursor-pointer"
+          />
+
+          <ShoppingCartOutlinedIcon
+            onClick={() => navigate('/cart')}
+            className="cursor-pointer"
+          />
+
+          <AccountCircleOutlinedIcon
+            onClick={() => navigate('/auth/login')}
+            className="cursor-pointer"
+          />
+
+        </div>
+
+      </header>
+    </>
+  );
+};
+
+export default Navbar;
+```
+
+---
+
+## Navbar Structure
+
+```text
+Navbar
+│
+├── Logo
+│   └── Home Navigation
+│
+├── Search Section
+│   ├── Search Input
+│   ├── Search Icon
+│   └── Search Button
+│
+└── Action Section
+    ├── Wishlist
+    ├── Cart
+    └── Account
+```
+
+---
+
+## Technologies Used
+
+The Navbar uses the following technologies:
+
+- React.js
+- React Router DOM
+- Tailwind CSS
+- Material UI Icons
+- Local Assets
+
+The Navbar is created as a reusable component so it can be imported and used across different pages of the Shop Bazaar application.
 
 ---
 
