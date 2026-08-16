@@ -959,24 +959,699 @@ The ProductBar is maintained as a separate reusable component and can be include
 
 # Step 8 — Build the Footer
 
-Create:
+Create the Footer component:
 
 ```text
 src/components/Footer.jsx
 ```
 
-The Footer provides common information and navigation links.
+The Footer is a reusable component used to display important shopping, customer service, company, help, copyright, and payment information.
 
-Possible sections:
+The Footer contains:
 
-* Shop
-* Customer Support
-* About
-* Social links
-* Payment methods
-* Copyright information
+- Shop links
+- Customer Service links
+- Company links
+- Help links
+- Shop Bazaar logo
+- Short brand description
+- Copyright information
+- Payment method logos
 
-The Footer is reused throughout the application.
+---
+
+## Import Required Assets
+
+Import the payment method logos and Shop Bazaar logo from the assets folder.
+
+```javascript
+import visa_logo from '../assets/visa_logo.png'
+import Gpay_logo from '../assets/Gpay_logo.png'
+import Mastercard_logo from '../assets/Mastercard_logo.webp'
+import paytm_logo from '../assets/paytm_logo.png'
+import apple_logo from '../assets/apple_logo.png'
+import logo from '../assets/logo.png'
+```
+
+The Footer uses the following payment logos:
+
+- Visa
+- Mastercard
+- Google Pay
+- Paytm
+- Apple Pay
+
+---
+
+## Create the Footer Component
+
+Create the Footer functional component:
+
+```javascript
+const Footer = () => {
+  return (
+    <footer>
+      {/* Footer content */}
+    </footer>
+  )
+}
+
+export default Footer
+```
+
+The Footer is exported as a reusable React component so it can be used throughout the application.
+
+---
+
+## Create the Main Footer Container
+
+The main Footer uses Tailwind CSS for layout and styling.
+
+```javascript
+<footer className='w-full h-auto flex flex-wrap bg-slate-900 text-white text-[15px] p-10 justify-center'>
+
+</footer>
+```
+
+The Footer uses:
+
+- Full width
+- Automatic height
+- Flexbox
+- Dark background
+- White text
+- Responsive wrapping
+- Padding
+- Centered content
+
+---
+
+## Create the Main Footer Sections
+
+The first section contains the main Footer content.
+
+```javascript
+<div className='flex flex-wrap grid-5 border-b border-gray-600 pb-5'>
+
+</div>
+```
+
+The section contains five main columns:
+
+```text
+Footer
+│
+├── Shop Bazaar
+├── Shop
+├── Customer Service
+├── Company
+└── Help
+```
+
+---
+
+## Shop Bazaar Information
+
+The first column contains the Shop Bazaar logo and a short description.
+
+```javascript
+<div className='flex flex-col w-[18vw] gap-2'>
+
+  <img
+    src={logo}
+    alt='Logo'
+    className='w-50 bg-gray-700 rounded-md'
+  />
+
+  <p className='w-[15vw]'>
+    Your one-stop shop for the best products at the best prices.
+    Shop more, save more
+  </p>
+
+</div>
+```
+
+This section provides basic branding information about Shop Bazaar.
+
+---
+
+## Shop Section
+
+Create the Shop navigation links.
+
+```javascript
+<div className='flex flex-col w-[18vw]'>
+
+  <ul className='flex flex-col gap-2'>
+
+    <li className='font-semibold text-[20px]'>
+      Shop
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      All Products
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      New Arrivals
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Best Sellers
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Deals
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Gift Cards
+    </li>
+
+  </ul>
+
+</div>
+```
+
+The Shop section contains:
+
+- All Products
+- New Arrivals
+- Best Sellers
+- Deals
+- Gift Cards
+
+---
+
+## Customer Service Section
+
+Create the Customer Service section.
+
+```javascript
+<div className='flex flex-col w-[18vw]'>
+
+  <ul className='flex flex-col gap-2'>
+
+    <li className='font-semibold text-[20px]'>
+      Customer Service
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Track Order
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Returns & Refunds
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Shipping Info
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      FAQs
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Contact Us
+    </li>
+
+  </ul>
+
+</div>
+```
+
+The Customer Service section contains:
+
+- Track Order
+- Returns & Refunds
+- Shipping Info
+- FAQs
+- Contact Us
+
+---
+
+## Company Section
+
+Create the Company section.
+
+```javascript
+<div className='flex flex-col w-[18vw]'>
+
+  <ul className='flex flex-col gap-2'>
+
+    <li className='font-semibold text-[20px]'>
+      Company
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      About Us
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Careers
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Blog
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Press
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Affiliate Program
+    </li>
+
+  </ul>
+
+</div>
+```
+
+The Company section contains:
+
+- About Us
+- Careers
+- Blog
+- Press
+- Affiliate Program
+
+---
+
+## Help Section
+
+Create the Help section.
+
+```javascript
+<div className='flex flex-col w-[18vw]'>
+
+  <ul className='flex flex-col gap-2'>
+
+    <li className='font-semibold text-[20px]'>
+      Help
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Help Center
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Tearms & Condition
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Privacy Policy
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Deals
+    </li>
+
+    <li className='hover:text-indigo-700 cursor-pointer'>
+      Cookie Policy
+    </li>
+
+  </ul>
+
+</div>
+```
+
+The Help section contains:
+
+- Help Center
+- Terms & Conditions
+- Privacy Policy
+- Deals
+- Cookie Policy
+
+---
+
+## Create Footer Bottom Section
+
+After the main Footer sections, create the bottom section.
+
+```javascript
+<div className='flex flex-wrap mt-5 items-center w-[90vw] justify-between'>
+
+</div>
+```
+
+The bottom section contains:
+
+```text
+Footer Bottom
+│
+├── Copyright
+└── Payment Methods
+```
+
+---
+
+## Add Copyright Information
+
+Display the copyright information:
+
+```javascript
+<div className='flex'>
+
+  <p>
+    ⓒ 2026. All rights reserved
+  </p>
+
+</div>
+```
+
+This displays the copyright information at the bottom of the Footer.
+
+---
+
+## Add Payment Methods
+
+Display the supported payment method logos.
+
+```javascript
+<div className='flex flex-wrap gap-5'>
+
+  <img
+    src={visa_logo}
+    alt='logo'
+    className='w-12 h-8 rounded'
+  />
+
+  <img
+    src={Mastercard_logo}
+    alt='logo'
+    className='w-12 h-8 rounded'
+  />
+
+  <img
+    src={Gpay_logo}
+    alt='logo'
+    className='w-12 h-8 rounded'
+  />
+
+  <img
+    src={paytm_logo}
+    alt='logo'
+    className='w-12 h-8 rounded'
+  />
+
+  <img
+    src={apple_logo}
+    alt='logo'
+    className='w-12 h-8 rounded'
+  />
+
+</div>
+```
+
+The payment methods displayed are:
+
+```text
+Visa
+Mastercard
+Google Pay
+Paytm
+Apple Pay
+```
+
+---
+
+## Complete `Footer.jsx`
+
+```javascript
+import visa_logo from '../assets/visa_logo.png'
+import Gpay_logo from '../assets/Gpay_logo.png'
+import Mastercard_logo from '../assets/Mastercard_logo.webp'
+import paytm_logo from '../assets/paytm_logo.png'
+import apple_logo from '../assets/apple_logo.png'
+import logo from '../assets/logo.png'
+
+const Footer = () => {
+  return (
+    <footer className='w-full h-auto flex flex-wrap bg-slate-900 text-white text-[15px] p-10 justify-center'>
+
+      <div className='flex flex-wrap grid-5 border-b border-gray-600 pb-5'>
+
+        <div className='flex flex-col w-[18vw] gap-2'>
+
+          <img
+            src={logo}
+            alt='Logo'
+            className='w-50 bg-gray-700 rounded-md'
+          />
+
+          <p className='w-[15vw]'>
+            Your one-stop shop for the best products at the best prices.
+            Shop more, save more
+          </p>
+
+        </div>
+
+        <div className='flex flex-col w-[18vw]'>
+
+          <ul className='flex flex-col gap-2'>
+
+            <li className='font-semibold text-[20px]'>
+              Shop
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              All Products
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              New Arrivals
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Best Sellers
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Deals
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Gift Cards
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div className='flex flex-col w-[18vw]'>
+
+          <ul className='flex flex-col gap-2'>
+
+            <li className='font-semibold text-[20px]'>
+              Customer Service
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Track Order
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Returns & Refunds
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Shipping Info
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              FAQs
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Contact Us
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div className='flex flex-col w-[18vw]'>
+
+          <ul className='flex flex-col gap-2'>
+
+            <li className='font-semibold text-[20px]'>
+              Company
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              About Us
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Careers
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Blog
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Press
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Affiliate Program
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div className='flex flex-col w-[18vw]'>
+
+          <ul className='flex flex-col gap-2'>
+
+            <li className='font-semibold text-[20px]'>
+              Help
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Help Center
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Tearms & Condition
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Privacy Policy
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Deals
+            </li>
+
+            <li className='hover:text-indigo-700 cursor-pointer'>
+              Cookie Policy
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div className='flex flex-wrap mt-5 items-center w-[90vw] justify-between'>
+
+        <div className='flex'>
+          <p>
+            ⓒ 2026. All rights reserved
+          </p>
+        </div>
+
+        <div className='flex flex-wrap gap-5'>
+
+          <img
+            src={visa_logo}
+            alt='logo'
+            className='w-12 h-8 rounded'
+          />
+
+          <img
+            src={Mastercard_logo}
+            alt='logo'
+            className='w-12 h-8 rounded'
+          />
+
+          <img
+            src={Gpay_logo}
+            alt='logo'
+            className='w-12 h-8 rounded'
+          />
+
+          <img
+            src={paytm_logo}
+            alt='logo'
+            className='w-12 h-8 rounded'
+          />
+
+          <img
+            src={apple_logo}
+            alt='logo'
+            className='w-12 h-8 rounded'
+          />
+
+        </div>
+
+      </div>
+
+    </footer>
+  )
+}
+
+export default Footer
+```
+
+---
+
+## Footer Structure
+
+```text
+Footer
+│
+├── Shop Bazaar
+│   ├── Logo
+│   └── Description
+│
+├── Shop
+│   ├── All Products
+│   ├── New Arrivals
+│   ├── Best Sellers
+│   ├── Deals
+│   └── Gift Cards
+│
+├── Customer Service
+│   ├── Track Order
+│   ├── Returns & Refunds
+│   ├── Shipping Info
+│   ├── FAQs
+│   └── Contact Us
+│
+├── Company
+│   ├── About Us
+│   ├── Careers
+│   ├── Blog
+│   ├── Press
+│   └── Affiliate Program
+│
+├── Help
+│   ├── Help Center
+│   ├── Terms & Conditions
+│   ├── Privacy Policy
+│   ├── Deals
+│   └── Cookie Policy
+│
+└── Bottom Section
+    ├── Copyright
+    └── Payment Methods
+        ├── Visa
+        ├── Mastercard
+        ├── Google Pay
+        ├── Paytm
+        └── Apple Pay
+```
+
+---
+
+## Technologies Used
+
+The Footer uses:
+
+- React.js
+- Tailwind CSS
+- Local image assets
+- Flexbox
+- Responsive wrapping
+
+The Footer is created as a reusable component and can be included across the different pages of the Shop Bazaar application.
 
 ---
 
