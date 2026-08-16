@@ -162,23 +162,109 @@ Contains helper functions and utility styles.
 
 # Step 5 — Create API Integration
 
-Use the Platzi Fake Store API for product data.
+The project uses the **Platzi Fake Store API** to fetch product data.
 
-API base URL:
+## API Base URL
 
 ```text
 https://api.escuelajs.co/api/v1
 ```
 
-Create:
+Create the API folder and file:
 
 ```text
-src/api/getAllProducts.js
+src/
+└── api/
+    └── getAllProducts.js
 ```
 
-Use Axios to fetch product data.
+## Install Axios
 
-The API layer is responsible for communicating with the external product API instead of putting API requests directly inside every component.
+```bash
+npm install axios
+```
+
+## `getAllProducts.js`
+
+```javascript
+import axios from 'axios'
+
+const BaseURL = 'https://api.escuelajs.co/api/v1'
+
+const getAllProducts = async () => {
+    const url = `${BaseURL}/products`
+
+    try {
+        const { data } = await axios.get(url)
+
+        console.log(data)
+
+        return data
+    } catch (err) {
+        return err
+    }
+}
+
+export default getAllProducts
+```
+
+## How It Works
+
+```text
+React Component
+       ↓
+getAllProducts()
+       ↓
+Axios GET Request
+       ↓
+Platzi Fake Store API
+       ↓
+/products
+       ↓
+Response Data
+       ↓
+Return Products
+       ↓
+React Component
+```
+
+## API Endpoint
+
+```text
+GET https://api.escuelajs.co/api/v1/products
+```
+
+The `getAllProducts()` function:
+
+- Stores the API base URL.
+- Creates the `/products` endpoint.
+- Sends a GET request using Axios.
+- Extracts the response data.
+- Returns the product data.
+- Handles errors using `try...catch`.
+
+## Why Separate API Logic?
+
+API logic is kept inside the `src/api/` folder instead of writing Axios requests directly inside React components.
+
+This makes the application:
+
+- Easier to maintain
+- Reusable
+- Better organized
+- Easier to debug
+- Easier to extend
+
+Future API functions can also be added here:
+
+```text
+src/
+└── api/
+    ├── getAllProducts.js
+    ├── getProductById.js
+    ├── getCategories.js
+    └── getProductsByCategory.js
+```
 
 ---
 
