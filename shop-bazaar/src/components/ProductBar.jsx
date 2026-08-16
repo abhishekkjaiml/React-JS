@@ -1,58 +1,98 @@
 import DensityMediumOutlinedIcon from "@mui/icons-material/DensityMediumOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const ProductBar = () => {
-  const navigate = useNavigate();
+
+  const getStyle = ({ isActive }) => {
+
+    const styles =
+      "relative cursor-pointer transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200";
+
+    return isActive
+      ? `text-primary after:w-full ${styles}`
+      : `text-text-primary hover:text-primary hover:after:w-full after:w-0 ${styles}`;
+  };
+
 
   return (
-    <>
-      <header className="flex flex-wrap w-scren h-12 bg-background-soft font-semibold">
-        <ul className="flex flex-wrap w-screen items-center ">
-          <div className="flex flex-wrap mx-10 border-r border-border h-full w-35 items-center">
-            <li className="flex flex-wrap gap-2 items-center text-text-primary">
-              <DensityMediumOutlinedIcon />
-              Category
-              <KeyboardArrowDownOutlinedIcon />
-            </li>
-          </div>
-          <div className="flex flex-wrap gap-7 text-text-primary">
-            <li 
-              onClick={() => navigate("/")} 
-              className="cursor-pointer">
-              Home
-            </li>
-            <li 
-              onClick={() => navigate("/shop")} 
-              className="cursor-pointer">
-              Shop
-            </li>
-            <li 
-              onClick={() => navigate("/deals")} 
-              className="cursor-pointer">
-              Deals
-            </li>
-            <li
-              onClick={() => navigate("/new_arrivels")}
-              className="cursor-pointer"
-            >
-              New Arrivels
-            </li>
-            <li
-              onClick={() => navigate("/best_sellers")}
-              className="cursor-pointer"
-            >
-              Best Sellers
-            </li>
-            <li 
-              onClick={() => navigate("/brands")} 
-              className="cursor-pointer">
-              Brands
-            </li>
-          </div>
-        </ul>
-      </header>
-    </>
+    <header className="flex h-12 w-screen flex-wrap bg-background-soft font-semibold">
+
+      <ul className="flex w-screen flex-wrap items-center">
+
+        {/* ================= CATEGORY ================= */}
+
+        <div className="mx-10 flex h-full w-35 flex-wrap items-center border-r border-border">
+
+          <li className="flex items-center gap-2 text-text-primary">
+
+            <DensityMediumOutlinedIcon />
+
+            Category
+
+            <KeyboardArrowDownOutlinedIcon />
+
+          </li>
+
+        </div>
+
+
+        {/* ================= NAVIGATION ================= */}
+
+        <div className="flex flex-wrap gap-7">
+
+          <NavLink
+            to="/"
+            className={getStyle}
+          >
+            Home
+          </NavLink>
+
+
+          <NavLink
+            to="/shop"
+            className={getStyle}
+          >
+            Shop
+          </NavLink>
+
+
+          <NavLink
+            to="/deals"
+            className={getStyle}
+          >
+            Deals
+          </NavLink>
+
+
+          <NavLink
+            to="/new_arrivels"
+            className={getStyle}
+          >
+            New Arrivals
+          </NavLink>
+
+
+          <NavLink
+            to="/best_sellers"
+            className={getStyle}
+          >
+            Best Sellers
+          </NavLink>
+
+
+          <NavLink
+            to="/brands"
+            className={getStyle}
+          >
+            Brands
+          </NavLink>
+
+        </div>
+
+      </ul>
+
+    </header>
   );
 };
 
