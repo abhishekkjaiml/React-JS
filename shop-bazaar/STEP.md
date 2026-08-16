@@ -1935,6 +1935,687 @@ The Sidebar is created as a reusable component and can be placed alongside the p
 
 ---
 
+# Step 10 — Setup App Routing & Page Layout
+
+The `App.jsx` file acts as the main application component.
+
+It is responsible for:
+
+- Rendering the Navbar
+- Rendering the ProductBar
+- Setting up application routes
+- Connecting pages with their routes
+- Adding the Sidebar to product-related pages
+- Rendering the Footer
+- Creating the overall application layout
+
+Create:
+
+```text
+src/App.jsx
+```
+
+---
+
+## Import Required Components
+
+Import the reusable components and application pages.
+
+```javascript
+import React from "react";
+import Navbar from "./components/Navbar";
+import ProductBar from "./components/ProductBar";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
+import ShopPage from "./pages/ShopPage";
+import DealsPage from "./pages/DealsPage";
+import NewArrivelsPage from "./pages/NewArrivelsPage";
+import BestSellersPage from "./pages/BestSellersPage";
+import BrandsPage from "./pages/BrandsPage";
+import WishlistPage from "./pages/WishlistPage";
+import CartPage from "./pages/CartPage";
+import LoginPage from "./pages/auth/LoginPage";
+import SingupPage from "./pages/auth/SingupPage";
+```
+
+These imports connect the different pages and reusable components with the main application.
+
+---
+
+## Create the Main App Component
+
+Create the `App` functional component.
+
+```javascript
+const App = () => {
+  return (
+    <div className="min-h-screen flex flex-col bg-background overflow-hidden">
+
+    </div>
+  );
+};
+
+export default App;
+```
+
+The main container uses:
+
+- `min-h-screen` — minimum full-screen height
+- `flex` — enables Flexbox
+- `flex-col` — arranges content vertically
+- `bg-background` — application background
+- `overflow-hidden` — prevents unwanted overflow
+
+---
+
+## Add Navbar
+
+Render the reusable Navbar at the top of the application.
+
+```javascript
+<Navbar />
+```
+
+The Navbar remains visible across the application.
+
+The Navbar provides:
+
+- Shop Bazaar logo
+- Search bar
+- Wishlist
+- Cart
+- Account/Login navigation
+
+---
+
+## Add ProductBar
+
+Render the ProductBar below the Navbar.
+
+```javascript
+<ProductBar />
+```
+
+The ProductBar provides the main shopping navigation:
+
+- Home
+- Shop
+- Deals
+- New Arrivals
+- Best Sellers
+- Brands
+- Category section
+
+---
+
+# Configure React Router
+
+Use `Routes` and `Route` from React Router DOM.
+
+```javascript
+<Routes>
+
+</Routes>
+```
+
+Each `Route` connects a URL path with a React page component.
+
+---
+
+## Home Route
+
+Create the Home page route:
+
+```javascript
+<Route path="/" element={<HomePage />} />
+```
+
+When the user visits:
+
+```text
+/
+```
+
+the `HomePage` component is rendered.
+
+---
+
+## Wishlist Route
+
+Create the Wishlist route:
+
+```javascript
+<Route
+  path="/wishlist"
+  element={<WishlistPage />}
+/>
+```
+
+The Wishlist page is available at:
+
+```text
+/wishlist
+```
+
+---
+
+## Cart Route
+
+Create the Cart route:
+
+```javascript
+<Route
+  path="/cart"
+  element={<CartPage />}
+/>
+```
+
+The Cart page is available at:
+
+```text
+/cart
+```
+
+---
+
+## Login Route
+
+Create the Login route:
+
+```javascript
+<Route
+  path="/auth/login"
+  element={<LoginPage />}
+/>
+```
+
+The Login page is available at:
+
+```text
+/auth/login
+```
+
+---
+
+## Signup Route
+
+Create the Signup route:
+
+```javascript
+<Route
+  path="/auth/signup"
+  element={<SingupPage />}
+/>
+```
+
+The Signup page is available at:
+
+```text
+/auth/signup
+```
+
+---
+
+# Product Page Layout
+
+The Shop, Deals, New Arrivals, Best Sellers and Brands pages use a common layout.
+
+The layout contains:
+
+```text
+Sidebar
+   +
+Main Content
+```
+
+This allows the Sidebar to remain on the left while the selected page is displayed on the right.
+
+---
+
+## Shop Route
+
+Create the Shop route:
+
+```javascript
+<Route
+  path="/shop"
+  element={
+    <div className="flex w-full flex-1">
+
+      <Sidebar />
+
+      <main className="flex-1 min-w-0">
+        <ShopPage />
+      </main>
+
+    </div>
+  }
+/>
+```
+
+The Shop page layout becomes:
+
+```text
+Shop Page
+│
+├── Sidebar
+│   ├── Price
+│   ├── Category
+│   └── Brand
+│
+└── ShopPage
+    └── Products
+```
+
+---
+
+## Deals Route
+
+Create the Deals route:
+
+```javascript
+<Route
+  path="/deals"
+  element={
+    <div className="flex w-full flex-1">
+
+      <Sidebar />
+
+      <main className="flex-1 min-w-0">
+        <DealsPage />
+      </main>
+
+    </div>
+  }
+/>
+```
+
+The Deals page uses the same Sidebar + Main Content layout.
+
+---
+
+## New Arrivals Route
+
+Create the New Arrivals route:
+
+```javascript
+<Route
+  path="/new_arrivels"
+  element={
+    <div className="flex w-full flex-1">
+
+      <Sidebar />
+
+      <main className="flex-1 min-w-0">
+        <NewArrivelsPage />
+      </main>
+
+    </div>
+  }
+/>
+```
+
+The New Arrivals page uses:
+
+```text
+Sidebar + NewArrivelsPage
+```
+
+---
+
+## Best Sellers Route
+
+Create the Best Sellers route:
+
+```javascript
+<Route
+  path="/best_sellers"
+  element={
+    <div className="flex w-full flex-1">
+
+      <Sidebar />
+
+      <main className="flex-1 min-w-0">
+        <BestSellersPage />
+      </main>
+
+    </div>
+  }
+/>
+```
+
+The Best Sellers page uses:
+
+```text
+Sidebar + BestSellersPage
+```
+
+---
+
+## Brands Route
+
+Create the Brands route:
+
+```javascript
+<Route
+  path="/brands"
+  element={
+    <div className="flex w-full flex-1">
+
+      <Sidebar />
+
+      <main className="flex-1 min-w-0">
+        <BrandsPage />
+      </main>
+
+    </div>
+  }
+/>
+```
+
+The Brands page uses:
+
+```text
+Sidebar + BrandsPage
+```
+
+---
+
+# Add Footer
+
+Render the Footer after the Routes.
+
+```javascript
+<Footer />
+```
+
+The Footer remains at the bottom of the application layout.
+
+It contains:
+
+- Shop links
+- Customer Service
+- Company information
+- Help links
+- Payment methods
+- Copyright information
+
+---
+
+# Complete `App.jsx`
+
+```javascript
+import React from "react";
+import Navbar from "./components/Navbar";
+import ProductBar from "./components/ProductBar";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
+import ShopPage from "./pages/ShopPage";
+import DealsPage from "./pages/DealsPage";
+import NewArrivelsPage from "./pages/NewArrivelsPage";
+import BestSellersPage from "./pages/BestSellersPage";
+import BrandsPage from "./pages/BrandsPage";
+import WishlistPage from "./pages/WishlistPage";
+import CartPage from "./pages/CartPage";
+import LoginPage from "./pages/auth/LoginPage";
+import SingupPage from "./pages/auth/SingupPage";
+
+const App = () => {
+  return (
+    <div className="min-h-screen flex flex-col bg-background overflow-hidden">
+
+      <Navbar />
+
+      <ProductBar />
+
+      <Routes>
+
+        {/* Home Page */}
+
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
+        <Route
+          path="/wishlist"
+          element={<WishlistPage />}
+        />
+
+        <Route
+          path="/cart"
+          element={<CartPage />}
+        />
+
+        <Route
+          path="/auth/login"
+          element={<LoginPage />}
+        />
+
+        <Route
+          path="/auth/signup"
+          element={<SingupPage />}
+        />
+
+        {/* Shop Page */}
+
+        <Route
+          path="/shop"
+          element={
+            <div className="flex w-full flex-1">
+
+              <Sidebar />
+
+              <main className="flex-1 min-w-0">
+                <ShopPage />
+              </main>
+
+            </div>
+          }
+        />
+
+        {/* Deals Page */}
+
+        <Route
+          path="/deals"
+          element={
+            <div className="flex w-full flex-1">
+
+              <Sidebar />
+
+              <main className="flex-1 min-w-0">
+                <DealsPage />
+              </main>
+
+            </div>
+          }
+        />
+
+        {/* New Arrivals */}
+
+        <Route
+          path="/new_arrivels"
+          element={
+            <div className="flex w-full flex-1">
+
+              <Sidebar />
+
+              <main className="flex-1 min-w-0">
+                <NewArrivelsPage />
+              </main>
+
+            </div>
+          }
+        />
+
+        {/* Best Sellers */}
+
+        <Route
+          path="/best_sellers"
+          element={
+            <div className="flex w-full flex-1">
+
+              <Sidebar />
+
+              <main className="flex-1 min-w-0">
+                <BestSellersPage />
+              </main>
+
+            </div>
+          }
+        />
+
+        {/* Brands */}
+
+        <Route
+          path="/brands"
+          element={
+            <div className="flex w-full flex-1">
+
+              <Sidebar />
+
+              <main className="flex-1 min-w-0">
+                <BrandsPage />
+              </main>
+
+            </div>
+          }
+        />
+
+      </Routes>
+
+      <Footer />
+
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+# Application Layout
+
+The overall application layout is:
+
+```text
+App
+│
+├── Navbar
+│
+├── ProductBar
+│
+├── Routes
+│   │
+│   ├── Home
+│   │
+│   ├── Wishlist
+│   │
+│   ├── Cart
+│   │
+│   ├── Login
+│   │
+│   ├── Signup
+│   │
+│   ├── Shop
+│   │   ├── Sidebar
+│   │   └── ShopPage
+│   │
+│   ├── Deals
+│   │   ├── Sidebar
+│   │   └── DealsPage
+│   │
+│   ├── New Arrivals
+│   │   ├── Sidebar
+│   │   └── NewArrivelsPage
+│   │
+│   ├── Best Sellers
+│   │   ├── Sidebar
+│   │   └── BestSellersPage
+│   │
+│   └── Brands
+│       ├── Sidebar
+│       └── BrandsPage
+│
+└── Footer
+```
+
+---
+
+# Route Summary
+
+| Page | Route | Sidebar |
+|---|---|---|
+| Home | `/` | No |
+| Wishlist | `/wishlist` | No |
+| Cart | `/cart` | No |
+| Login | `/auth/login` | No |
+| Signup | `/auth/signup` | No |
+| Shop | `/shop` | Yes |
+| Deals | `/deals` | Yes |
+| New Arrivals | `/new_arrivels` | Yes |
+| Best Sellers | `/best_sellers` | Yes |
+| Brands | `/brands` | Yes |
+
+---
+
+# Why This Structure?
+
+The application separates common layout components from page-specific content.
+
+```text
+Common Components
+│
+├── Navbar
+├── ProductBar
+└── Footer
+
+Page Content
+│
+├── HomePage
+├── ShopPage
+├── DealsPage
+├── NewArrivelsPage
+├── BestSellersPage
+├── BrandsPage
+├── WishlistPage
+├── CartPage
+├── LoginPage
+└── SingupPage
+```
+
+This structure keeps the application:
+
+- Reusable
+- Organized
+- Easy to maintain
+- Easy to navigate
+- Scalable for future features
+
+---
+
+# Technologies Used
+
+This step uses:
+
+- React.js
+- React Router DOM
+- React Components
+- `Routes`
+- `Route`
+- Tailwind CSS
+- Reusable Components
+- Flexbox
+
+The `App.jsx` file acts as the central point where the application's pages, navigation and reusable layout components are connected.
+
+---
+
 # Step 8 — Build the Home Page
 
 Create:
