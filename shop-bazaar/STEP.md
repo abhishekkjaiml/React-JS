@@ -599,7 +599,365 @@ The Navbar is created as a reusable component so it can be imported and used acr
 
 ---
 
-# Step 7 — Build the Footer
+# Step 7 — Build the Product Bar
+
+Create the ProductBar component:
+
+```text
+src/components/ProductBar.jsx
+```
+
+The ProductBar is a secondary navigation component placed below the main Navbar.
+
+It provides:
+
+- Category section
+- Home navigation
+- Shop navigation
+- Deals navigation
+- New Arrivals navigation
+- Best Sellers navigation
+- Brands navigation
+- Active navigation styling
+- Hover effects
+- Material UI icons
+- React Router navigation
+
+---
+
+## Import Required Dependencies
+
+Import the required Material UI icons and `NavLink` from React Router DOM.
+
+```javascript
+import DensityMediumOutlinedIcon from "@mui/icons-material/DensityMediumOutlined";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import { NavLink } from "react-router-dom";
+```
+
+The two Material UI icons are used for the Category section:
+
+- `DensityMediumOutlinedIcon` — Category menu icon
+- `KeyboardArrowDownOutlinedIcon` — Dropdown arrow icon
+
+`NavLink` is used for navigation and active-link styling.
+
+---
+
+## Create the ProductBar Component
+
+Create the `ProductBar` functional component.
+
+```javascript
+const ProductBar = () => {
+  return (
+    <header>
+      {/* Product Bar */}
+    </header>
+  );
+};
+
+export default ProductBar;
+```
+
+---
+
+## Create Active Navigation Styling
+
+Create a reusable `getStyle` function to control the appearance of navigation links.
+
+```javascript
+const getStyle = ({ isActive }) => {
+  const styles =
+    "relative cursor-pointer transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200";
+
+  return isActive
+    ? `text-primary after:w-full ${styles}`
+    : `text-text-primary hover:text-primary hover:after:w-full after:w-0 ${styles}`;
+};
+```
+
+The `isActive` value is provided by `NavLink`.
+
+### Active Link
+
+When a route is active:
+
+```text
+text-primary
+```
+
+is applied and the underline becomes visible.
+
+```text
+after:w-full
+```
+
+### Inactive Link
+
+For inactive links:
+
+```text
+text-text-primary
+```
+
+is applied.
+
+On hover:
+
+```text
+hover:text-primary
+hover:after:w-full
+```
+
+makes the link change color and display the underline.
+
+---
+
+## Create the ProductBar Header
+
+Create the main ProductBar container.
+
+```javascript
+<header className="flex h-12 w-screen flex-wrap bg-background-soft font-semibold">
+
+</header>
+```
+
+The ProductBar uses:
+
+- Full viewport width
+- Fixed height
+- Flexbox
+- Background styling
+- Font weight
+- Responsive wrapping
+
+---
+
+## Create Category Section
+
+The left side of the ProductBar contains the Category section.
+
+```javascript
+<div className="mx-10 flex h-full w-35 flex-wrap items-center border-r border-border">
+
+  <li className="flex items-center gap-2 text-text-primary">
+
+    <DensityMediumOutlinedIcon />
+
+    Category
+
+    <KeyboardArrowDownOutlinedIcon />
+
+  </li>
+
+</div>
+```
+
+The Category section contains:
+
+- Menu icon
+- Category text
+- Dropdown arrow
+- Right border separator
+
+The Category section currently acts as a navigation UI element.
+
+---
+
+## Create Navigation Links
+
+Create the main navigation section:
+
+```javascript
+<div className="flex flex-wrap gap-7">
+
+  <NavLink to="/" className={getStyle}>
+    Home
+  </NavLink>
+
+  <NavLink to="/shop" className={getStyle}>
+    Shop
+  </NavLink>
+
+  <NavLink to="/deals" className={getStyle}>
+    Deals
+  </NavLink>
+
+  <NavLink to="/new_arrivels" className={getStyle}>
+    New Arrivals
+  </NavLink>
+
+  <NavLink to="/best_sellers" className={getStyle}>
+    Best Sellers
+  </NavLink>
+
+  <NavLink to="/brands" className={getStyle}>
+    Brands
+  </NavLink>
+
+</div>
+```
+
+The navigation links are:
+
+| Link | Route |
+|---|---|
+| Home | `/` |
+| Shop | `/shop` |
+| Deals | `/deals` |
+| New Arrivals | `/new_arrivels` |
+| Best Sellers | `/best_sellers` |
+| Brands | `/brands` |
+
+---
+
+## Complete `ProductBar.jsx`
+
+```javascript
+import DensityMediumOutlinedIcon from "@mui/icons-material/DensityMediumOutlined";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import { NavLink } from "react-router-dom";
+
+const ProductBar = () => {
+  const getStyle = ({ isActive }) => {
+    const styles =
+      "relative cursor-pointer transition-colors duration-200 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200";
+
+    return isActive
+      ? `text-primary after:w-full ${styles}`
+      : `text-text-primary hover:text-primary hover:after:w-full after:w-0 ${styles}`;
+  };
+
+  return (
+    <header className="flex h-12 w-screen flex-wrap bg-background-soft font-semibold">
+      <ul className="flex w-screen flex-wrap items-center">
+
+        {/* ================= CATEGORY ================= */}
+
+        <div className="mx-10 flex h-full w-35 flex-wrap items-center border-r border-border">
+
+          <li className="flex items-center gap-2 text-text-primary">
+
+            <DensityMediumOutlinedIcon />
+
+            Category
+
+            <KeyboardArrowDownOutlinedIcon />
+
+          </li>
+
+        </div>
+
+        {/* ================= NAVIGATION ================= */}
+
+        <div className="flex flex-wrap gap-7">
+
+          <NavLink to="/" className={getStyle}>
+            Home
+          </NavLink>
+
+          <NavLink to="/shop" className={getStyle}>
+            Shop
+          </NavLink>
+
+          <NavLink to="/deals" className={getStyle}>
+            Deals
+          </NavLink>
+
+          <NavLink to="/new_arrivels" className={getStyle}>
+            New Arrivals
+          </NavLink>
+
+          <NavLink to="/best_sellers" className={getStyle}>
+            Best Sellers
+          </NavLink>
+
+          <NavLink to="/brands" className={getStyle}>
+            Brands
+          </NavLink>
+
+        </div>
+
+      </ul>
+    </header>
+  );
+};
+
+export default ProductBar;
+```
+
+---
+
+## ProductBar Structure
+
+```text
+ProductBar
+│
+├── Category
+│   ├── Menu Icon
+│   ├── Category Text
+│   └── Dropdown Icon
+│
+└── Navigation
+    ├── Home
+    ├── Shop
+    ├── Deals
+    ├── New Arrivals
+    ├── Best Sellers
+    └── Brands
+```
+
+---
+
+## Active Link Behavior
+
+The `NavLink` component automatically provides the `isActive` value.
+
+For example:
+
+```javascript
+<NavLink to="/shop" className={getStyle}>
+  Shop
+</NavLink>
+```
+
+When the current URL is:
+
+```text
+/shop
+```
+
+the Shop link receives the active styling.
+
+The active link displays:
+
+- Primary text color
+- Full underline
+- Smooth transition
+
+Inactive links display:
+
+- Default text color
+- Hover primary color
+- Animated underline on hover
+
+---
+
+## Technologies Used
+
+The ProductBar uses:
+
+- React.js
+- React Router DOM
+- `NavLink`
+- Tailwind CSS
+- Material UI Icons
+
+The ProductBar is maintained as a separate reusable component and can be included below the main `Navbar` throughout the application.
+
+# Step 8 — Build the Footer
 
 Create:
 
