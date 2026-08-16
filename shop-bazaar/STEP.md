@@ -1655,6 +1655,286 @@ The Footer is created as a reusable component and can be included across the dif
 
 ---
 
+# Step 9 — Build the Sidebar
+
+Create the Sidebar component:
+
+```text
+src/components/Sidebar.jsx
+```
+
+The Sidebar is used on the product listing page to provide a dedicated area for product filtering.
+
+At this stage, the Sidebar contains the basic filter layout and sections for:
+
+- Price
+- Category
+- Brand
+
+The actual filter functionality will be implemented in later steps.
+
+---
+
+## Create the Sidebar Component
+
+Create the `Sidebar` functional component:
+
+```javascript
+import React from "react";
+
+const Sidebar = () => {
+  return (
+    <aside>
+      {/* Sidebar content */}
+    </aside>
+  );
+};
+
+export default Sidebar;
+```
+
+The component is exported so it can be reused on the Shop/Product Listing page.
+
+---
+
+## Create the Sidebar Container
+
+The main Sidebar is created using the `<aside>` HTML element.
+
+```javascript
+<aside className="w-[19vw] min-w-57.5 shrink-0 bg-background border-r border-border">
+
+</aside>
+```
+
+The Sidebar uses:
+
+- `w-[19vw]` for responsive width
+- `min-w-57.5` to prevent the Sidebar from becoming too narrow
+- `shrink-0` to prevent flexbox shrinking
+- `bg-background` for the application background
+- `border-r` for the right-side border
+- `border-border` for the project border color
+
+---
+
+## Create the Sidebar Content Container
+
+Inside the Sidebar, create a container for the filter sections.
+
+```javascript
+<div className="flex flex-col px-5 py-5">
+
+</div>
+```
+
+This provides:
+
+- Vertical layout
+- Horizontal padding
+- Vertical padding
+
+---
+
+## Add "Filter By" Heading
+
+Create the main Sidebar heading:
+
+```javascript
+<h1 className="text-[18px] font-semibold text-text-primary pb-4 border-b border-border">
+  Filter By
+</h1>
+```
+
+This heading indicates that the Sidebar contains product filtering options.
+
+---
+
+## Create Price Filter Section
+
+Create the Price section:
+
+```javascript
+<div className="py-5 border-b border-border">
+
+  <h2 className="text-[14px] font-semibold text-text-primary mb-4">
+    Price
+  </h2>
+
+  {/* Price filter will come here */}
+
+</div>
+```
+
+At this stage, the Price section only contains the heading.
+
+The actual price filtering logic will be added later.
+
+---
+
+## Create Category Filter Section
+
+Create the Category section:
+
+```javascript
+<div className="py-5 border-b border-border">
+
+  <h2 className="text-[14px] font-semibold text-text-primary mb-4">
+    Category
+  </h2>
+
+  {/* Category filter will come here */}
+
+</div>
+```
+
+The Category section is reserved for category-based product filtering.
+
+The actual category filter controls will be implemented in a later step.
+
+---
+
+## Create Brand Filter Section
+
+Create the Brand section:
+
+```javascript
+<div className="py-5 border-b border-border">
+
+  <h2 className="text-[14px] font-semibold text-text-primary mb-4">
+    Brand
+  </h2>
+
+  {/* Brand filter will come here */}
+
+</div>
+```
+
+The Brand section is reserved for brand-based product filtering.
+
+The actual brand filter controls will be implemented later.
+
+---
+
+## Complete `Sidebar.jsx`
+
+```javascript
+import React from "react";
+
+const Sidebar = () => {
+  return (
+    <aside className="w-[19vw] min-w-57.5 shrink-0 bg-background border-r border-border">
+
+      <div className="flex flex-col px-5 py-5">
+
+        <h1 className="text-[18px] font-semibold text-text-primary pb-4 border-b border-border">
+          Filter By
+        </h1>
+
+        {/* Price */}
+        <div className="py-5 border-b border-border">
+
+          <h2 className="text-[14px] font-semibold text-text-primary mb-4">
+            Price
+          </h2>
+
+          {/* Price filter will come here */}
+
+        </div>
+
+        {/* Category */}
+        <div className="py-5 border-b border-border">
+
+          <h2 className="text-[14px] font-semibold text-text-primary mb-4">
+            Category
+          </h2>
+
+          {/* Category filter will come here */}
+
+        </div>
+
+        {/* Brand */}
+        <div className="py-5 border-b border-border">
+
+          <h2 className="text-[14px] font-semibold text-text-primary mb-4">
+            Brand
+          </h2>
+
+          {/* Brand filter will come here */}
+
+        </div>
+
+      </div>
+
+    </aside>
+  );
+};
+
+export default Sidebar;
+```
+
+---
+
+## Sidebar Structure
+
+```text
+Sidebar
+│
+├── Filter By
+│
+├── Price
+│   └── Price filter placeholder
+│
+├── Category
+│   └── Category filter placeholder
+│
+└── Brand
+    └── Brand filter placeholder
+```
+
+---
+
+## Current Implementation
+
+At this stage, the Sidebar is only responsible for creating the filter UI structure.
+
+```text
+Sidebar
+   │
+   ├── Price
+   │
+   ├── Category
+   │
+   └── Brand
+```
+
+The actual filtering functionality will be added in upcoming steps.
+
+Future filtering logic can include:
+
+- Price range
+- Category selection
+- Brand selection
+- Multiple filters
+- Dynamic product filtering
+- Reset filters
+
+---
+
+## Technologies Used
+
+The Sidebar uses:
+
+- React.js
+- Tailwind CSS
+- Semantic HTML
+- Flexbox
+- Custom project color utilities
+
+The Sidebar is created as a reusable component and can be placed alongside the product listing section on the Shop page.
+
+---
+
 # Step 8 — Build the Home Page
 
 Create:
