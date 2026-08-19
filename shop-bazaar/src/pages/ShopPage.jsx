@@ -103,7 +103,7 @@ const ShopPage = () => {
             <ProductCard key={product.id} product={product} />
           ))
         ) : (
-          <div className="flex h-[50vh] w-full items-center justify-center">
+          <div className="flex h-full w-full items-center justify-center  py-[35vh] px-[30vw]">
             <p className="text-[20px] font-semibold text-text-primary">
               {products.length === 0
                 ? "Products are loading..."
