@@ -175,7 +175,11 @@ const Sidebar = () => {
                         }
                       `}
                   >
-                    {category.name}
+                    {
+                      category.name.length > 16
+                        ? `${category.name.slice(0, 16)}...`
+                        : category.name
+                    }
                   </button>
                 ))}
             </div>
