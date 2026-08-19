@@ -1,86 +1,108 @@
 import React from "react";
+
 import Navbar from "./components/Navbar";
 import ProductBar from "./components/ProductBar";
-import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import Footer from "./components/Footer";
-import Sidebar from "./components/Sidebar";
+
+import { Route, Routes } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import DealsPage from "./pages/DealsPage";
 import NewArrivelsPage from "./pages/NewArrivelsPage";
 import BestSellersPage from "./pages/BestSellersPage";
 import BrandsPage from "./pages/BrandsPage";
+
 import WishlistPage from "./pages/WishlistPage";
 import CartPage from "./pages/CartPage";
+
 import LoginPage from "./pages/auth/LoginPage";
 import SingupPage from "./pages/auth/SingupPage";
+
+import ShopLayout from "./components/ShopLayout";
 
 const App = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background overflow-hidden">
-
       <Navbar />
+
       <ProductBar />
+
       <Routes>
-        {/* Home Page */}
+        {/* ================= HOME ================= */}
+
         <Route path="/" element={<HomePage />} />
-        <Route  path="/wishlist"  element={<WishlistPage />} />
-        <Route  path="/cart"  element={<CartPage />} />
-        <Route  path="/auth/login"  element={<LoginPage />} />
-        <Route  path="/auth/signup"  element={<SingupPage />} />
 
-        {/* Shop Page */}
+        {/* ================= SHOP ================= */}
 
-        <Route path="/shop" element={
-          <div className="flex w-full flex-1">
-            <Sidebar />
-            <main className="flex-1 min-w-0">
+        <Route
+          path="/shop"
+          element={
+            <ShopLayout>
               <ShopPage />
-            </main>
-          </div>}/>
+            </ShopLayout>
+          }
+        />
 
-          {/* Deals Page */}
+        {/* ================= DEALS ================= */}
 
-          <Route path="/deals" element={
-          <div className="flex w-full flex-1">
-            <Sidebar />
-            <main className="flex-1 min-w-0">
+        <Route
+          path="/deals"
+          element={
+            <ShopLayout>
               <DealsPage />
-            </main>
-          </div>}/>
+            </ShopLayout>
+          }
+        />
 
-          {/* New Arrivels */}
+        {/* ================= NEW ARRIVALS ================= */}
 
-          <Route path="/new_arrivels" element={
-          <div className="flex w-full flex-1">
-            <Sidebar />
-            <main className="flex-1 min-w-0">
+        <Route
+          path="/new_arrivels"
+          element={
+            <ShopLayout>
               <NewArrivelsPage />
-            </main>
-          </div>}/>
+            </ShopLayout>
+          }
+        />
 
-          {/* Best Sellers */}
+        {/* ================= BEST SELLERS ================= */}
 
-          <Route path="/best_sellers" element={
-          <div className="flex w-full flex-1">
-            <Sidebar />
-            <main className="flex-1 min-w-0">
+        <Route
+          path="/best_sellers"
+          element={
+            <ShopLayout>
               <BestSellersPage />
-            </main>
-          </div>}/>
+            </ShopLayout>
+          }
+        />
 
-          {/* Brands */}
+        {/* ================= BRANDS ================= */}
 
-          <Route path="/brands" element={
-          <div className="flex w-full flex-1">
-            <Sidebar />
-            <main className="flex-1 min-w-0">
+        <Route
+          path="/brands"
+          element={
+            <ShopLayout>
               <BrandsPage />
-            </main>
-          </div>}/>
+            </ShopLayout>
+          }
+        />
 
+        {/* ================= WISHLIST ================= */}
 
+        <Route path="/wishlist" element={<WishlistPage />} />
+
+        {/* ================= CART ================= */}
+
+        <Route path="/cart" element={<CartPage />} />
+
+        {/* ================= AUTH ================= */}
+
+        <Route path="/auth/login" element={<LoginPage />} />
+
+        <Route path="/auth/signup" element={<SingupPage />} />
       </Routes>
+
       <Footer />
     </div>
   );

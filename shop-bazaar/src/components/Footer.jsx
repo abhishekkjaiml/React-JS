@@ -4,8 +4,11 @@ import Mastercard_logo from '../assets/Mastercard_logo.webp'
 import paytm_logo from '../assets/paytm_logo.png'
 import apple_logo from '../assets/apple_logo.png'
 import logo from '../assets/logo.png'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+
+    const navigate = useNavigate()
   return (
     <footer className=' w-full h-auto flex flex-wrap bg-slate-900 text-white text-[15px] p-10 justify-center'>
         <div    className='flex flex-wrap grid-5 border-b border-gray-600 pb-5'>
@@ -36,7 +39,7 @@ const Footer = () => {
             <div    className='flex flex-col w-[18vw]'>
                 <ul className='flex flex-col gap-2'>
                     <li className='font-semibold text-[20px]'>Company</li>
-                    <li className='hover:text-indigo-700 cursor-pointer'>About Us</li>
+                    <li onClick={() => navigate('/aboutus')} className='hover:text-indigo-700 cursor-pointer'>About Us</li>
                     <li className='hover:text-indigo-700 cursor-pointer'>Careers</li>
                     <li className='hover:text-indigo-700 cursor-pointer'>Blog</li>
                     <li className='hover:text-indigo-700 cursor-pointer'>Press</li>

@@ -6,10 +6,10 @@ const DealsPage = () => {
   const [products, setProducts] = useState();
 
   return (
-    <div>
+    <div  className='w-screen h-full'>
       {
-        products?.length > 0 ? products.map((products) => <ProductCard/>) : <div  className=' h-[50vh] w-full flex flex-wrap items-center justify-center'>
-          <h3 className='text-[20px] font-semibold text-slate-800'>
+        products?.length > 0 ? products.map((products) => <ProductCard/>) : <div  className=' h-full  w-full flex flex-wrap items-center py-[35vh] px-[30vw]'>
+          <h3 className=' text-[20px] font-semibold text-slate-800 items-center'>
             Deals page are under development
           </h3>
         </div>
