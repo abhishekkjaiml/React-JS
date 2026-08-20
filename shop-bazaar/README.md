@@ -198,3 +198,234 @@ ecommerce-project/
 ├── package-lock.json
 ├── vite.config.js
 └── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js v18+
+- npm
+- Git
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/abhishekkjaiml/ecommerce-project.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd ecommerce-project
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+VITE_API_URL=https://api.escuelajs.co/api/v1
+VITE_RAZORPAY_KEY_ID=your_razorpay_key
+```
+
+### 5. Start Development Server
+
+```bash
+npm run dev
+```
+
+The application will be available at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## 🔐 Environment Variables
+
+| Variable | Description |
+|---|---|
+| `VITE_API_URL` | Base URL for the product API |
+| `VITE_RAZORPAY_KEY_ID` | Razorpay public key used for payment integration |
+
+> ⚠️ Never commit your `.env` file or expose private credentials publicly.
+
+For GitHub, use `.env.example` instead:
+
+```env
+VITE_API_URL=https://api.escuelajs.co/api/v1
+VITE_RAZORPAY_KEY_ID=your_razorpay_key
+```
+
+---
+
+## 🌍 API Integration
+
+This project uses the **Platzi Fake Store API** for product and category data.
+
+### API Base URL
+
+```text
+https://api.escuelajs.co/api/v1
+```
+
+The API is used for:
+
+- Fetching products
+- Fetching product details
+- Fetching categories
+- Displaying product information
+- Product filtering
+
+---
+
+## 📸 Screenshots
+
+Add your application screenshots inside the `screenshots` folder.
+
+```text
+screenshots/
+├── home.png
+├── products.png
+├── product-filter.png
+├── cart.png
+├── wishlist.png
+├── login.png
+├── register.png
+└── payment.png
+```
+
+### Home
+
+![Home](screenshots/home.png)
+
+### Products
+
+![Products](screenshots/products.png)
+
+### Cart
+
+![Cart](screenshots/cart.png)
+
+### Wishlist
+
+![Wishlist](screenshots/wishlist.png)
+
+### Login
+
+![Login](screenshots/login.png)
+
+---
+
+## 📚 Concepts Used
+
+- React Components
+- Functional Components
+- React Hooks
+- `useState`
+- `useEffect`
+- Props
+- Context API
+- React Router
+- Event Handling
+- Conditional Rendering
+- Component Reusability
+- REST API Integration
+- Fetch API / Axios
+- Product Filtering
+- Cart Management
+- Wishlist Management
+- LocalStorage
+- Persistent Client-Side Data
+- Authentication Flow
+- JWT
+- Razorpay Integration
+- Responsive UI Design
+
+---
+
+## 🎯 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+- Building a modern E-Commerce frontend
+- Creating scalable React applications
+- Designing reusable React components
+- Working with React Hooks
+- Managing application state
+- Implementing shopping cart functionality
+- Implementing wishlist functionality
+- Building product filtering functionality
+- Integrating third-party REST APIs
+- Working with the Platzi Fake Store API
+- Implementing persistent client-side data
+- Managing authentication state
+- Understanding JWT-based authentication flow
+- Integrating Razorpay payment gateway
+- Creating responsive user interfaces
+- Organizing a clean React project structure
+- Using Vite for fast development and optimized builds
+
+---
+
+## 🚀 Future Improvements
+
+- [ ] Product detail page enhancements
+- [ ] User profile
+- [ ] Order history
+- [ ] Order tracking
+- [ ] Product reviews and ratings
+- [ ] Coupon and discount system
+- [ ] Advanced search
+- [ ] Pagination
+- [ ] Improved payment status handling
+- [ ] Backend integration
+- [ ] Database integration
+- [ ] Admin dashboard
+- [ ] Product management
+- [ ] User management
+- [ ] Sales analytics
+- [ ] Email notifications
+- [ ] Dark mode
+- [ ] Performance optimization
+- [ ] Progressive Web App (PWA) support
+
+---
+
+## 👨‍💻 Author
+
+### Abhishek Kumar Jaiswar
+
+Frontend Developer passionate about building modern, responsive, and user-friendly web applications using React JS.
+
+<p>
+  <a href="https://github.com/abhishekkjaiml">GitHub</a>
+  &nbsp;•&nbsp;
+  <a href="https://www.linkedin.com/in/abhishek-kumar-jaiswar-aiml/">LinkedIn</a>
+</p>
+
+---
+
+## ⭐ Show Your Support
+
+If you found this project useful or interesting, consider giving it a **⭐ Star** on GitHub.
+
+Your support is greatly appreciated!
+
+---
+
+<p align="center">
+  Made with ❤️ using React JS
+</p>
