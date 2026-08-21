@@ -1,7 +1,11 @@
 # 🎬 Movie App
 
 <p align="center">
-  <img src="./src/assets/logo.png" alt="Movie App Logo" width="120" />
+  <img
+    src="https://raw.githubusercontent.com/abhishekkjaiml/React-JS/main/react-movie-app/src/assets/movieapp_logo.png"
+    alt="Movie App Logo"
+    width="120"
+  />
 </p>
 
 <h3 align="center">Discover. Search. Explore Movies.</h3>
