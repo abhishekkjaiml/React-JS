@@ -22,7 +22,9 @@
 ## 📸 Preview
 
 <p align="center">
-  <img src="./src/assets/preview.png" alt="Movie App Preview" width="900" />
+  <a href="https://github.com/abhishekkjaiml/React-JS/blob/main/react-movie-app/src/assets/preview.png">
+    <img src="https://github.com/abhishekkjaiml/React-JS/raw/main/react-movie-app/src/assets/preview.png" alt="Movie App Preview" width="900" />
+  </a>
 </p>
 
 ---
