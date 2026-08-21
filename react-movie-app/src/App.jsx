@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Footer from './components/Footer'
 import AboutUs from './pages/AboutUs'
 import OffersPage from './pages/OffersPage'
+import MovieDetails from './pages/MovieDetails'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route  path='/'  element={<Home />} />
         <Route  path='/aboutus' element={<AboutUs />} />
         <Route  path='/offers'  element={<OffersPage />} />
+        <Route  path='/movie/:id' element={<MovieDetails />}  />
       </Routes>
       <Footer />
     </div>

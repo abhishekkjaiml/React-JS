@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { getMovies } from "../api/getMovies";
 
 export const API_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`
 
@@ -15,57 +16,29 @@ const MovieProvider = ({ children }) => {
 
     const [query, setQuery] = useState('titanic')
 
-    const getMovies =   async (url) => {
-        setIsLoading(true)
-
-        try {
-            
-            const res = await fetch(url);
-            const data = await res.json()
-            console.log(data);
-
-            if(data.Response == 'True'){
-
-                setIsLoading(false)
-
-                setIsError({
-                    show: false,
-                    msg: ''
-                })
-
-                setMovies(data.Search)
-            }else{
-                setIsLoading(false)
-
-                setMovies([])
-
-                setIsError({
-                    show: true,
-                    msg: data.Error
-                })
-            }
-        } catch (error) {
-            setIsLoading(false)
-
-            setMovies([])
-
-            setIsError({
-                show: true,
-                msg: data.Error
-            })
-        }
-    }
-
     useEffect(() => {
+
         const timeOut = setTimeout(() => {
-            getMovies(`${API_URL}&s=${query}`);
-        }, 1000);
+
+            getMovies(
+                `${API_URL}&s=${query}`,
+                setIsLoading,
+                setMovies,
+                setIsError,
+            )
+
+        }, 500);
 
         return () => clearTimeout(timeOut)
+
     },[query])
 
+
+
+    console.log(movies)
+
     return(
-        <MovieContext.Provider  value={{movies, query, setQuery, isLoading, isError}}>
+        <MovieContext.Provider  value={{movies, setMovies, query, setQuery, isLoading, setIsLoading, isError, setIsError}}>
             { children }
         </MovieContext.Provider>
     )

@@ -1,69 +1,78 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import SearchBar from './SearchBar'
+import logo from '../assets/movieapp_logo.png'
 
 const Navbar = () => {
 
   const navigate = useNavigate()
 
   return (
-    <header className='w-full h-16 border-b border-gray-200 bg-white flex flex-wrap justify-between items-center px-6'>
+    <header className='w-full h-18 border-b border-gray-200 bg-white'>
 
-      {/* Logo */}
-      <div className='flex items-center'>
-        <h2
+      <div className='max-w-7xl mx-auto h-full px-6 flex items-center justify-between gap-8'>
+
+        {/* Logo */}
+        <div
           onClick={() => navigate('/')}
-          className='text-xl font-bold cursor-pointer'
+          className='flex items-center cursor-pointer shrink-0'
         >
-          Movie<span className='text-red-500'>App</span>
-        </h2>
-      </div>
+          <img
+            src={logo}
+            alt='MovieApp'
+            className='w-32 h-auto object-contain'
+          />
+        </div>
 
-      {/* Search */}
-      <div className='flex items-center ml-10'>
-        <SearchBar />
-      </div>
+        {/* Search */}
+        <div className='flex-1 max-w-lg'>
+          <SearchBar />
+        </div>
 
-      {/* Navigation */}
-      <div className='flex items-center'>
-        <ul className='flex items-center gap-6'>
+        {/* Navigation */}
+        <div className='flex items-center shrink-0'>
 
-          <li
-            onClick={() => navigate('/')}
-            className='text-sm font-semibold text-gray-700 cursor-pointer hover:text-red-500 transition'
-          >
-            Movies
-          </li>
+          <ul className='flex items-center gap-6'>
 
-          <li
-            onClick={() => navigate('/favourite')}
-            className='text-sm font-semibold text-gray-700 cursor-pointer hover:text-red-500 transition'
-          >
-            Favourites
-          </li>
+            <li
+              onClick={() => navigate('/')}
+              className='text-sm font-medium text-gray-700 cursor-pointer hover:text-red-500 transition'
+            >
+              Movies
+            </li>
 
-          <li
-            onClick={() => navigate('/cinemas')}
-            className='text-sm font-semibold text-gray-700 cursor-pointer hover:text-red-500 transition'
-          >
-            Cinemas
-          </li>
+            <li
+              onClick={() => navigate('/favourite')}
+              className='text-sm font-medium text-gray-700 cursor-pointer hover:text-red-500 transition'
+            >
+              Favourites
+            </li>
 
-          <li
-            onClick={() => navigate('/offers')}
-            className='text-sm font-semibold text-gray-700 cursor-pointer hover:text-red-500 transition'
-          >
-            Offers
-          </li>
+            <li
+              onClick={() => navigate('/cinemas')}
+              className='text-sm font-medium text-gray-700 cursor-pointer hover:text-red-500 transition'
+            >
+              Cinemas
+            </li>
 
-          <li
-            onClick={() => navigate('/aboutus')}
-            className='text-sm font-semibold text-gray-700 cursor-pointer hover:text-red-500 transition'
-          >
-            About Us
-          </li>
+            <li
+              onClick={() => navigate('/offers')}
+              className='text-sm font-medium text-gray-700 cursor-pointer hover:text-red-500 transition'
+            >
+              Offers
+            </li>
 
-        </ul>
+            <li
+              onClick={() => navigate('/aboutus')}
+              className='text-sm font-medium text-gray-700 cursor-pointer hover:text-red-500 transition'
+            >
+              About Us
+            </li>
+
+          </ul>
+
+        </div>
+
       </div>
 
     </header>
