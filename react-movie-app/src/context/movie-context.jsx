@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getMovies } from "../api/getMovies";
+import localMovies from '../Data/movies.json'
 
 export const API_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`
 
@@ -8,15 +9,20 @@ const MovieContext = createContext();
 const MovieProvider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState(localMovies);
     const [isError, setIsError] = useState({
         show: false,
         msg: ''
     })
 
-    const [query, setQuery] = useState('titanic')
+    const [query, setQuery] = useState('')
 
     useEffect(() => {
+
+        if(!query.trim()){
+            setMovies(localMovies);
+            return;
+        }
 
         const timeOut = setTimeout(() => {
 

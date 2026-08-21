@@ -1,11 +1,11 @@
 export const getMovies =   async (url, setIsLoading, setMovies, setIsError) => {
+
         setIsLoading(true)
 
         try {
             
             const res = await fetch(url);
             const data = await res.json()
-            console.log(data);
 
             if(data.Response == 'True'){
 
@@ -17,7 +17,9 @@ export const getMovies =   async (url, setIsLoading, setMovies, setIsError) => {
                 })
 
                 setMovies(data.Search)
+
             }else{
+
                 setIsLoading(false)
 
                 setMovies([])
@@ -27,6 +29,7 @@ export const getMovies =   async (url, setIsLoading, setMovies, setIsError) => {
                     msg: data.Error
                 })
             }
+
         } catch (error) {
             setIsLoading(false)
 
