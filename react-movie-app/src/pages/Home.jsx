@@ -4,51 +4,95 @@ import { useMovies } from "../context/movie-context";
 
 const Home = () => {
 
-  const { movies } = useMovies();
+  const {
+    movies,
+    query,
+    isLoading,
+    isError,
+  } = useMovies();
+
+  const isSearching = query.trim();
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="home-container">
 
-      {/* Heading */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-800">
-          Now Showing
-        </h1>
+  <div className="home-heading">
 
-        <button className="text-sm font-semibold text-red-500 hover:text-red-600">
+    <h1 className="home-title">
+      {
+        isSearching
+          ? `Search Results for "${query}"`
+          : "Now Showing"
+      }
+    </h1>
+
+    {
+      !isSearching && (
+        <button className="home-view-all">
           View All
         </button>
+      )
+    }
+
+  </div>
+
+  {
+    isSearching && isLoading ? (
+
+      <div className="home-message-container">
+
+        <div className="home-loading">
+
+          <div className="home-loading-spinner"></div>
+
+          <p className="home-loading-text">
+            Searching movies...
+          </p>
+
+        </div>
+
       </div>
 
-      {/* Movies */}
-      {
-        movies?.length > 0 ? (
+    ) : isError.show ? (
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6  ml-8">
+      <div className="home-message-container">
 
-            {
-              movies.map((movie) => (
-                <MoviesCard
-                  movie={movie}
-                  key={movie.imdbID}
-                />
-              ))
-            }
+        <p className="home-error">
+          {isError.msg}
+        </p>
 
-          </div>
+      </div>
 
-        ) : (
+    ) : movies?.length > 0 ? (
 
-          <div className="flex justify-center items-center py-20">
-            <p className="text-gray-500">
-              No Movies
-            </p>
-          </div>
+      <div className="home-movies-grid">
 
-        )
-      }
+        {
+          movies.map((movie) => (
+            <MoviesCard
+              movie={movie}
+              key={movie.imdbID}
+              isApiMovie={Boolean(isSearching)}
+            />
+          ))
+        }
 
-    </div>
+      </div>
+
+    ) : (
+
+      <div className="home-message-container">
+
+        <p className="home-no-movies">
+          No Movies
+        </p>
+
+      </div>
+
+    )
+  }
+
+</div>
   );
 };
 

@@ -1,1 +1,453 @@
 @import "tailwindcss";
+
+
+@layer components {
+
+  .home-container {
+    @apply max-w-7xl mx-auto px-6 py-8;
+  }
+
+  .home-heading {
+    @apply flex justify-between items-center mb-6;
+  }
+
+  .home-title {
+    @apply text-2xl font-bold text-gray-800;
+  }
+
+  .home-view-all {
+    @apply text-sm font-semibold text-red-500 hover:text-red-600;
+  }
+
+  .home-movies-grid {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 ml-8;
+  }
+
+  .home-message-container {
+    @apply flex justify-center items-center py-20;
+  }
+
+  .home-loading {
+    @apply flex flex-col items-center gap-4;
+  }
+
+  .home-loading-spinner {
+    @apply w-10 h-10 border-4 border-gray-200 border-t-red-500 rounded-full animate-spin;
+  }
+
+  .home-loading-text {
+    @apply text-gray-500;
+  }
+
+  .home-error {
+    @apply text-red-500;
+  }
+
+  .home-no-movies {
+    @apply text-gray-500;
+  }
+
+}
+
+
+/* MovieDetails.jsx Start */
+
+@layer components {
+
+  /* =========================
+     MOVIE DETAILS
+  ========================= */
+
+  .movie-details-container {
+    @apply max-w-7xl mx-auto px-6 py-10;
+  }
+
+  .movie-details-layout {
+    @apply grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8;
+  }
+
+  .movie-details-poster {
+    @apply w-full h-105 object-cover rounded-xl;
+  }
+
+  .movie-details-content {
+    @apply flex flex-col justify-center;
+  }
+
+  .movie-details-genre {
+    @apply text-sm text-red-500 font-semibold mb-2;
+  }
+
+  .movie-details-title {
+    @apply text-4xl font-bold text-gray-900;
+  }
+
+  .movie-details-meta {
+    @apply flex items-center gap-4 mt-4;
+  }
+
+  .movie-details-rating {
+    @apply flex items-center gap-1;
+  }
+
+  .movie-details-rating-value {
+    @apply font-semibold;
+  }
+
+  .movie-details-meta-separator {
+    @apply text-gray-300;
+  }
+
+  .movie-details-meta-text {
+    @apply text-sm text-gray-500;
+  }
+
+  .movie-details-description {
+    @apply text-gray-500 leading-7 mt-6 max-w-2xl;
+  }
+
+  .movie-details-info {
+    @apply grid grid-cols-2 md:grid-cols-3 gap-5 mt-6;
+  }
+
+  .movie-details-info-label {
+    @apply text-xs text-gray-400;
+  }
+
+  .movie-details-info-value {
+    @apply text-sm font-medium text-gray-800 mt-1;
+  }
+
+  .movie-details-buttons {
+    @apply flex flex-wrap gap-3 mt-8;
+  }
+
+  .movie-book-button {
+    @apply flex items-center gap-2 bg-red-500 text-white px-5 py-3 rounded-lg text-sm font-semibold hover:bg-red-600 transition;
+  }
+
+  .movie-action-button {
+    @apply flex items-center gap-2 border border-gray-300 px-5 py-3 rounded-lg text-sm font-semibold text-gray-700 transition;
+  }
+
+  .movie-trailer-button {
+    @apply hover:border-gray-400;
+  }
+
+  .movie-favourite-button {
+    @apply hover:text-red-500 hover:border-red-400;
+  }
+
+
+  /* =========================
+     CAST
+  ========================= */
+
+  .movie-cast-section {
+    @apply mt-14;
+  }
+
+  .movie-section-title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .movie-cast-grid {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 mt-6;
+  }
+
+  .movie-cast-card {
+    @apply border border-gray-200 rounded-xl p-4;
+  }
+
+  .movie-cast-avatar {
+    @apply w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center;
+  }
+
+  .movie-cast-avatar-text {
+    @apply text-2xl;
+  }
+
+  .movie-cast-name {
+    @apply font-semibold text-sm mt-3 truncate;
+  }
+
+  .movie-cast-role {
+    @apply text-xs text-gray-500 mt-1;
+  }
+
+
+  /* =========================
+     RATINGS
+  ========================= */
+
+  .movie-ratings-section {
+    @apply mt-14;
+  }
+
+  .movie-ratings-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 gap-5 mt-6;
+  }
+
+  .movie-rating-card {
+    @apply border border-gray-200 rounded-xl p-5;
+  }
+
+  .movie-rating-source {
+    @apply text-xs text-gray-400;
+  }
+
+  .movie-rating-value {
+    @apply text-lg font-semibold text-gray-800 mt-2;
+  }
+
+
+  /* =========================
+     EXTRA DETAILS
+  ========================= */
+
+  .movie-extra-details {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-5 mt-14;
+  }
+
+  .movie-extra-card {
+    @apply border border-gray-200 rounded-xl p-5;
+  }
+
+  .movie-extra-label {
+    @apply text-xs text-gray-400;
+  }
+
+  .movie-extra-value {
+    @apply text-sm font-medium text-gray-800 mt-2;
+  }
+
+
+  /* =========================
+     LOADING
+  ========================= */
+
+  .movie-details-loading {
+    @apply w-full min-h-screen flex flex-col items-center justify-center;
+  }
+
+  .movie-details-spinner {
+    @apply w-10 h-10 border-4 border-gray-200 border-t-red-500 rounded-full animate-spin;
+  }
+
+  .movie-details-loading-text {
+    @apply text-gray-500 mt-4;
+  }
+
+
+  /* =========================
+     ERROR
+  ========================= */
+
+  .movie-details-error {
+    @apply w-full min-h-screen flex flex-col items-center justify-center;
+  }
+
+  .movie-details-error-text {
+    @apply text-red-500 mb-4;
+  }
+
+  .movie-details-back-button {
+    @apply px-5 py-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 transition;
+  }
+
+}
+
+/* MoviesDetails.jsx End */
+
+
+/* OffersPage.jsx Start here */
+
+@layer components {
+
+  /* =========================
+     OFFERS PAGE
+  ========================= */
+
+  .offers-container {
+    @apply max-w-7xl mx-auto px-6 py-10;
+  }
+
+  .offers-heading {
+    @apply mb-8;
+  }
+
+  .offers-title {
+    @apply text-2xl md:text-3xl font-bold text-gray-900;
+  }
+
+  .offers-description {
+    @apply text-sm text-gray-500 mt-2;
+  }
+
+  .offers-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  .offer-card {
+    @apply border border-gray-200 rounded-xl p-6 hover:shadow-md transition;
+  }
+
+  .offer-header {
+    @apply flex items-center justify-between;
+  }
+
+  .offer-icon {
+    @apply text-3xl;
+  }
+
+  .offer-discount {
+    @apply text-xs font-semibold text-red-500 bg-red-50 px-3 py-1 rounded-full;
+  }
+
+  .offer-title {
+    @apply text-lg font-semibold text-gray-800 mt-5;
+  }
+
+  .offer-description {
+    @apply text-sm text-gray-500 mt-2 leading-6;
+  }
+
+  .offer-footer {
+    @apply flex items-center justify-between mt-5;
+  }
+
+  .offer-code {
+    @apply text-sm font-medium text-gray-700;
+  }
+
+  .offer-apply {
+    @apply text-sm font-semibold text-red-500 hover:text-red-600;
+  }
+
+}
+
+/* OffersPage.jsx End here */
+
+
+/* AboutUs.jsx Start here */
+
+@layer components {
+
+  /* =========================
+     ABOUT US
+  ========================= */
+
+  .about-container {
+    @apply max-w-7xl mx-auto px-6 py-12;
+  }
+
+  .about-hero {
+    @apply text-center max-w-3xl mx-auto;
+  }
+
+  .about-title {
+    @apply text-3xl md:text-4xl font-bold text-gray-900;
+  }
+
+  .about-title-highlight {
+    @apply text-red-500;
+  }
+
+  .about-description {
+    @apply text-gray-500 mt-4 leading-7;
+  }
+
+
+  /* =========================
+     FEATURES
+  ========================= */
+
+  .about-features {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6 mt-12;
+  }
+
+  .about-feature-card {
+    @apply border border-gray-200 rounded-xl p-6;
+  }
+
+  .about-feature-title {
+    @apply text-lg font-semibold text-gray-800;
+  }
+
+  .about-feature-description {
+    @apply text-sm text-gray-500 mt-3 leading-6;
+  }
+
+
+  /* =========================
+     MISSION
+  ========================= */
+
+  .about-mission {
+    @apply mt-12 bg-gray-50 rounded-2xl p-8 md:p-10 text-center;
+  }
+
+  .about-mission-title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .about-mission-description {
+    @apply max-w-3xl mx-auto text-gray-500 mt-4 leading-7;
+  }
+
+}
+
+/* AboutUs.jsx end here */
+
+
+/* MoviesCart.jsx Srat here */
+
+@layer components {
+
+  /* =========================
+     MOVIE CARD
+  ========================= */
+
+  .movie-card {
+    @apply w-60 border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-md transition;
+  }
+
+  .movie-card-poster {
+    @apply relative p-1 hover:cursor-pointer;
+  }
+
+  .movie-card-image {
+    @apply w-full h-80 object-cover rounded;
+  }
+
+  .movie-card-type {
+    @apply absolute top-3 left-3 bg-black/70 text-white text-xs px-2 py-1 rounded;
+  }
+
+  .movie-card-content {
+    @apply p-4;
+  }
+
+  .movie-card-title {
+    @apply text-base font-semibold text-gray-800 truncate;
+  }
+
+  .movie-card-year {
+    @apply text-sm text-gray-500 mt-1;
+  }
+
+  .movie-card-actions {
+    @apply flex gap-2 mt-4;
+  }
+
+  .movie-card-favourite {
+    @apply flex items-center justify-center gap-1 border border-gray-300 rounded-md px-2 py-2 text-sm text-gray-600 hover:text-red-500 hover:border-red-400 transition;
+  }
+
+  .movie-card-buy {
+    @apply flex items-center justify-center gap-1 bg-red-500 text-white rounded-md px-3 py-2 text-sm hover:bg-red-600 transition;
+  }
+
+}
+
+/* MoviesCart.jsx end here */

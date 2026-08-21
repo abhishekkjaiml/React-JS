@@ -1,234 +1,251 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
-import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined'
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
-import StarOutlinedIcon from '@mui/icons-material/StarOutlined'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import PlayCircleOutlineOutlinedIcon from "@mui/icons-material/PlayCircleOutlineOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
+import { API_URL } from "../context/movie-context";
+import { getMovieDetails } from "../api/getMoviesDetails";
 
 const MovieDetails = () => {
+  const { id } = useParams();
 
-  const { id } = useParams()
-  console.log(id)
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const [movie, setMovie] = useState(null);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [isError, setIsError] = useState({
+    show: false,
+    msg: "",
+  });
+
+  useEffect(() => {
+    getMovieDetails(
+      `${API_URL}&i=${id}&plot=full`,
+      setMovie,
+      setIsLoading,
+      setIsError,
+    );
+  }, [id]);
+
+  if (isLoading) {
+    return (
+      <div className="movie-details-loading">
+        <div className="movie-details-spinner"></div>
+
+        <p className="movie-details-loading-text">Loading movie details...</p>
+      </div>
+    );
+  }
+
+  if (isError.show || !movie) {
+    return (
+      <div className="movie-details-error">
+        <p className="movie-details-error-text">
+          {isError.msg || "Movie not found"}
+        </p>
+
+        <button
+          onClick={() => navigate("/")}
+          className="movie-details-back-button"
+        >
+          Go Back
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className='max-w-7xl mx-auto px-6 py-10'>
-
+    <div className="movie-details-container">
       {/* Movie Details */}
-      <div className='grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8'>
 
+      <div className="movie-details-layout">
         {/* Poster */}
+
         <div>
           <img
-            src='https://m.media-amazon.com/images/M/MV5BMTc5MDQyNjk5OF5BMl5BanBnXkFtZTgwMTQxNjMxMjE@._V1_FMjpg_UX1000_.jpg'
-            alt='Movie Poster'
-            className='w-full h-105 object-cover rounded-xl'
+            src={movie.Poster}
+            alt={movie.Title}
+            className="movie-details-poster"
           />
         </div>
 
         {/* Details */}
-        <div className='flex flex-col justify-center'>
 
-          <p className='text-sm text-red-500 font-semibold mb-2'>
-            Action • Adventure • Sci-Fi
-          </p>
+        <div className="movie-details-content">
+          <p className="movie-details-genre">{movie.Genre}</p>
 
-          <h1 className='text-4xl font-bold text-gray-900'>
-            {/* Avengers: Endgame */}
-            {id}
-          </h1>
+          <h1 className="movie-details-title">{movie.Title}</h1>
 
-          <div className='flex items-center gap-4 mt-4'>
-
-            <div className='flex items-center gap-1'>
+          <div className="movie-details-meta">
+            <div className="movie-details-rating">
               <StarOutlinedIcon
-                className='text-yellow-500'
+                className="text-yellow-500"
                 sx={{ fontSize: 20 }}
               />
 
-              <span className='font-semibold'>
-                8.4
+              <span className="movie-details-rating-value">
+                {movie.imdbRating}
               </span>
 
-              <span className='text-sm text-gray-500'>
-                / 10
-              </span>
+              <span className="movie-details-meta-text">/ 10</span>
             </div>
 
-            <span className='text-gray-300'>
-              |
-            </span>
+            <span className="movie-details-meta-separator">|</span>
 
-            <span className='text-sm text-gray-500'>
-              2019
-            </span>
+            <span className="movie-details-meta-text">{movie.Year}</span>
 
-            <span className='text-gray-300'>
-              |
-            </span>
+            <span className="movie-details-meta-separator">|</span>
 
-            <span className='text-sm text-gray-500'>
-              3h 1m
-            </span>
-
+            <span className="movie-details-meta-text">{movie.Runtime}</span>
           </div>
 
           {/* Description */}
-          <p className='text-gray-500 leading-7 mt-6 max-w-2xl'>
-            After the devastating events of Avengers: Infinity War,
-            the remaining Avengers must find a way to bring back
-            those who were lost and face their greatest challenge.
-          </p>
+
+          <p className="movie-details-description">{movie.Plot}</p>
 
           {/* Movie Info */}
-          <div className='grid grid-cols-2 md:grid-cols-3 gap-5 mt-6'>
 
+          <div className="movie-details-info">
             <div>
-              <p className='text-xs text-gray-400'>
-                Director
-              </p>
+              <p className="movie-details-info-label">Director</p>
 
-              <p className='text-sm font-medium text-gray-800 mt-1'>
-                Anthony Russo
-              </p>
+              <p className="movie-details-info-value">{movie.Director}</p>
             </div>
 
             <div>
-              <p className='text-xs text-gray-400'>
-                Language
-              </p>
+              <p className="movie-details-info-label">Language</p>
 
-              <p className='text-sm font-medium text-gray-800 mt-1'>
-                English
-              </p>
+              <p className="movie-details-info-value">{movie.Language}</p>
             </div>
 
             <div>
-              <p className='text-xs text-gray-400'>
-                Genre
-              </p>
+              <p className="movie-details-info-label">Genre</p>
 
-              <p className='text-sm font-medium text-gray-800 mt-1'>
-                Action
-              </p>
+              <p className="movie-details-info-value">{movie.Genre}</p>
             </div>
 
+            <div>
+              <p className="movie-details-info-label">Released</p>
+
+              <p className="movie-details-info-value">{movie.Released}</p>
+            </div>
+
+            <div>
+              <p className="movie-details-info-label">Country</p>
+
+              <p className="movie-details-info-value">{movie.Country}</p>
+            </div>
+
+            <div>
+              <p className="movie-details-info-label">Rated</p>
+
+              <p className="movie-details-info-value">{movie.Rated}</p>
+            </div>
           </div>
 
           {/* Buttons */}
-          <div className='flex flex-wrap gap-3 mt-8'>
 
+          <div className="movie-details-buttons">
             <button
-              onClick={() => navigate('/booking')}
-              className='flex items-center gap-2 bg-red-500 text-white px-5 py-3 rounded-lg text-sm font-semibold hover:bg-red-600 transition'
+              onClick={() => navigate("/booking")}
+              className="movie-book-button"
             >
               <ShoppingCartOutlinedIcon sx={{ fontSize: 20 }} />
               Book Tickets
             </button>
 
-            <button className='flex items-center gap-2 border border-gray-300 px-5 py-3 rounded-lg text-sm font-semibold text-gray-700 hover:border-gray-400 transition'>
+            <button
+              onClick={() => {
+                if (movie.Trailer) {
+                  window.open(movie.Trailer, "_blank");
+                }
+              }}
+              className="movie-action-button movie-trailer-button"
+            >
               <PlayCircleOutlineOutlinedIcon sx={{ fontSize: 20 }} />
               Watch Trailer
             </button>
 
-            <button className='flex items-center gap-2 border border-gray-300 px-5 py-3 rounded-lg text-sm font-semibold text-gray-700 hover:text-red-500 hover:border-red-400 transition'>
+            <button className="movie-action-button movie-favourite-button">
               <FavoriteBorderOutlinedIcon sx={{ fontSize: 20 }} />
               Favourite
             </button>
-
           </div>
-
         </div>
-
       </div>
 
       {/* Cast */}
-      <div className='mt-14'>
 
-        <h2 className='text-2xl font-bold text-gray-900'>
-          Top Cast
-        </h2>
+      <div className="movie-cast-section">
+        <h2 className="movie-section-title">Top Cast</h2>
 
-        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5 mt-6'>
+        <div className="movie-cast-grid">
+          {movie.Actors?.split(",")
+            .slice(0, 5)
+            .map((actor, index) => (
+              <div key={index} className="movie-cast-card">
+                <div className="movie-cast-avatar">
+                  <span className="movie-cast-avatar-text">👤</span>
+                </div>
 
-          <div className='border border-gray-200 rounded-xl p-4'>
-            <div className='w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center'>
-              👨🏻
-            </div>
+                <h3 className="movie-cast-name">{actor.trim()}</h3>
 
-            <h3 className='font-semibold text-sm mt-3'>
-              Robert Downey Jr.
-            </h3>
-
-            <p className='text-xs text-gray-500 mt-1'>
-              Tony Stark
-            </p>
-          </div>
-
-          <div className='border border-gray-200 rounded-xl p-4'>
-            <div className='w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center'>
-              👨🏻
-            </div>
-
-            <h3 className='font-semibold text-sm mt-3'>
-              Chris Evans
-            </h3>
-
-            <p className='text-xs text-gray-500 mt-1'>
-              Steve Rogers
-            </p>
-          </div>
-
-          <div className='border border-gray-200 rounded-xl p-4'>
-            <div className='w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center'>
-              👨🏻
-            </div>
-
-            <h3 className='font-semibold text-sm mt-3'>
-              Mark Ruffalo
-            </h3>
-
-            <p className='text-xs text-gray-500 mt-1'>
-              Bruce Banner
-            </p>
-          </div>
-
-          <div className='border border-gray-200 rounded-xl p-4'>
-            <div className='w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center'>
-              👩🏻
-            </div>
-
-            <h3 className='font-semibold text-sm mt-3'>
-              Scarlett Johansson
-            </h3>
-
-            <p className='text-xs text-gray-500 mt-1'>
-              Natasha Romanoff
-            </p>
-          </div>
-
-          <div className='border border-gray-200 rounded-xl p-4'>
-            <div className='w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center'>
-              👨🏻
-            </div>
-
-            <h3 className='font-semibold text-sm mt-3'>
-              Chris Hemsworth
-            </h3>
-
-            <p className='text-xs text-gray-500 mt-1'>
-              Thor
-            </p>
-          </div>
-
+                <p className="movie-cast-role">Cast Member</p>
+              </div>
+            ))}
         </div>
-
       </div>
 
-    </div>
-  )
-}
+      {/* Ratings */}
 
-export default MovieDetails
+      {movie.Ratings?.length > 0 && (
+        <div className="movie-ratings-section">
+          <h2 className="movie-section-title">Ratings</h2>
+
+          <div className="movie-ratings-grid">
+            {movie.Ratings.map((rating) => (
+              <div key={rating.Source} className="movie-rating-card">
+                <p className="movie-rating-source">{rating.Source}</p>
+
+                <p className="movie-rating-value">{rating.Value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Extra Details */}
+
+      <div className="movie-extra-details">
+        <div className="movie-extra-card">
+          <p className="movie-extra-label">Writer</p>
+
+          <p className="movie-extra-value">{movie.Writer}</p>
+        </div>
+
+        <div className="movie-extra-card">
+          <p className="movie-extra-label">Awards</p>
+
+          <p className="movie-extra-value">{movie.Awards}</p>
+        </div>
+
+        <div className="movie-extra-card">
+          <p className="movie-extra-label">IMDb Votes</p>
+
+          <p className="movie-extra-value">{movie.imdbVotes}</p>
+        </div>
+
+        <div className="movie-extra-card">
+          <p className="movie-extra-label">Box Office</p>
+
+          <p className="movie-extra-value">{movie.BoxOffice || "N/A"}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MovieDetails;
