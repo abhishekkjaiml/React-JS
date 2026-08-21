@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getMovies } from "../api/getMovies";
 import localMovies from '../Data/movies.json'
+import marvelMovies from '../Data/Marvel/infinity-saga.json'
 
 export const API_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`
 
@@ -9,7 +10,7 @@ const MovieContext = createContext();
 const MovieProvider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(true);
-    const [movies, setMovies] = useState(localMovies);
+    const [movies, setMovies] = useState(marvelMovies);
     const [isError, setIsError] = useState({
         show: false,
         msg: ''
@@ -20,7 +21,7 @@ const MovieProvider = ({ children }) => {
     useEffect(() => {
 
         if(!query.trim()){
-            setMovies(localMovies);
+            setMovies(marvelMovies);
             return;
         }
 

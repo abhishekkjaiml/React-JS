@@ -1,16 +1,24 @@
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const MoviesCard = ({movie}) => {
+
+    const { imdbID } = useParams()
+
+    const navigate = useNavigate()
   return (
     <div>
         <div className='w-60 border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-md transition'>
 
-            <div className='relative'>
+            <div 
+                className='relative hover:cursor-pointer p-1'
+                onClick={() => navigate(`/movie/${imdbID}`)}
+            >
                 <img
                     src={movie.Poster}
                     alt={movie.Title}
-                    className='w-full h-80 object-cover'
+                    className='w-full h-80 object-cover rounded'
                 />
 
                 <span className='absolute top-3 left-3 bg-black/70 text-white text-xs px-2 py-1 rounded'>

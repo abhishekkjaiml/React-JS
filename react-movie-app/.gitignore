@@ -22,7 +22,16 @@ dist-ssr/
 .env.production.local
 
 # Local movie data
-src/Data/movies.json
+src/Data/
+
+# Local Marvel movie data
+src/Data/Marvel/
+
+# Local Mission Impossible movie data
+src/Data/MissionImpossible
+
+# Local Wizarding World movie data
+src/Data/WizardingWorld
 
 # Editor directories and files
 .vscode/*

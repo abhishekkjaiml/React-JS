@@ -4,8 +4,12 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined'
+import { useParams } from 'react-router-dom'
 
 const MovieDetails = () => {
+
+  const { id } = useParams()
+  console.log(id)
 
   const navigate = useNavigate()
 
@@ -32,7 +36,8 @@ const MovieDetails = () => {
           </p>
 
           <h1 className='text-4xl font-bold text-gray-900'>
-            Avengers: Endgame
+            {/* Avengers: Endgame */}
+            {id}
           </h1>
 
           <div className='flex items-center gap-4 mt-4'>
