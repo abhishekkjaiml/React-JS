@@ -29,8 +29,6 @@
       width="900"
     />
   </a>
-</p>
-<p align="center">
   <a href="https://github.com/abhishekkjaiml/React-JS/blob/main/react-movie-app/screenshot/Homepage.png">
     <img
       src="https://raw.githubusercontent.com/abhishekkjaiml/React-JS/main/react-movie-app/screenshot/Homepage2.png"
