@@ -30,7 +30,6 @@
     />
   </a>
 </p>
-
 <p align="center">
   <a href="https://github.com/abhishekkjaiml/React-JS/blob/main/react-movie-app/screenshot/Homepage.png">
     <img
