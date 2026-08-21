@@ -5,6 +5,7 @@
     src="https://raw.githubusercontent.com/abhishekkjaiml/React-JS/main/react-movie-app/src/assets/movieapp_logo.png"
     alt="Movie App Logo"
     width="120"
+    style="background-color: white; padding: 10px; border-radius: 12px;"
   />
 </p>
 
