@@ -4,12 +4,15 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { MovieProvider } from './context/movie-context.jsx'
+import { FavouriteMovieProvider } from './context/movie-favourite-context.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <MovieProvider>
-        <App />
+        <FavouriteMovieProvider>
+          <App />
+        </FavouriteMovieProvider>
       </MovieProvider>
     </BrowserRouter>
   </StrictMode>,

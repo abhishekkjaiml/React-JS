@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import OffersPage from "./pages/OffersPage";
 import AboutUs from "./pages/AboutUs";
+import Favourite from "./pages/Favourite";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/offers" element={<OffersPage />} />
+        <Route path="/favourite"  element={<Favourite />} />
         <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
       <Footer />

@@ -1,12 +1,33 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useNavigate } from "react-router-dom";
+import { useFavouriteMovieCart } from "../context/movie-favourite-context";
+import { findMovieinCart } from "../utility/findMoviein";
+
 
 const MoviesCard = ({ movie }) => {
   const navigate = useNavigate();
 
+  const { favouriteMovieDispatch, favourite } = useFavouriteMovieCart();
+
+  const isMovieInCart = findMovieinCart(favourite, movie.imdbID);
+
   const onMovieClick = () => {
     navigate(`/movie/${movie.imdbID}`);
+  };
+
+  const onFavouriteBtnClick = (movie) => {
+    if (!isMovieInCart) {
+      favouriteMovieDispatch({
+        type: "ADD_MOVIE_TO_FAVOURITE",
+        payload: {
+          movie,
+        },
+      });
+    } else {
+      navigate("/favourite");
+    }
   };
 
   return (
@@ -29,11 +50,16 @@ const MoviesCard = ({ movie }) => {
 
           <div className="movie-card-actions">
             <button
-              onClick={(e) => e.stopPropagation()}
+              onClick={() => onFavouriteBtnClick(movie)}
               className="movie-card-favourite"
             >
-              <FavoriteBorderOutlinedIcon sx={{ fontSize: 18 }} />
-              Favourite
+              {
+                !isMovieInCart ? <FavoriteBorderOutlinedIcon sx={{ fontSize: 18 }} /> : <FavoriteOutlinedIcon sx={{ fontSize: 18 }} />
+              }
+              
+              {
+                !isMovieInCart ? 'Favourite' : 'Favourite'
+              }
             </button>
 
             <button

@@ -1,0 +1,1 @@
+export const findMovieinCart = (favourite, imdbID) => favourite.some((movie) => movie.imdbID === imdbID);
