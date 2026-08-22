@@ -1,0 +1,1464 @@
+@import "tailwindcss";
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+@layer base {
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0
+      min-h-screen
+      bg-[#07070d]
+      text-white
+      antialiased;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ::selection {
+    @apply bg-purple-500/30
+      text-white;
+  }
+
+
+  /* ==================== SCROLLBAR ==================== */
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[#07070d];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full
+      bg-[#29293a];
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-500/60;
+  }
+}
+
+
+/* =====================================================
+   COMPONENTS
+===================================================== */
+
+@layer components {
+
+
+  /* =====================================================
+     APP LAYOUT
+  ===================================================== */
+
+  .app-layout {
+    @apply min-h-screen
+      bg-[#07070d]
+      text-white;
+
+    display: grid;
+
+    grid-template-columns:
+      280px
+      minmax(0, 1fr);
+
+    transition:
+      grid-template-columns
+      300ms
+      cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+
+  /* ==================== OPEN ==================== */
+
+  .app-layout.sidebar-open {
+    grid-template-columns:
+      280px
+      minmax(0, 1fr);
+  }
+
+
+  /* ==================== CLOSED ==================== */
+
+  .app-layout.sidebar-closed {
+    grid-template-columns:
+      82px
+      minmax(0, 1fr);
+  }
+
+
+  /* =====================================================
+     MAIN CONTENT
+  ===================================================== */
+
+  .app-content {
+    @apply flex
+      min-h-screen
+      min-w-0
+      flex-col
+      bg-[#07070d];
+  }
+
+
+  .page-content {
+    @apply min-w-0
+      flex-1
+      px-6
+      py-6;
+  }
+
+
+  /* =====================================================
+     SIDEBAR
+  ===================================================== */
+
+  .sidebar {
+    @apply sticky
+      top-0
+      z-50
+      h-screen
+      w-full
+      overflow-hidden
+      border-r
+      border-[#1d1d2b]
+      bg-[#07070d];
+  }
+
+
+  .sidebar-inner {
+    @apply flex
+      h-full
+      w-full
+      flex-col
+      px-3
+      py-4;
+  }
+
+
+  /* =====================================================
+     SIDEBAR HEADER
+  ===================================================== */
+
+  .sidebar-header {
+    @apply flex
+      h-12
+      shrink-0
+      items-center
+      justify-between
+      px-2
+      mb-7;
+  }
+
+
+  .sidebar-logo {
+    @apply h-auto
+      w-[145px]
+      object-contain;
+  }
+
+
+  .sidebar-toggle {
+    @apply flex
+      h-10
+      w-10
+      shrink-0
+      items-center
+      justify-center
+      rounded-xl
+      border
+      border-[#28283a]
+      bg-[#10101a]
+      text-gray-400
+      transition-all
+      duration-200
+      hover:border-purple-500/50
+      hover:bg-purple-500/10
+      hover:text-purple-400
+      active:scale-95;
+  }
+
+
+  /* =====================================================
+     SIDEBAR NAV
+  ===================================================== */
+
+  .sidebar-nav {
+    @apply min-h-0
+      flex-1
+      overflow-x-hidden
+      overflow-y-auto
+      pr-1;
+  }
+
+
+  .sidebar-menu {
+    @apply m-0
+      flex
+      list-none
+      flex-col
+      gap-1
+      p-0;
+  }
+
+
+  .sidebar-menu-divider {
+    @apply my-5
+      h-px
+      bg-gradient-to-r
+      from-transparent
+      via-[#29293a]
+      to-transparent;
+  }
+
+
+  /* =====================================================
+     SIDEBAR ITEM
+  ===================================================== */
+
+  .sidebar-item {
+    @apply relative
+      flex
+      w-full
+      cursor-pointer
+      select-none
+      items-center
+      gap-3
+      rounded-xl
+      border-0
+      bg-transparent
+      px-3
+      py-3
+      text-left
+      text-[14px]
+      font-medium
+      text-gray-400
+      transition-all
+      duration-200
+      hover:bg-[#11111b]
+      hover:text-white;
+  }
+
+
+  .sidebar-item svg {
+    @apply h-5
+      w-5
+      shrink-0
+      text-gray-500
+      transition-all
+      duration-200;
+  }
+
+
+  .sidebar-item:hover svg {
+    @apply text-purple-400;
+  }
+
+
+  /* =====================================================
+     ACTIVE
+  ===================================================== */
+
+  .sidebar-item.active {
+    @apply bg-gradient-to-r
+      from-purple-600/25
+      via-purple-600/15
+      to-transparent
+      text-white;
+  }
+
+
+  .sidebar-item.active::before {
+    content: "";
+
+    @apply absolute
+      left-0
+      top-1/2
+      h-7
+      w-1
+      -translate-y-1/2
+      rounded-r-full
+      bg-purple-500;
+  }
+
+
+  .sidebar-item.active svg {
+    @apply text-purple-400;
+  }
+
+
+  /* =====================================================
+     SIDEBAR SCROLLBAR
+  ===================================================== */
+
+  .sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .sidebar-nav::-webkit-scrollbar-thumb {
+    @apply rounded-full
+      bg-[#29293a];
+  }
+
+
+  /* =====================================================
+     PREMIUM
+  ===================================================== */
+
+  .premium-card {
+    @apply relative
+      mt-5
+      shrink-0
+      overflow-hidden
+      rounded-2xl
+      border
+      border-purple-500/20
+      bg-gradient-to-br
+      from-[#18102b]
+      via-[#100d1d]
+      to-[#0c0b13]
+      p-4;
+  }
+
+
+  .premium-card::before {
+    content: "";
+
+    @apply pointer-events-none
+      absolute
+      -right-10
+      -top-10
+      h-28
+      w-28
+      rounded-full
+      bg-purple-600/20
+      blur-3xl;
+  }
+
+
+  .premium-header {
+    @apply relative
+      mb-3
+      flex
+      items-center
+      gap-2;
+  }
+
+
+  .premium-icon {
+    @apply flex
+      h-9
+      w-9
+      shrink-0
+      items-center
+      justify-center
+      rounded-xl
+      bg-purple-500/15
+      text-purple-400;
+  }
+
+
+  .premium-title {
+    @apply text-[10px]
+      font-bold
+      tracking-[0.12em]
+      text-purple-400;
+  }
+
+
+  .premium-heading {
+    @apply relative
+      m-0
+      text-[15px]
+      font-semibold
+      text-white;
+  }
+
+
+  .premium-description {
+    @apply relative
+      mt-1
+      text-xs
+      leading-5
+      text-gray-500;
+  }
+
+
+  .premium-button {
+    @apply relative
+      mt-4
+      flex
+      w-full
+      items-center
+      justify-center
+      gap-2
+      rounded-xl
+      border-0
+      bg-gradient-to-r
+      from-purple-600
+      to-violet-500
+      py-2.5
+      text-sm
+      font-semibold
+      text-white
+      transition-all
+      duration-200
+      hover:from-purple-500
+      hover:to-violet-400
+      active:scale-[0.98];
+  }
+
+
+  .premium-button svg {
+    @apply transition-transform
+      duration-200;
+  }
+
+
+  .premium-button:hover svg {
+    transform: translateX(4px);
+  }
+
+
+  /* =====================================================
+     COLLAPSED SIDEBAR
+  ===================================================== */
+
+  .sidebar.collapsed .sidebar-header {
+    @apply justify-center
+      px-0;
+  }
+
+
+  .sidebar.collapsed .sidebar-logo {
+    @apply hidden;
+  }
+
+
+  .sidebar.collapsed .sidebar-toggle {
+    @apply mx-auto;
+  }
+
+
+  .sidebar.collapsed .sidebar-item {
+    @apply justify-center
+      px-2;
+  }
+
+
+  .sidebar.collapsed .sidebar-item span {
+    @apply hidden;
+  }
+
+
+  .sidebar.collapsed .premium-card {
+    @apply flex
+      h-12
+      items-center
+      justify-center
+      p-0;
+  }
+
+
+  .sidebar.collapsed .premium-header {
+    @apply m-0;
+  }
+
+
+  .sidebar.collapsed .premium-title,
+  .sidebar.collapsed .premium-heading,
+  .sidebar.collapsed .premium-description,
+  .sidebar.collapsed .premium-button {
+    @apply hidden;
+  }
+
+
+  .sidebar.collapsed .premium-card::before {
+    @apply hidden;
+  }
+
+
+  /* =====================================================
+     NAVBAR
+  ===================================================== */
+
+  .navbar {
+    @apply sticky
+      top-0
+      z-40
+      flex
+      min-h-[68px]
+      w-full
+      items-center
+      justify-between
+      border-b
+      border-[#1d1d2b]
+      bg-[#07070d]/95
+      px-5
+      py-3
+      backdrop-blur-xl;
+  }
+
+
+  .navbar-search {
+    @apply flex
+      min-w-0
+      flex-1
+      items-center;
+  }
+
+
+  .navbar-actions {
+    @apply ml-5
+      flex
+      shrink-0
+      items-center
+      gap-3;
+  }
+
+
+  /* =====================================================
+     NOTIFICATION
+  ===================================================== */
+
+  .navbar-notification {
+    @apply relative
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-xl
+      border
+      border-[#28283a]
+      bg-[#10101a]
+      text-gray-400
+      transition-all
+      duration-200
+      hover:border-purple-500/40
+      hover:bg-purple-500/10
+      hover:text-purple-400
+      active:scale-95;
+  }
+
+
+  .notification-dot {
+    @apply absolute
+      right-2
+      top-2
+      h-1.5
+      w-1.5
+      rounded-full
+      bg-purple-500;
+  }
+
+
+  /* =====================================================
+     PROFILE
+  ===================================================== */
+
+  .navbar-profile {
+    @apply flex
+      h-10
+      items-center
+      gap-2.5
+      rounded-xl
+      border
+      border-[#28283a]
+      bg-[#10101a]
+      px-2.5
+      text-gray-300
+      transition-all
+      duration-200
+      hover:border-purple-500/40
+      hover:bg-purple-500/10;
+  }
+
+
+  .navbar-avatar {
+    @apply flex
+      h-7
+      w-7
+      items-center
+      justify-center
+      rounded-lg
+      bg-purple-500/15
+      text-purple-400;
+  }
+
+
+  .navbar-name {
+    @apply text-sm
+      font-medium
+      text-gray-300;
+  }
+
+
+  .navbar-chevron {
+    @apply text-gray-500;
+  }
+
+
+  /* =====================================================
+     SEARCH BAR
+  ===================================================== */
+
+  .search-bar {
+    @apply relative
+      flex
+      h-11
+      w-[30vw]
+      min-w-[280px]
+      max-w-[500px]
+      items-center
+      rounded-full
+      border
+      border-[#29293a]
+      bg-[#10101a]
+      text-gray-400
+      transition-all
+      duration-200;
+  }
+
+
+  .search-icon {
+    @apply pointer-events-none
+      absolute
+      left-4
+      text-gray-500
+      transition-colors
+      duration-200;
+  }
+
+
+  .search-input {
+    @apply h-full
+      w-full
+      rounded-full
+      border-0
+      bg-transparent
+      px-11
+      pr-10
+      text-sm
+      text-gray-200
+      outline-none
+      placeholder:text-gray-600;
+  }
+
+
+  .search-bar:focus-within {
+    @apply border-purple-500/60
+      bg-[#12121d];
+  }
+
+
+  .search-bar:focus-within .search-icon {
+    @apply text-purple-400;
+  }
+
+
+  .search-clear {
+    @apply absolute
+      right-3
+      flex
+      h-7
+      w-7
+      items-center
+      justify-center
+      rounded-full
+      border-0
+      bg-transparent
+      text-gray-500
+      transition-all
+      duration-200
+      hover:bg-white/5
+      hover:text-gray-200;
+  }
+
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+
+  .footer {
+    @apply w-full
+      border-t
+      border-[#1d1d2b]
+      bg-[#07070d];
+  }
+
+
+  .footer-container {
+    @apply w-full
+      px-8
+      py-12;
+  }
+
+
+  .footer-grid {
+    display: grid;
+
+    grid-template-columns:
+      1.6fr
+      1fr
+      1fr
+      1fr
+      1.5fr;
+
+    @apply gap-10;
+  }
+
+
+  .footer-brand {
+    @apply flex
+      flex-col
+      items-start;
+  }
+
+
+  .footer-logo {
+    @apply h-auto
+      w-[140px];
+  }
+
+
+  .footer-text {
+    @apply mt-4
+      max-w-[280px]
+      text-sm
+      leading-6
+      text-gray-500;
+  }
+
+
+  .footer-socials {
+    @apply mt-5
+      flex
+      items-center
+      gap-2;
+  }
+
+
+  .footer-social {
+    @apply flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-[#29293a]
+      bg-[#10101a]
+      text-sm
+      font-semibold
+      text-gray-400
+      transition-all
+      duration-200
+      hover:border-purple-500/50
+      hover:bg-purple-500/10
+      hover:text-purple-400;
+  }
+
+
+  /* =====================================================
+     FOOTER COLUMNS
+  ===================================================== */
+
+  .footer-column {
+    @apply flex
+      flex-col
+      items-start;
+  }
+
+
+  .footer-column h3 {
+    @apply mb-5
+      text-sm
+      font-semibold
+      text-white;
+  }
+
+
+  .footer-column a {
+    @apply mb-3
+      text-sm
+      text-gray-500
+      transition-colors
+      duration-200
+      hover:text-purple-400;
+  }
+
+
+  /* =====================================================
+     NEWSLETTER
+  ===================================================== */
+
+  .footer-newsletter {
+    @apply rounded-xl
+      border
+      border-[#29293a]
+      bg-[#0c0c14]
+      p-5;
+  }
+
+
+  .footer-mail-icon {
+    @apply flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-lg
+      bg-purple-500/10
+      text-purple-400;
+  }
+
+
+  .footer-newsletter h3 {
+    @apply mt-4
+      text-sm
+      font-semibold
+      text-white;
+  }
+
+
+  .footer-newsletter p {
+    @apply mt-2
+      text-xs
+      leading-5
+      text-gray-500;
+  }
+
+
+  .footer-input-wrapper {
+    @apply mt-4
+      flex
+      items-center
+      gap-2;
+  }
+
+
+  .footer-input-wrapper input {
+    @apply h-10
+      min-w-0
+      flex-1
+      rounded-lg
+      border
+      border-[#29293a]
+      bg-[#07070d]
+      px-3
+      text-xs
+      text-white
+      outline-none
+      placeholder:text-gray-600
+      focus:border-purple-500/60;
+  }
+
+
+  .footer-input-wrapper button {
+    @apply flex
+      h-10
+      w-10
+      shrink-0
+      items-center
+      justify-center
+      rounded-lg
+      border-0
+      bg-purple-600
+      text-white
+      transition-all
+      duration-200
+      hover:bg-purple-500
+      active:scale-95;
+  }
+
+
+  /* =====================================================
+     FOOTER BOTTOM
+  ===================================================== */
+
+  .footer-divider {
+    @apply my-9
+      w-full
+      border-t
+      border-[#1d1d2b];
+  }
+
+
+  .footer-bottom {
+    @apply flex
+      items-center
+      justify-between
+      gap-5;
+  }
+
+
+  .footer-bottom p {
+    @apply text-xs
+      text-gray-600;
+  }
+
+
+  .footer-links {
+    @apply flex
+      items-center
+      gap-3;
+  }
+
+
+  .footer-links a {
+    @apply text-xs
+      text-gray-600
+      transition-colors
+      hover:text-purple-400;
+  }
+
+
+  .footer-links span {
+    @apply text-gray-700;
+  }
+
+
+  .footer-made {
+    @apply text-right;
+  }
+
+
+  /* =====================================================
+     DESKTOP
+     1280px+
+  ===================================================== */
+
+  @media (min-width: 1280px) {
+
+    .app-layout.sidebar-open {
+      grid-template-columns:
+        280px
+        minmax(0, 1fr);
+    }
+
+    .app-layout.sidebar-closed {
+      grid-template-columns:
+        82px
+        minmax(0, 1fr);
+    }
+
+    .page-content {
+      @apply px-7
+        py-7;
+    }
+  }
+
+
+  /* =====================================================
+     LAPTOP
+     1024px - 1279px
+  ===================================================== */
+
+  @media (min-width: 1024px) and (max-width: 1279px) {
+
+    .app-layout.sidebar-open {
+      grid-template-columns:
+        250px
+        minmax(0, 1fr);
+    }
+
+    .app-layout.sidebar-closed {
+      grid-template-columns:
+        76px
+        minmax(0, 1fr);
+    }
+
+
+    .sidebar-inner {
+      @apply px-2.5;
+    }
+
+
+    .sidebar-logo {
+      @apply w-[130px];
+    }
+
+
+    .sidebar-item {
+      @apply py-2.5
+        text-[13px];
+    }
+
+
+    .page-content {
+      @apply px-5
+        py-5;
+    }
+
+
+    .navbar {
+      @apply px-4;
+    }
+
+
+    .search-bar {
+      @apply w-[32vw]
+        min-w-[240px];
+    }
+
+
+    .footer-grid {
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+    }
+
+
+    .footer-newsletter {
+      grid-column: span 4;
+      max-width: 420px;
+    }
+  }
+
+
+  /* =====================================================
+     TABLET
+     768px - 1023px
+  ===================================================== */
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+
+    .app-layout.sidebar-open {
+      grid-template-columns:
+        220px
+        minmax(0, 1fr);
+    }
+
+    .app-layout.sidebar-closed {
+      grid-template-columns:
+        72px
+        minmax(0, 1fr);
+    }
+
+
+    .sidebar-inner {
+      @apply px-2;
+    }
+
+
+    .sidebar-logo {
+      @apply w-[115px];
+    }
+
+
+    .sidebar-item {
+      @apply py-2.5
+        text-[12px];
+    }
+
+
+    .page-content {
+      @apply px-4
+        py-5;
+    }
+
+
+    .navbar {
+      @apply min-h-[64px]
+        px-4;
+    }
+
+
+    .search-bar {
+      @apply w-[38vw]
+        min-w-[190px];
+    }
+
+
+    .navbar-actions {
+      @apply ml-3
+        gap-2;
+    }
+
+
+    .navbar-name {
+      @apply hidden;
+    }
+
+
+    .navbar-profile {
+      @apply w-10
+        justify-center
+        px-0;
+    }
+
+
+    .navbar-chevron {
+      @apply hidden;
+    }
+
+
+    .footer-container {
+      @apply px-6
+        py-10;
+    }
+
+
+    .footer-grid {
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr;
+    }
+
+
+    .footer-brand {
+      grid-column: span 3;
+    }
+
+
+    .footer-newsletter {
+      grid-column: span 3;
+    }
+  }
+
+
+  /* =====================================================
+     MOBILE
+     480px - 767px
+  ===================================================== */
+
+  @media (min-width: 480px) and (max-width: 767px) {
+
+    .app-layout.sidebar-open {
+      grid-template-columns:
+        200px
+        minmax(0, 1fr);
+    }
+
+    .app-layout.sidebar-closed {
+      grid-template-columns:
+        64px
+        minmax(0, 1fr);
+    }
+
+
+    .sidebar-inner {
+      @apply px-2
+        py-3;
+    }
+
+
+    .sidebar-header {
+      @apply mb-5;
+    }
+
+
+    .sidebar-logo {
+      @apply w-[110px];
+    }
+
+
+    .sidebar-item {
+      @apply rounded-lg
+        px-2
+        py-2.5
+        text-[12px];
+    }
+
+
+    .sidebar-item svg {
+      @apply h-[19px]
+        w-[19px];
+    }
+
+
+    .page-content {
+      @apply px-3
+        py-4;
+    }
+
+
+    .navbar {
+      @apply min-h-[60px]
+        px-3
+        py-2;
+    }
+
+
+    .search-bar {
+      @apply h-9
+        w-full
+        min-w-0
+        max-w-none;
+    }
+
+
+    .search-icon {
+      @apply left-3
+        h-[17px]
+        w-[17px];
+    }
+
+
+    .search-input {
+      @apply px-9
+        pr-8
+        text-xs;
+    }
+
+
+    .navbar-actions {
+      @apply ml-2
+        gap-2;
+    }
+
+
+    .navbar-notification {
+      @apply h-9
+        w-9;
+    }
+
+
+    .navbar-profile {
+      @apply h-9
+        w-9
+        justify-center
+        px-0;
+    }
+
+
+    .navbar-name,
+    .navbar-chevron {
+      @apply hidden;
+    }
+
+
+    .footer-container {
+      @apply px-5
+        py-9;
+    }
+
+
+    .footer-grid {
+      grid-template-columns:
+        1fr
+        1fr;
+    }
+
+
+    .footer-brand {
+      grid-column: span 2;
+    }
+
+
+    .footer-newsletter {
+      grid-column: span 2;
+    }
+
+
+    .footer-bottom {
+      @apply flex-col
+        items-start;
+    }
+  }
+
+
+  /* =====================================================
+     SMALL MOBILE
+     BELOW 480px
+  ===================================================== */
+
+  @media (max-width: 479px) {
+
+    .app-layout.sidebar-open {
+      grid-template-columns:
+        200px
+        minmax(0, 1fr);
+    }
+
+    .app-layout.sidebar-closed {
+      grid-template-columns:
+        64px
+        minmax(0, 1fr);
+    }
+
+
+    .sidebar-inner {
+      @apply px-1.5
+        py-2;
+    }
+
+
+    .sidebar-header {
+      @apply mb-4;
+    }
+
+
+    .sidebar-logo {
+      @apply w-[105px];
+    }
+
+
+    .sidebar-toggle {
+      @apply h-9
+        w-9
+        rounded-lg;
+    }
+
+
+    .sidebar-item {
+      @apply rounded-lg
+        px-1.5
+        py-2.5
+        text-[11px];
+    }
+
+
+    .sidebar-item svg {
+      @apply h-[18px]
+        w-[18px];
+    }
+
+
+    .page-content {
+      @apply px-2.5
+        py-3;
+    }
+
+
+    .navbar {
+      @apply min-h-[58px]
+        px-2.5
+        py-2;
+    }
+
+
+    .search-bar {
+      @apply h-9
+        w-full
+        min-w-0
+        max-w-none;
+    }
+
+
+    .search-icon {
+      @apply left-3
+        h-4
+        w-4;
+    }
+
+
+    .search-input {
+      @apply px-8
+        pr-7
+        text-[11px];
+    }
+
+
+    .navbar-actions {
+      @apply ml-1.5
+        gap-1.5;
+    }
+
+
+    .navbar-notification {
+      @apply h-8
+        w-8
+        rounded-lg;
+    }
+
+
+    .navbar-profile {
+      @apply h-8
+        w-8
+        justify-center
+        rounded-lg
+        px-0;
+    }
+
+
+    .navbar-avatar {
+      @apply h-6
+        w-6
+        rounded-md;
+    }
+
+
+    .navbar-name,
+    .navbar-chevron {
+      @apply hidden;
+    }
+
+
+    .footer-container {
+      @apply px-4
+        py-8;
+    }
+
+
+    .footer-grid {
+      @apply grid-cols-1
+        gap-7;
+    }
+
+
+    .footer-brand {
+      grid-column: span 1;
+    }
+
+
+    .footer-newsletter {
+      grid-column: span 1;
+    }
+
+
+    .footer-logo {
+      @apply w-[125px];
+    }
+
+
+    .footer-bottom {
+      @apply flex-col
+        items-start
+        gap-4;
+    }
+
+
+    .footer-links {
+      @apply flex-wrap;
+    }
+
+
+    .footer-made {
+      @apply text-left;
+    }
+  }
+}
