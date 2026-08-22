@@ -5,33 +5,36 @@ import { useMovies } from "../context/movie-context";
 const SearchBar = () => {
   const { setQuery } = useMovies();
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
   const onSearchMovieChange = (e) => {
     setSearch(e.target.value);
   };
 
   const onSearchBtnClick = () => {
-    setQuery(search)
+    setQuery(search);
+  };
+
+  const onSearchKeyDown = (e) => {
+    if(e.key === 'Enter'){
+      onSearchBtnClick()
+    }
   }
 
   return (
-    <div className="w-full h-11 flex items-center rounded-xl border border-gray-200 bg-gray-50 focus-within:border-red-400 focus-within:bg-white transition">
-      <SearchOutlinedIcon
-        className="ml-4 text-gray-400"
-        sx={{ fontSize: 21 }}
-      />
+    <div className="search-bar">
+      <SearchOutlinedIcon className="search-icon" sx={{ fontSize: 21 }} />
 
       <input
         type="text"
         placeholder="Search movies, actors, genres..."
-        className="w-full h-full px-3 bg-transparent outline-none text-sm text-gray-800 placeholder:text-gray-400"
+        className="search-input"
+        value={search}
         onChange={onSearchMovieChange}
+        onKeyDown={onSearchKeyDown}
       />
 
-      <button
-        onClick={() => onSearchBtnClick()}
-        className="mr-2 px-3 py-1.5 text-xs font-medium text-gray-500 bg-white border border-gray-200 rounded-lg hover:text-red-500 transition">
+      <button onClick={() => onSearchBtnClick()} className="search-button">
         Search
       </button>
     </div>

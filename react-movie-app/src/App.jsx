@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import OffersPage from "./pages/OffersPage";
 import AboutUs from "./pages/AboutUs";
 import Favourite from "./pages/Favourite";
+import CinemaHouse from "./pages/CinemaHouse";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/offers" element={<OffersPage />} />
         <Route path="/favourite"  element={<Favourite />} />
+        <Route path="/cinemas"  element={<CinemaHouse />}  />
         <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
       <Footer />

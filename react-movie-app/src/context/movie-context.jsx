@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getMovies } from "../api/getMovies";
 import localMovies from '../Data/movies.json'
-import marvelMovies from '../Data/Marvel/infinity-saga.json'
+import marvelMovies from '../Data/Marvel/marvel-all-in-one.json'
 
 export const API_URL = `https://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}`
 
