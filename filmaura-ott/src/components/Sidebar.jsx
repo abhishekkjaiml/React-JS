@@ -13,6 +13,7 @@ import {
   RotateCcwClock,
   Settings,
   TvMinimal,
+  Package,
 } from "lucide-react";
 
 import { useState } from "react";
@@ -48,6 +49,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       name: "TV Shows",
       icon: TvMinimal,
       path: "/shows",
+    },
+    {
+      name: 'Category',
+      icon: Package,
+      path: '/category'
     },
     {
       name: "My List",

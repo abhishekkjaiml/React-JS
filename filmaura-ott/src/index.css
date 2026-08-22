@@ -1462,3 +1462,1383 @@
     }
   }
 }
+
+
+
+
+
+/* Carosal Start ----------------------------------------- */
+
+/* =====================================================
+   HOME MOVIE CAROUSEL
+===================================================== */
+
+.home-carousel-card {
+  @apply relative
+    w-full
+    overflow-hidden
+    rounded-2xl
+    border
+    border-[#29293a]
+    bg-[#0c0c14]
+    shadow-2xl;
+}
+
+
+.home-carousel-image {
+  @apply relative
+    h-[430px]
+    w-full
+    bg-cover
+    bg-center
+    bg-no-repeat;
+}
+
+
+/* =====================================================
+   CINEMATIC OVERLAY
+===================================================== */
+
+.home-carousel-overlay {
+  @apply absolute
+    inset-0
+    bg-gradient-to-r
+    from-black
+    via-black/75
+    to-black/10;
+}
+
+
+.home-carousel-overlay::after {
+  content: "";
+
+  @apply absolute
+    inset-0
+    bg-gradient-to-t
+    from-[#07070d]
+    via-transparent
+    to-transparent;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.home-carousel-content {
+  @apply absolute
+    left-0
+    top-0
+    flex
+    h-full
+    w-full
+    max-w-[620px]
+    flex-col
+    justify-center
+    px-8
+    py-10;
+}
+
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.home-carousel-badge {
+  @apply mb-4
+    w-fit
+    rounded-full
+    border
+    border-purple-400/30
+    bg-purple-500/15
+    px-3
+    py-1.5
+    text-[10px]
+    font-bold
+    tracking-[0.16em]
+    text-purple-300
+    backdrop-blur-md;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.home-carousel-title {
+  @apply m-0
+    max-w-[560px]
+    text-4xl
+    font-bold
+    leading-[1.08]
+    tracking-tight
+    text-white;
+}
+
+
+/* =====================================================
+   META
+===================================================== */
+
+.home-carousel-meta {
+  @apply mt-4
+    flex
+    items-center
+    gap-2.5
+    text-sm
+    text-gray-400;
+}
+
+
+.home-carousel-meta-item {
+  @apply flex
+    items-center
+    gap-1.5;
+}
+
+
+.home-carousel-meta-item:first-child {
+  @apply font-semibold
+    text-yellow-400;
+}
+
+
+.home-carousel-meta-divider {
+  @apply text-gray-600;
+}
+
+
+/* =====================================================
+   PLOT
+===================================================== */
+
+.home-carousel-plot {
+  @apply mt-4
+    max-w-[520px]
+    text-sm
+    leading-6
+    text-gray-400;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.home-carousel-actions {
+  @apply mt-6
+    flex
+    items-center
+    gap-3;
+}
+
+
+/* =====================================================
+   WATCH BUTTON
+===================================================== */
+
+.home-carousel-watch-button {
+  @apply flex
+    items-center
+    justify-center
+    gap-2
+    rounded-xl
+    border
+    border-purple-500
+    bg-purple-600
+    px-5
+    py-3
+    text-sm
+    font-semibold
+    text-white
+    shadow-lg
+    shadow-purple-900/30
+    transition-all
+    duration-200
+    hover:bg-purple-500
+    hover:shadow-purple-500/20
+    active:scale-95;
+}
+
+
+.home-carousel-watch-button svg {
+  @apply transition-transform
+    duration-200;
+}
+
+
+.home-carousel-watch-button:hover svg {
+  transform: scale(1.1);
+}
+
+
+/* =====================================================
+   MY LIST BUTTON
+===================================================== */
+
+.home-carousel-list-button {
+  @apply flex
+    items-center
+    justify-center
+    gap-2
+    rounded-xl
+    border
+    border-white/15
+    bg-white/5
+    px-5
+    py-3
+    text-sm
+    font-semibold
+    text-gray-200
+    backdrop-blur-md
+    transition-all
+    duration-200
+    hover:border-white/25
+    hover:bg-white/10
+    hover:text-white
+    active:scale-95;
+}
+
+
+/* =====================================================
+   CAROUSEL INDICATOR
+===================================================== */
+
+.home-carousel-indicator {
+  @apply absolute
+    bottom-6
+    right-7
+    flex
+    items-center
+    gap-1.5;
+}
+
+
+.home-carousel-indicator span {
+  @apply h-1.5
+    w-1.5
+    rounded-full
+    bg-white/30
+    transition-all
+    duration-300;
+}
+
+
+.home-carousel-indicator span.active {
+  @apply w-6
+    bg-purple-500;
+}
+
+
+/* =====================================================
+   HOVER EFFECT
+===================================================== */
+
+.home-carousel-card {
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+
+.home-carousel-card:hover {
+  @apply border-purple-500/30
+    shadow-purple-950/20;
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (max-width: 1279px) {
+
+  .home-carousel-image {
+    @apply h-[400px];
+  }
+
+
+  .home-carousel-content {
+    @apply max-w-[570px]
+      px-7;
+  }
+
+
+  .home-carousel-title {
+    @apply text-3xl;
+  }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1023px) {
+
+  .home-carousel-image {
+    @apply h-[370px];
+  }
+
+
+  .home-carousel-content {
+    @apply max-w-[520px]
+      px-6;
+  }
+
+
+  .home-carousel-title {
+    @apply text-3xl;
+  }
+
+
+  .home-carousel-plot {
+    @apply max-w-[450px]
+      text-[13px]
+      leading-5;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 767px) {
+
+  .home-carousel-card {
+    @apply rounded-xl;
+  }
+
+
+  .home-carousel-image {
+    @apply h-[390px]
+      bg-center;
+  }
+
+
+  .home-carousel-overlay {
+    @apply bg-gradient-to-t
+      from-black
+      via-black/70
+      to-black/20;
+  }
+
+
+  .home-carousel-content {
+    @apply max-w-full
+      justify-end
+      px-5
+      pb-8
+      pt-16;
+  }
+
+
+  .home-carousel-badge {
+    @apply mb-3
+      px-2.5
+      py-1
+      text-[9px];
+  }
+
+
+  .home-carousel-title {
+    @apply text-2xl
+      leading-tight;
+  }
+
+
+  .home-carousel-meta {
+    @apply mt-3
+      text-xs;
+  }
+
+
+  .home-carousel-plot {
+    @apply mt-3
+      max-w-full
+      text-xs
+      leading-5;
+
+    -webkit-line-clamp: 2;
+  }
+
+
+  .home-carousel-actions {
+    @apply mt-4
+      gap-2;
+  }
+
+
+  .home-carousel-watch-button,
+  .home-carousel-list-button {
+    @apply rounded-lg
+      px-3.5
+      py-2.5
+      text-xs;
+  }
+
+
+  .home-carousel-indicator {
+    @apply bottom-4
+      right-5;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 479px) {
+
+  .home-carousel-image {
+    @apply h-[350px];
+  }
+
+
+  .home-carousel-content {
+    @apply px-4
+      pb-6;
+  }
+
+
+  .home-carousel-title {
+    @apply text-xl;
+  }
+
+
+  .home-carousel-meta {
+    @apply gap-1.5;
+  }
+
+
+  .home-carousel-meta-divider {
+    @apply text-gray-700;
+  }
+
+
+  .home-carousel-plot {
+    @apply text-[11px]
+      leading-4;
+  }
+
+
+  .home-carousel-watch-button,
+  .home-carousel-list-button {
+    @apply px-3
+      py-2;
+  }
+
+
+  .home-carousel-watch-button span,
+  .home-carousel-list-button span {
+    @apply hidden;
+  }
+
+
+  .home-carousel-watch-button,
+  .home-carousel-list-button {
+    @apply h-10
+      w-10;
+  }
+}
+
+
+
+/* =====================================================
+   HOME CAROUSEL WRAPPER
+===================================================== */
+
+.home-carousel-wrapper {
+  @apply relative
+    w-full
+    overflow-hidden;
+}
+
+
+/* =====================================================
+   SLIDER
+===================================================== */
+
+.home-carousel-slider {
+  @apply relative
+    w-full
+    overflow-hidden
+    rounded-2xl;
+}
+
+
+/* =====================================================
+   TRACK
+===================================================== */
+
+.home-carousel-track {
+  @apply flex
+    w-full;
+
+  transition:
+    transform 700ms
+    cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+
+/* =====================================================
+   SLIDE
+===================================================== */
+
+.home-carousel-slide {
+  @apply w-full
+    shrink-0;
+}
+
+
+/* =====================================================
+   PREVIOUS BUTTON
+===================================================== */
+
+.home-carousel-prev {
+  @apply absolute
+    left-4
+    top-1/2
+    z-20
+    flex
+    h-10
+    w-10
+    -translate-y-1/2
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-white/10
+    bg-black/40
+    text-white
+    backdrop-blur-md
+    transition-all
+    duration-200
+    hover:border-purple-500/50
+    hover:bg-purple-600
+    active:scale-90;
+}
+
+
+/* =====================================================
+   NEXT BUTTON
+===================================================== */
+
+.home-carousel-next {
+  @apply absolute
+    right-4
+    top-1/2
+    z-20
+    flex
+    h-10
+    w-10
+    -translate-y-1/2
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-white/10
+    bg-black/40
+    text-white
+    backdrop-blur-md
+    transition-all
+    duration-200
+    hover:border-purple-500/50
+    hover:bg-purple-600
+    active:scale-90;
+}
+
+
+/* =====================================================
+   DOTS
+===================================================== */
+
+.home-carousel-dots {
+  @apply absolute
+    bottom-5
+    left-1/2
+    z-20
+    flex
+    -translate-x-1/2
+    items-center
+    gap-1.5;
+}
+
+
+.home-carousel-dot {
+  @apply h-1.5
+    w-1.5
+    rounded-full
+    border-0
+    bg-white/30
+    p-0
+    transition-all
+    duration-300;
+}
+
+
+.home-carousel-dot:hover {
+  @apply bg-white/70;
+}
+
+
+.home-carousel-dot.active {
+  @apply w-6
+    bg-purple-500;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.home-carousel-loading {
+  @apply flex
+    h-[430px]
+    w-full
+    items-center
+    justify-center
+    rounded-2xl
+    border
+    border-[#29293a]
+    bg-[#0c0c14]
+    text-sm
+    text-gray-500;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1023px) {
+
+  .home-carousel-prev,
+  .home-carousel-next {
+    @apply h-9
+      w-9;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 767px) {
+
+  .home-carousel-slider {
+    @apply rounded-xl;
+  }
+
+
+  .home-carousel-prev {
+    @apply left-2
+      h-8
+      w-8;
+  }
+
+
+  .home-carousel-next {
+    @apply right-2
+      h-8
+      w-8;
+  }
+
+
+  .home-carousel-dots {
+    @apply bottom-4;
+  }
+
+
+  .home-carousel-loading {
+    @apply h-[350px]
+      rounded-xl;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 479px) {
+
+  .home-carousel-prev,
+  .home-carousel-next {
+    @apply h-7
+      w-7;
+  }
+
+}
+
+
+
+@layer components {
+  /* ================================
+     TRENDING MOVIE CARD
+  ================================= */
+
+  .trending-movie-card {
+    @apply relative w-[18vw] min-w-[190px] h-[310px] rounded-xl overflow-hidden cursor-pointer bg-slate-900 border border-white/10;
+  }
+
+  /* Poster */
+  .trending-movie-poster {
+    @apply absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out;
+  }
+
+  .trending-movie-card:hover .trending-movie-poster {
+    @apply scale-110;
+  }
+
+  /* Bottom gradient */
+  .trending-card-gradient {
+    @apply absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 pointer-events-none;
+  }
+
+  /* ================================
+     DEFAULT TITLE
+  ================================= */
+
+  .trending-card-title {
+    @apply absolute left-4 right-4 bottom-4 z-10 transition-all duration-300;
+  }
+
+  .trending-card-title h3 {
+    @apply text-white text-base font-semibold truncate;
+  }
+
+  .trending-card-meta {
+    @apply flex items-center gap-1.5 mt-1 text-[11px] text-gray-300;
+  }
+
+  /* ================================
+     HOVER CONTENT
+  ================================= */
+
+  .trending-card-hover {
+    @apply absolute inset-0 z-20 flex flex-col justify-end p-4 bg-gradient-to-t from-black via-black/90 to-black/20 opacity-0 translate-y-4 transition-all duration-300 pointer-events-none;
+  }
+
+  .trending-movie-card:hover .trending-card-hover {
+    @apply opacity-100 translate-y-0 pointer-events-auto;
+  }
+
+  .trending-movie-card:hover .trending-card-title {
+    @apply opacity-0;
+  }
+
+  /* Hover title */
+  .trending-hover-title {
+    @apply text-white text-lg font-bold leading-tight mb-1;
+  }
+
+  /* IMDb rating */
+  .trending-hover-rating {
+    @apply flex items-center gap-1.5 text-sm text-yellow-400 mb-2;
+  }
+
+  .trending-hover-rating span:nth-child(2) {
+    @apply font-semibold;
+  }
+
+  /* Meta information */
+  .trending-hover-meta {
+    @apply flex flex-wrap items-center gap-1.5 text-[11px] text-gray-300 mb-2;
+  }
+
+  /* Genre */
+  .trending-hover-genre {
+    @apply text-[11px] text-blue-400 font-medium mb-2 line-clamp-1;
+  }
+
+  /* Plot */
+  .trending-hover-plot {
+    @apply text-[11px] leading-4 text-gray-300 line-clamp-3 mb-4;
+  }
+
+  /* ================================
+     ACTION BUTTONS
+  ================================= */
+
+  .trending-hover-actions {
+    @apply flex items-center gap-2;
+  }
+
+  .trending-watch-btn {
+    @apply flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg bg-blue-600 text-white text-xs font-semibold transition-all duration-200;
+  }
+
+  .trending-watch-btn:hover {
+    @apply bg-blue-500;
+  }
+
+  .trending-list-btn {
+    @apply w-10 h-10 flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white backdrop-blur-sm transition-all duration-200;
+  }
+
+  .trending-list-btn:hover {
+    @apply bg-white/20 border-white/40;
+  }
+}
+
+
+@layer components {
+  /* =================================
+     HOME SECTION
+  ================================= */
+
+  .home-section {
+    @apply w-full mt-10;
+  }
+
+  /* =================================
+     SECTION HEADER
+  ================================= */
+
+  .section-header {
+    @apply flex items-center justify-between gap-4 mb-5;
+  }
+
+  .section-title {
+    @apply text-xl md:text-2xl font-bold text-white;
+  }
+
+  .section-subtitle {
+    @apply text-xs md:text-sm text-gray-400 mt-1;
+  }
+
+  /* =================================
+     SECTION CONTROLS
+  ================================= */
+
+  .section-controls {
+    @apply flex items-center gap-2;
+  }
+
+  .view-all-btn {
+    @apply mr-2 px-4 py-2 rounded-lg text-sm font-medium text-blue-400 border border-blue-500/20 bg-blue-500/5 transition-all duration-200;
+  }
+
+  .view-all-btn:hover {
+    @apply bg-blue-500/10 text-blue-300 border-blue-500/40;
+  }
+
+  .carousel-btn {
+    @apply w-9 h-9 flex items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-300 transition-all duration-200;
+  }
+
+  .carousel-btn:hover {
+    @apply bg-blue-600 text-white border-blue-500;
+  }
+
+  .carousel-btn:active {
+    @apply scale-95;
+  }
+
+  /* =================================
+     MOVIE CAROUSEL
+  ================================= */
+
+  .movie-carousel {
+  @apply flex gap-5 overflow-x-auto w-full scroll-smooth;
+  scrollbar-width: none;
+}
+
+.movie-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-carousel > * {
+  @apply flex-shrink-0;
+}
+
+  /* =================================
+     RESPONSIVE
+  ================================= */
+
+  @media (max-width: 1024px) {
+    .movie-carousel {
+      @apply gap-4;
+    }
+
+    .section-header {
+      @apply mb-4;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-header {
+      @apply items-end;
+    }
+
+    .section-subtitle {
+      @apply hidden;
+    }
+
+    .section-title {
+      @apply text-lg;
+    }
+
+    .view-all-btn {
+      @apply px-3 py-1.5 text-xs;
+    }
+
+    .carousel-btn {
+      @apply w-8 h-8;
+    }
+
+    .movie-carousel {
+      @apply gap-3;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-header {
+      @apply items-center;
+    }
+
+    .section-title {
+      @apply text-base;
+    }
+
+    .section-controls {
+      @apply gap-1;
+    }
+
+    .view-all-btn {
+      @apply mr-1 px-2.5;
+    }
+
+    .carousel-btn {
+      @apply w-8 h-8;
+    }
+  }
+}
+
+
+@layer components {
+  /* =====================================================
+     TRENDING PAGE
+  ===================================================== */
+
+  .trending-page {
+    @apply w-full min-h-screen
+    px-3 py-5
+    sm:px-4 sm:py-6
+    md:px-6 md:py-7
+    lg:px-8 lg:py-8
+    xl:px-10;
+  }
+
+  /* =====================================================
+     PAGE HEADER
+  ===================================================== */
+
+  .trending-page-header {
+    @apply flex flex-col
+    lg:flex-row
+    justify-between
+    items-start
+    lg:items-end
+    gap-5
+    md:gap-6
+    pb-5
+    md:pb-7
+    mb-5
+    md:mb-7
+    border-b border-white/10;
+  }
+
+  /* =====================================================
+     HEADING
+  ===================================================== */
+
+  .trending-page-heading {
+    @apply flex flex-col w-full;
+  }
+
+  .trending-page-badge {
+    @apply w-fit
+    mb-2
+    md:mb-3
+    px-3
+    py-1
+    rounded-full
+    text-[9px]
+    sm:text-[10px]
+    font-bold
+    tracking-[0.18em]
+    text-blue-400
+    bg-blue-500/10
+    border border-blue-500/20;
+  }
+
+  .trending-page-heading h1 {
+    @apply text-2xl
+    sm:text-3xl
+    md:text-4xl
+    lg:text-5xl
+    font-bold
+    tracking-tight
+    text-white;
+  }
+
+  .trending-page-heading p {
+    @apply mt-2
+    max-w-xl
+    text-xs
+    sm:text-sm
+    md:text-base
+    leading-5
+    md:leading-6
+    text-gray-400;
+  }
+
+  /* =====================================================
+     SEARCH + FILTER
+  ===================================================== */
+
+  .trending-page-actions {
+    @apply flex
+    items-center
+    gap-2
+    w-full
+    lg:w-auto;
+  }
+
+  .trending-search {
+    @apply flex
+    items-center
+    gap-2
+    flex-1
+    lg:w-64
+    lg:flex-none
+    px-3
+    sm:px-4
+    py-2.5
+    rounded-xl
+    bg-white/5
+    border border-white/10
+    text-gray-400
+    transition-all
+    duration-200;
+  }
+
+  .trending-search:focus-within {
+    @apply border-blue-500/50
+    bg-white/[0.07]
+    text-blue-400;
+  }
+
+  .trending-search input {
+    @apply w-full
+    min-w-0
+    bg-transparent
+    outline-none
+    text-xs
+    sm:text-sm
+    text-white
+    placeholder:text-gray-500;
+  }
+
+  .trending-filter-btn {
+    @apply flex
+    shrink-0
+    items-center
+    justify-center
+    gap-2
+    px-3
+    sm:px-4
+    py-2.5
+    rounded-xl
+    whitespace-nowrap
+    text-xs
+    sm:text-sm
+    font-medium
+    text-gray-300
+    bg-white/5
+    border border-white/10
+    transition-all
+    duration-200;
+  }
+
+  .trending-filter-btn:hover {
+    @apply bg-blue-600
+    border-blue-500
+    text-white;
+  }
+
+  /* =====================================================
+     RESULTS HEADER
+  ===================================================== */
+
+  .trending-results-header {
+    @apply flex
+    items-center
+    justify-between
+    gap-3
+    mb-4
+    md:mb-6;
+  }
+
+  .trending-results-header h2 {
+    @apply text-base
+    sm:text-lg
+    md:text-xl
+    font-semibold
+    text-white;
+  }
+
+  .trending-results-header p {
+    @apply mt-1
+    text-[10px]
+    sm:text-xs
+    md:text-sm
+    text-gray-500;
+  }
+
+  .trending-sort-btn {
+    @apply shrink-0
+    px-3
+    sm:px-4
+    py-1.5
+    sm:py-2
+    rounded-lg
+    text-[10px]
+    sm:text-xs
+    md:text-sm
+    font-medium
+    text-blue-400
+    bg-blue-500/10
+    border border-blue-500/20
+    transition-all
+    duration-200;
+  }
+
+  .trending-sort-btn:hover {
+    @apply bg-blue-600
+    text-white
+    border-blue-500;
+  }
+
+  /* =====================================================
+     MOVIE GRID
+
+     MOBILE      -> 2
+     TABLET      -> 2
+     LAPTOP      -> 4
+     DESKTOP     -> 4
+     LARGE       -> 4
+  ===================================================== */
+
+  .trending-movie-grid {
+    @apply grid
+    grid-cols-2
+    sm:grid-cols-2
+    md:grid-cols-2
+    lg:grid-cols-4
+    gap-3
+    sm:gap-4
+    md:gap-5
+    lg:gap-6;
+  }
+
+  /* =====================================================
+     CARD
+  ===================================================== */
+
+  .trending-movie-grid .trending-movie-card {
+    @apply w-full
+    min-w-0
+    h-[260px]
+    sm:h-[280px]
+    md:h-[300px]
+    lg:h-[320px];
+  }
+
+  /* =====================================================
+     EMPTY STATE
+  ===================================================== */
+
+  .trending-empty {
+    @apply col-span-full
+    flex
+    flex-col
+    items-center
+    justify-center
+    min-h-[250px]
+    md:min-h-[300px]
+    rounded-2xl
+    border border-white/10
+    bg-white/[0.02]
+    text-center
+    px-4;
+  }
+
+  .trending-empty h3 {
+    @apply text-base
+    md:text-lg
+    font-semibold
+    text-white;
+  }
+
+  .trending-empty p {
+    @apply mt-1
+    text-xs
+    md:text-sm
+    text-gray-500;
+  }
+
+  /* =====================================================
+     SMALL MOBILE
+  ===================================================== */
+
+  @media (max-width: 480px) {
+
+    .trending-page-actions {
+      @apply gap-2;
+    }
+
+    .trending-search {
+      @apply px-3;
+    }
+
+    .trending-filter-btn {
+      @apply px-3;
+    }
+
+    .trending-movie-grid {
+      @apply gap-3;
+    }
+
+    .trending-movie-grid .trending-movie-card {
+      @apply h-[255px];
+    }
+  }
+
+  /* =====================================================
+     VERY SMALL MOBILE
+  ===================================================== */
+
+  @media (max-width: 360px) {
+
+    .trending-page {
+      @apply px-2;
+    }
+
+    .trending-page-heading h1 {
+      @apply text-xl;
+    }
+
+    .trending-page-heading p {
+      @apply text-[11px];
+    }
+
+    .trending-page-actions {
+      @apply flex-col
+      items-stretch;
+    }
+
+    .trending-search {
+      @apply w-full;
+    }
+
+    .trending-filter-btn {
+      @apply w-full;
+    }
+
+    .trending-movie-grid {
+      @apply grid-cols-1;
+    }
+
+    .trending-movie-grid .trending-movie-card {
+      @apply h-[330px];
+    }
+  }
+
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+
+    .trending-page-header {
+      @apply flex-col
+      items-start;
+    }
+
+    .trending-page-actions {
+      @apply w-full;
+    }
+
+    .trending-search {
+      @apply flex-1;
+    }
+
+    .trending-movie-grid {
+      @apply grid-cols-2;
+    }
+  }
+
+  /* =====================================================
+     LAPTOP
+  ===================================================== */
+
+  @media (min-width: 1024px) and (max-width: 1279px) {
+
+    .trending-movie-grid {
+      @apply grid-cols-4
+      gap-4;
+    }
+
+    .trending-movie-grid .trending-movie-card {
+      @apply h-[300px];
+    }
+  }
+
+  /* =====================================================
+     DESKTOP
+  ===================================================== */
+
+  @media (min-width: 1280px) {
+
+    .trending-movie-grid {
+      @apply grid-cols-4
+      gap-6;
+    }
+
+    .trending-movie-grid .trending-movie-card {
+      @apply h-[320px];
+    }
+  }
+
+  /* =====================================================
+     LARGE DESKTOP
+  ===================================================== */
+
+  @media (min-width: 1536px) {
+
+    .trending-page {
+      @apply px-12;
+    }
+
+    .trending-movie-grid {
+      @apply gap-7;
+    }
+
+    .trending-movie-grid .trending-movie-card {
+      @apply h-[340px];
+    }
+  }
+}
