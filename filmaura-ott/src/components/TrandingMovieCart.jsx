@@ -1,13 +1,18 @@
 import { Play, Plus, Star } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const TrandingMovieCart = ({ trandingMovies }) => {
+
+  const navigate = useNavigate()
+  
   return (
     <div className="trending-movie-card group">
       {/* Poster */}
       <img
         src={trandingMovies.Poster}
         alt={trandingMovies.Title}
+        
         className="trending-movie-poster"
       />
 
@@ -28,7 +33,9 @@ const TrandingMovieCart = ({ trandingMovies }) => {
       </div>
 
       {/* Hover Details */}
-      <div className="trending-card-hover">
+      <div
+        onClick={() => navigate(`/movie/${trandingMovies._id}`)}
+        className="trending-card-hover">
         {/* Title */}
         <h3 className="trending-hover-title">
           {trandingMovies.Title}
