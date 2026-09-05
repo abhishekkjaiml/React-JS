@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import movieWishlistReducer from "../reducer/movieWishlistReducer";
+import movieWatchlistReducer from "../reducer/movieWatchlistReducer";
 
 const MovieWatchlistContext = createContext();
 
@@ -9,7 +9,7 @@ const MovieWatchlistProvider = ({ children }) => {
         movieWatchlist : []
     }
 
-    const [{ movieWatchlist }, movieWatchlistDispatch] = useReducer(movieWishlistReducer, initialState)
+    const [{ movieWatchlist }, movieWatchlistDispatch] = useReducer(movieWatchlistReducer, initialState)
     return(
         <MovieWatchlistContext.Provider value={{movieWatchlist, movieWatchlistDispatch}}>
             { children }

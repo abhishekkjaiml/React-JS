@@ -2933,16 +2933,18 @@
   .movie-details-type {
     @apply inline-flex
     items-center
-    px-3
-    py-1
-    rounded-full
-    border border-gray-700
-    bg-gray-800/90
-    text-[11px]
+    px-2.5
+    py-[5px]
+    border
+    border-gray-700
+    rounded-md
+    bg-gray-900/80
+    text-[10px]
     font-semibold
     uppercase
-    tracking-wider
-    text-gray-300;
+    tracking-[0.8px]
+    text-gray-400;
+  
 
     animation:
       movie-element-reveal
@@ -7841,3 +7843,3277 @@
 }
 
 /* StreamMovies.jsx Start here */
+
+
+
+@layer components {
+
+
+  /* WatchlistPage.jsx Page Start */
+
+
+  /* =====================================================
+     WATCHLIST PAGE
+  ===================================================== */
+
+  .watchlist-page {
+    @apply min-h-screen
+    w-full
+    bg-gray-950
+    px-4
+    pb-14
+    pt-5
+    text-white
+    sm:px-6
+    lg:px-8;
+  }
+
+
+  /* =====================================================
+     WATCHLIST SECTION
+  ===================================================== */
+
+  .watchlist-section {
+    @apply mx-auto
+    mt-8
+    w-full
+    max-w-[1600px];
+  }
+
+
+  .watchlist-section:first-child {
+    @apply mt-0;
+  }
+
+
+  /* =====================================================
+     SECTION HEADER
+  ===================================================== */
+
+  .watchlist-section-header {
+    @apply mb-4
+    flex
+    items-center
+    justify-between
+    gap-4;
+  }
+
+
+  /* =====================================================
+     SECTION TITLE
+  ===================================================== */
+
+  .watchlist-section-title {
+    @apply m-0
+    text-xl
+    font-bold
+    tracking-tight
+    text-gray-100
+    sm:text-2xl;
+  }
+
+
+  /* =====================================================
+     SECTION ACTIONS
+  ===================================================== */
+
+  .watchlist-section-actions {
+    @apply flex
+    shrink-0
+    items-center
+    gap-2;
+  }
+
+
+  /* =====================================================
+     VIEW ALL BUTTON
+  ===================================================== */
+
+  .watchlist-view-all {
+    @apply mr-1
+    hidden
+    rounded-lg
+    border
+    border-gray-800
+    bg-gray-900
+    px-4
+    py-2
+    text-xs
+    font-medium
+    text-gray-400
+    transition-all
+    duration-300
+    sm:block;
+  }
+
+
+  .watchlist-view-all:hover {
+    @apply border-gray-700
+    bg-gray-800
+    text-white;
+  }
+
+
+  /* =====================================================
+     ARROW BUTTON
+  ===================================================== */
+
+  .watchlist-arrow {
+    @apply flex
+    h-9
+    w-9
+    items-center
+    justify-center
+    rounded-lg
+    border
+    border-gray-800
+    bg-gray-900
+    text-gray-400
+    transition-all
+    duration-300
+    cursor-pointer;
+  }
+
+
+  /* =====================================================
+     ARROW HOVER
+  ===================================================== */
+
+  .watchlist-arrow:hover {
+    @apply border-gray-700
+    bg-gray-800
+    text-white;
+
+    transform: translateY(-2px);
+  }
+
+
+  /* =====================================================
+     ARROW ACTIVE
+  ===================================================== */
+
+  .watchlist-arrow:active {
+    transform: scale(0.92);
+  }
+
+
+  /* =====================================================
+     HORIZONTAL SLIDER
+  ===================================================== */
+
+  .watchlist-slider {
+    @apply w-full
+    overflow-x-auto
+    overflow-y-hidden;
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
+
+    cursor: grab;
+
+    scroll-behavior: smooth;
+
+    touch-action: pan-x;
+
+    overscroll-behavior-x: contain;
+  }
+
+
+  /* =====================================================
+     HIDE SCROLLBAR
+  ===================================================== */
+
+  .watchlist-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* =====================================================
+     DRAGGING STATE
+  ===================================================== */
+
+  .watchlist-slider-dragging {
+    cursor: grabbing;
+
+    scroll-behavior: auto;
+
+    user-select: none;
+  }
+
+
+  /* =====================================================
+     CARD LIST
+  ===================================================== */
+
+  .watchlist-slider > div {
+    @apply flex
+    w-max
+    items-stretch
+    gap-5;
+  }
+
+
+  /* =====================================================
+     MOVIE CARD
+  ===================================================== */
+
+  .watchlist-slider
+  > div
+  > .movies-card {
+
+    flex: 0 0 240px;
+
+    width: 240px;
+
+    min-width: 240px;
+  }
+
+
+  /* =====================================================
+     TV SERIES CARD
+  ===================================================== */
+
+  .watchlist-slider
+  > div
+  > .tv-series-card {
+
+    flex: 0 0 240px;
+
+    width: 240px;
+
+    min-width: 240px;
+  }
+
+
+  /* =====================================================
+     EMPTY WATCHLIST
+  ===================================================== */
+
+  .watchlist-empty {
+    @apply mx-auto
+    mt-10
+    flex
+    min-h-[300px]
+    w-full
+    max-w-2xl
+    flex-col
+    items-center
+    justify-center
+    rounded-2xl
+    border
+    border-gray-800
+    bg-gray-900
+    px-6
+    text-center;
+  }
+
+
+  /* =====================================================
+     EMPTY TITLE
+  ===================================================== */
+
+  .watchlist-empty h2 {
+    @apply text-xl
+    font-semibold
+    text-gray-200;
+  }
+
+
+  /* =====================================================
+     EMPTY DESCRIPTION
+  ===================================================== */
+
+  .watchlist-empty p {
+    @apply mt-2
+    max-w-md
+    text-sm
+    leading-6
+    text-gray-500;
+  }
+
+
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media (max-width: 1024px) {
+
+    .watchlist-page {
+      @apply px-5;
+    }
+
+
+    .watchlist-slider > div {
+      @apply gap-4;
+    }
+
+
+    .watchlist-slider
+    > div
+    > .movies-card {
+
+      flex-basis: 225px;
+
+      width: 225px;
+
+      min-width: 225px;
+    }
+
+
+    .watchlist-slider
+    > div
+    > .tv-series-card {
+
+      flex-basis: 225px;
+
+      width: 225px;
+
+      min-width: 225px;
+    }
+
+  }
+
+
+  /* =====================================================
+     MOBILE
+  ===================================================== */
+
+  @media (max-width: 768px) {
+
+    .watchlist-page {
+      @apply px-3
+      pb-10
+      pt-4;
+    }
+
+
+    .watchlist-section {
+      @apply mt-7;
+    }
+
+
+    .watchlist-section-header {
+      @apply mb-3;
+    }
+
+
+    .watchlist-section-title {
+      @apply text-lg;
+    }
+
+
+    .watchlist-section-actions {
+      @apply gap-1.5;
+    }
+
+
+    .watchlist-arrow {
+      @apply h-8
+      w-8;
+    }
+
+
+    .watchlist-slider > div {
+      @apply gap-4;
+    }
+
+
+    .watchlist-slider
+    > div
+    > .movies-card {
+
+      flex-basis: 200px;
+
+      width: 200px;
+
+      min-width: 200px;
+    }
+
+
+    .watchlist-slider
+    > div
+    > .tv-series-card {
+
+      flex-basis: 200px;
+
+      width: 200px;
+
+      min-width: 200px;
+    }
+
+
+    .watchlist-empty {
+      @apply mt-8
+      min-h-[260px];
+    }
+
+  }
+
+
+  /* =====================================================
+     SMALL MOBILE
+  ===================================================== */
+
+  @media (max-width: 480px) {
+
+    .watchlist-page {
+      @apply px-2.5;
+    }
+
+
+    .watchlist-section-title {
+      @apply text-base;
+    }
+
+
+    .watchlist-slider > div {
+      @apply gap-3;
+    }
+
+
+    .watchlist-slider
+    > div
+    > .movies-card {
+
+      flex-basis: 185px;
+
+      width: 185px;
+
+      min-width: 185px;
+    }
+
+
+    .watchlist-slider
+    > div
+    > .tv-series-card {
+
+      flex-basis: 185px;
+
+      width: 185px;
+
+      min-width: 185px;
+    }
+
+
+    .watchlist-empty {
+      @apply px-4;
+    }
+
+  }
+
+
+  /* =====================================================
+     REDUCED MOTION
+  ===================================================== */
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .watchlist-slider {
+      scroll-behavior: auto;
+    }
+
+
+    .watchlist-arrow,
+    .watchlist-view-all {
+      transition: none;
+    }
+
+  }
+
+
+  /* WatchlistPage.jsx Page End */
+
+}
+
+
+/* =====================================================
+   PopularMoviesPage.jsx Page Start
+===================================================== */
+
+@layer components {
+
+  .popular-movies-page {
+    @apply min-h-screen
+      w-full
+      bg-gray-950
+      px-[5%]
+      py-8;
+  }
+
+}
+
+/* =====================================================
+   PopularMoviesPage.jsx Page End
+===================================================== */
+
+
+/* =====================================================
+   PopularMoviesAllInOne.jsx Page Start
+===================================================== */
+
+@layer components {
+
+  /* =====================================================
+     Main Container
+  ===================================================== */
+
+  .popular-movies-all-in-one {
+    @apply w-full;
+  }
+
+
+  /* =====================================================
+     Movie Category
+  ===================================================== */
+
+  .popular-movies-category {
+    @apply w-full;
+  }
+
+  .popular-movies-category
+  + .popular-movies-category {
+    @apply mt-12;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .popular-movies-header {
+    @apply mb-[18px]
+      flex
+      w-full
+      items-end
+      justify-between
+      gap-5;
+  }
+
+  .popular-movies-heading {
+    @apply min-w-0;
+  }
+
+
+  /* =====================================================
+     Section Label
+  ===================================================== */
+
+  .popular-movies-label {
+    @apply mb-1.5
+      inline-block
+      text-[10px]
+      font-semibold
+      uppercase
+      tracking-[1.5px]
+      leading-tight
+      text-violet-400;
+  }
+
+
+  /* =====================================================
+     Section Title
+  ===================================================== */
+
+  .popular-movies-title {
+    @apply m-0
+      text-[28px]
+      font-bold
+      leading-tight
+      text-gray-50;
+  }
+
+
+  /* =====================================================
+     Section Description
+  ===================================================== */
+
+  .popular-movies-description {
+    @apply mt-2
+      text-[13px]
+      leading-5
+      text-gray-400;
+  }
+
+
+  /* =====================================================
+     Header Actions
+  ===================================================== */
+
+  .popular-movies-actions {
+    @apply flex
+      shrink-0
+      items-center
+      gap-2.5;
+  }
+
+
+  /* =====================================================
+     View All Button
+  ===================================================== */
+
+  .popular-movies-view-all {
+    @apply flex
+      min-h-9
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-gray-700
+      bg-gray-900
+      px-3.5
+      py-2
+      text-[11px]
+      font-semibold
+      text-gray-300
+      transition-all
+      duration-300
+      hover:border-violet-600
+      hover:bg-violet-600
+      hover:text-white
+      hover:shadow-[0_6px_18px_rgba(124,58,237,0.18)]
+      active:scale-95;
+  }
+
+
+  /* =====================================================
+     Slider Arrows Container
+  ===================================================== */
+
+  .popular-movies-arrows {
+    @apply flex
+      items-center
+      gap-[7px];
+  }
+
+
+  /* =====================================================
+     Slider Arrow Button
+  ===================================================== */
+
+  .popular-movies-arrow {
+    @apply flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-gray-700
+      bg-gray-900
+      p-0
+      text-gray-300
+      transition-all
+      duration-300
+      hover:border-violet-600
+      hover:bg-violet-600
+      hover:text-white
+      hover:shadow-[0_6px_18px_rgba(124,58,237,0.2)]
+      active:scale-90;
+  }
+
+
+  /* =====================================================
+     Movies Slider
+  ===================================================== */
+
+  .popular-movies-slider {
+    @apply w-full
+      overflow-x-auto
+      overflow-y-hidden
+      cursor-grab
+      select-none
+      px-1
+      pt-2
+      pb-5
+      scroll-smooth;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  /* =====================================================
+     Hide Scrollbar
+  ===================================================== */
+
+  .popular-movies-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* =====================================================
+     Slider Dragging
+  ===================================================== */
+
+  .popular-movies-slider-dragging {
+    @apply cursor-grabbing;
+
+    scroll-behavior: auto;
+  }
+
+  .popular-movies-slider-dragging * {
+    pointer-events: none;
+  }
+
+
+  /* =====================================================
+     Slider Track
+  ===================================================== */
+
+  .popular-movies-slider-track {
+    @apply flex
+      w-max
+      min-w-full
+      items-stretch
+      gap-[18px];
+  }
+
+
+  /* =====================================================
+     Movie Card Item
+  ===================================================== */
+
+  .popular-movie-card-item {
+    @apply w-[240px]
+      min-w-[240px]
+      flex-[0_0_240px];
+  }
+
+
+  /* =====================================================
+     Movie Card Full Width
+  ===================================================== */
+
+  .popular-movie-card-item .movies-card {
+    @apply w-full;
+  }
+
+
+  /* =====================================================
+     Empty State
+  ===================================================== */
+
+  .popular-movies-empty {
+    @apply flex
+      min-h-[300px]
+      w-full
+      items-center
+      justify-center
+      rounded-xl
+      border
+      border-gray-800
+      bg-gray-900
+      text-sm
+      font-medium
+      text-gray-400;
+  }
+
+}
+
+
+/* =====================================================
+   Tablet - 1024px
+===================================================== */
+
+@media (max-width: 1024px) {
+
+  .popular-movies-page {
+    @apply px-[4%]
+      py-7;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .popular-movies-title {
+    @apply text-[26px];
+  }
+
+
+  /* =====================================================
+     Movie Cards
+  ===================================================== */
+
+  .popular-movie-card-item {
+    @apply w-[225px]
+      min-w-[225px]
+      flex-[0_0_225px];
+  }
+
+}
+
+
+/* =====================================================
+   Mobile - 768px
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .popular-movies-page {
+    @apply px-[4%]
+      py-6;
+  }
+
+
+  /* =====================================================
+     Category Spacing
+  ===================================================== */
+
+  .popular-movies-category
+  + .popular-movies-category {
+    @apply mt-10;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .popular-movies-header {
+    @apply items-center
+      gap-3;
+  }
+
+
+  /* =====================================================
+     Title
+  ===================================================== */
+
+  .popular-movies-title {
+    @apply text-[23px];
+  }
+
+
+  /* =====================================================
+     Description
+  ===================================================== */
+
+  .popular-movies-description {
+    @apply text-xs;
+  }
+
+
+  /* =====================================================
+     Actions
+  ===================================================== */
+
+  .popular-movies-actions {
+    @apply gap-1.5;
+  }
+
+
+  /* =====================================================
+     View All
+  ===================================================== */
+
+  .popular-movies-view-all {
+    @apply min-h-[34px]
+      px-2.5
+      py-1.5
+      text-[10px];
+  }
+
+
+  /* =====================================================
+     Arrows
+  ===================================================== */
+
+  .popular-movies-arrows {
+    @apply gap-1;
+  }
+
+  .popular-movies-arrow {
+    @apply h-[34px]
+      w-[34px];
+  }
+
+
+  /* =====================================================
+     Slider Track
+  ===================================================== */
+
+  .popular-movies-slider-track {
+    @apply gap-[15px];
+  }
+
+
+  /* =====================================================
+     Movie Cards
+  ===================================================== */
+
+  .popular-movie-card-item {
+    @apply w-[200px]
+      min-w-[200px]
+      flex-[0_0_200px];
+  }
+
+}
+
+
+/* =====================================================
+   Small Mobile - 480px
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .popular-movies-page {
+    @apply px-[4%]
+      py-5;
+  }
+
+
+  /* =====================================================
+     Category Spacing
+  ===================================================== */
+
+  .popular-movies-category
+  + .popular-movies-category {
+    @apply mt-8;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .popular-movies-header {
+    @apply mb-[14px]
+      items-center
+      gap-2.5;
+  }
+
+
+  /* =====================================================
+     Label
+  ===================================================== */
+
+  .popular-movies-label {
+    @apply mb-1
+      text-[9px]
+      tracking-[1.3px];
+  }
+
+
+  /* =====================================================
+     Title
+  ===================================================== */
+
+  .popular-movies-title {
+    @apply text-[20px];
+  }
+
+
+  /* =====================================================
+     Description
+  ===================================================== */
+
+  .popular-movies-description {
+    @apply hidden;
+  }
+
+
+  /* =====================================================
+     Actions
+  ===================================================== */
+
+  .popular-movies-actions {
+    @apply gap-1;
+  }
+
+
+  /* =====================================================
+     View All
+  ===================================================== */
+
+  .popular-movies-view-all {
+    @apply min-h-8
+      rounded-[7px]
+      px-2
+      py-1.5
+      text-[9px];
+  }
+
+
+  /* =====================================================
+     Arrows
+  ===================================================== */
+
+  .popular-movies-arrows {
+    @apply gap-1;
+  }
+
+  .popular-movies-arrow {
+    @apply h-8
+      w-8
+      rounded-[7px];
+  }
+
+  .popular-movies-arrow svg {
+    @apply h-4
+      w-4;
+  }
+
+
+  /* =====================================================
+     Slider
+  ===================================================== */
+
+  .popular-movies-slider {
+    @apply px-0
+      pt-1
+      pb-4;
+  }
+
+
+  /* =====================================================
+     Slider Track
+  ===================================================== */
+
+  .popular-movies-slider-track {
+    @apply gap-3;
+  }
+
+
+  /* =====================================================
+     Movie Cards
+  ===================================================== */
+
+  .popular-movie-card-item {
+    @apply w-[185px]
+      min-w-[185px]
+      flex-[0_0_185px];
+  }
+
+
+  /* =====================================================
+     Empty State
+  ===================================================== */
+
+  .popular-movies-empty {
+    @apply min-h-[260px];
+  }
+
+}
+
+
+/* =====================================================
+   PopularMoviesAllInOne.jsx Page End
+===================================================== */
+
+
+/* =====================================================
+   TopRatedMoviesPage.jsx Page Start
+===================================================== */
+
+@layer components {
+  .top-rated-movies-page {
+    @apply min-h-screen w-full
+      bg-gray-950
+      px-[5%]
+      py-8;
+  }
+}
+
+/* =====================================================
+   TopRatedMoviesPage.jsx Page End
+===================================================== */
+
+
+/* =====================================================
+   AllRatedMoviesCard.jsx Page Start
+===================================================== */
+
+@layer components {
+
+  /* =====================================================
+     Main Section
+  ===================================================== */
+
+  .rated-movies-section {
+    @apply w-full;
+  }
+
+  .rated-movies-category {
+    @apply w-full;
+  }
+
+  .rated-movies-pg-category {
+    @apply mt-12;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .rated-movies-header {
+    @apply mb-[18px]
+      flex w-full
+      items-end
+      justify-between
+      gap-5;
+  }
+
+  .rated-movies-heading {
+    @apply min-w-0;
+  }
+
+  .rated-movies-label {
+    @apply mb-1.5
+      inline-block
+      text-[10px]
+      font-semibold
+      uppercase
+      tracking-[1.5px]
+      leading-tight
+      text-violet-400;
+  }
+
+  .rated-movies-title {
+    @apply m-0
+      text-[28px]
+      font-bold
+      leading-tight
+      text-gray-50;
+  }
+
+  .rated-movies-description {
+    @apply mt-2
+      text-[13px]
+      leading-5
+      text-gray-400;
+  }
+
+
+  /* =====================================================
+     Header Actions
+  ===================================================== */
+
+  .rated-movies-actions {
+    @apply flex
+      shrink-0
+      items-center
+      gap-2.5;
+  }
+
+  .rated-movies-view-all {
+    @apply flex
+      min-h-9
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-gray-700
+      bg-gray-900
+      px-3.5
+      py-2
+      text-[11px]
+      font-semibold
+      text-gray-300
+      transition-all
+      duration-300
+      hover:border-violet-600
+      hover:bg-violet-600
+      hover:text-white
+      hover:shadow-[0_6px_18px_rgba(124,58,237,0.18)]
+      active:scale-95;
+  }
+
+
+  /* =====================================================
+     Slider Arrows
+  ===================================================== */
+
+  .rated-movies-arrows {
+    @apply flex
+      items-center
+      gap-[7px];
+  }
+
+  .rated-movies-arrow {
+    @apply flex
+      h-9
+      w-9
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-gray-700
+      bg-gray-900
+      p-0
+      text-gray-300
+      transition-all
+      duration-300
+      hover:border-violet-600
+      hover:bg-violet-600
+      hover:text-white
+      hover:shadow-[0_6px_18px_rgba(124,58,237,0.2)]
+      active:scale-90;
+  }
+
+
+  /* =====================================================
+     Slider
+  ===================================================== */
+
+  .rated-movies-slider {
+    @apply w-full
+      overflow-x-auto
+      overflow-y-hidden
+      cursor-grab
+      select-none
+      px-1
+      pt-2
+      pb-5
+      scroll-smooth;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rated-movies-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rated-movies-slider-dragging {
+    @apply cursor-grabbing;
+
+    scroll-behavior: auto;
+  }
+
+  .rated-movies-slider-dragging * {
+    pointer-events: none;
+  }
+
+
+  /* =====================================================
+     Slider Track
+  ===================================================== */
+
+  .rated-movies-slider-track {
+    @apply flex
+      w-max
+      min-w-full
+      items-stretch
+      gap-[18px];
+  }
+
+
+  /* =====================================================
+     Movie Card Item
+  ===================================================== */
+
+  .rated-movie-card-item {
+    @apply w-[240px]
+      min-w-[240px]
+      flex-[0_0_240px];
+  }
+
+  .rated-movie-card-item .movies-card {
+    @apply w-full;
+  }
+
+
+  /* =====================================================
+     Empty State
+  ===================================================== */
+
+  .rated-movies-empty {
+    @apply flex
+      min-h-[300px]
+      w-full
+      items-center
+      justify-center
+      rounded-xl
+      border
+      border-gray-800
+      bg-gray-900
+      text-sm
+      font-medium
+      text-gray-400;
+  }
+}
+
+
+/* =====================================================
+   Tablet
+===================================================== */
+
+@media (max-width: 1024px) {
+
+  .top-rated-movies-page {
+    @apply px-[4%]
+      py-7;
+  }
+
+  .rated-movies-title {
+    @apply text-[26px];
+  }
+
+  .rated-movie-card-item {
+    @apply w-[225px]
+      min-w-[225px]
+      flex-[0_0_225px];
+  }
+}
+
+
+/* =====================================================
+   Mobile
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .top-rated-movies-page {
+    @apply px-[4%]
+      py-6;
+  }
+
+  .rated-movies-pg-category {
+    @apply mt-10;
+  }
+
+  .rated-movies-header {
+    @apply items-center
+      gap-3;
+  }
+
+  .rated-movies-title {
+    @apply text-[23px];
+  }
+
+  .rated-movies-description {
+    @apply text-xs;
+  }
+
+  .rated-movies-actions {
+    @apply gap-1.5;
+  }
+
+  .rated-movies-view-all {
+    @apply min-h-[34px]
+      px-2.5
+      py-1.5
+      text-[10px];
+  }
+
+  .rated-movies-arrows {
+    @apply gap-1;
+  }
+
+  .rated-movies-arrow {
+    @apply h-[34px]
+      w-[34px];
+  }
+
+  .rated-movies-slider-track {
+    @apply gap-[15px];
+  }
+
+  .rated-movie-card-item {
+    @apply w-[200px]
+      min-w-[200px]
+      flex-[0_0_200px];
+  }
+}
+
+
+/* =====================================================
+   Small Mobile
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .top-rated-movies-page {
+    @apply px-[4%]
+      py-5;
+  }
+
+  .rated-movies-pg-category {
+    @apply mt-8;
+  }
+
+  .rated-movies-header {
+    @apply mb-[14px]
+      items-center
+      gap-2.5;
+  }
+
+  .rated-movies-label {
+    @apply mb-1
+      text-[9px]
+      tracking-[1.3px];
+  }
+
+  .rated-movies-title {
+    @apply text-[20px];
+  }
+
+  .rated-movies-description {
+    @apply hidden;
+  }
+
+  .rated-movies-actions {
+    @apply gap-1;
+  }
+
+  .rated-movies-view-all {
+    @apply min-h-8
+      rounded-[7px]
+      px-2
+      py-1.5
+      text-[9px];
+  }
+
+  .rated-movies-arrows {
+    @apply gap-1;
+  }
+
+  .rated-movies-arrow {
+    @apply h-8
+      w-8
+      rounded-[7px];
+  }
+
+  .rated-movies-arrow svg {
+    @apply h-4
+      w-4;
+  }
+
+  .rated-movies-slider {
+    @apply px-0
+      pt-1
+      pb-4;
+  }
+
+  .rated-movies-slider-track {
+    @apply gap-3;
+  }
+
+  .rated-movie-card-item {
+    @apply w-[185px]
+      min-w-[185px]
+      flex-[0_0_185px];
+  }
+
+  .rated-movies-empty {
+    @apply min-h-[260px];
+  }
+}
+
+
+/* =====================================================
+   AllRatedMoviesCard.jsx Page End
+===================================================== */
+
+
+
+/* =====================================================
+   Rated Movies Pages Global Start
+===================================================== */
+
+@layer components {
+
+  /* =====================================================
+     Rated Page
+  ===================================================== */
+
+  .rated-page {
+    @apply min-h-screen
+      w-full
+      bg-gray-950
+      px-[5%]
+      py-8;
+  }
+
+
+  /* =====================================================
+     Rated Page Header
+  ===================================================== */
+
+  .rated-page-header {
+    @apply mb-6
+      w-full;
+  }
+
+  .rated-page-label {
+    @apply mb-1.5
+      inline-block
+      text-[10px]
+      font-semibold
+      uppercase
+      tracking-[1.5px]
+      leading-tight
+      text-violet-400;
+  }
+
+  .rated-page-title {
+    @apply m-0
+      text-[28px]
+      font-bold
+      leading-tight
+      text-gray-50;
+  }
+
+  .rated-page-description {
+    @apply mt-2
+      text-[13px]
+      leading-5
+      text-gray-400;
+  }
+
+
+  /* =====================================================
+     Rated Movies List
+  ===================================================== */
+
+  .rated-page-list {
+    @apply flex
+      flex-wrap
+      gap-5;
+  }
+
+
+  /* =====================================================
+     Rated Movie Card
+  ===================================================== */
+
+  .rated-page-card-item {
+    @apply w-[calc(25%-15px)];
+  }
+
+  .rated-page-card-item .movies-card {
+    @apply w-full;
+  }
+
+
+  /* =====================================================
+     Rated Page Empty State
+  ===================================================== */
+
+  .rated-page-empty {
+    @apply flex
+      min-h-[300px]
+      w-full
+      items-center
+      justify-center
+      rounded-xl
+      border
+      border-gray-800
+      bg-gray-900
+      text-sm
+      font-medium
+      text-gray-400;
+  }
+}
+
+
+/* =====================================================
+   Tablet
+===================================================== */
+
+@media (max-width: 1024px) {
+
+  .rated-page {
+    @apply px-[4%]
+      py-7;
+  }
+
+  .rated-page-title {
+    @apply text-[26px];
+  }
+
+  .rated-page-card-item {
+    @apply w-[calc(33.333%-13.333px)];
+  }
+}
+
+
+/* =====================================================
+   Mobile
+===================================================== */
+
+@media (max-width: 768px) {
+
+  .rated-page {
+    @apply px-[4%]
+      py-6;
+  }
+
+  .rated-page-header {
+    @apply mb-5;
+  }
+
+  .rated-page-title {
+    @apply text-[23px];
+  }
+
+  .rated-page-description {
+    @apply text-xs;
+  }
+
+  .rated-page-list {
+    @apply gap-4;
+  }
+
+  .rated-page-card-item {
+    @apply w-[calc(50%-8px)];
+  }
+}
+
+
+/* =====================================================
+   Small Mobile
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .rated-page {
+    @apply px-[4%]
+      py-5;
+  }
+
+  .rated-page-header {
+    @apply mb-4;
+  }
+
+  .rated-page-label {
+    @apply mb-1
+      text-[9px]
+      tracking-[1.3px];
+  }
+
+  .rated-page-title {
+    @apply text-[20px];
+  }
+
+  .rated-page-description {
+    @apply hidden;
+  }
+
+  .rated-page-list {
+    @apply flex-col
+      gap-4;
+  }
+
+  .rated-page-card-item {
+    @apply w-full;
+  }
+
+  .rated-page-empty {
+    @apply min-h-[260px];
+  }
+}
+
+
+/* =====================================================
+   Rated Movies Pages Global End
+===================================================== */
+
+
+/* =====================================================
+   HELP & SUPPORT PAGE
+===================================================== */
+
+@layer components {
+  .help-support-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 35px 5% 70px;
+    overflow: hidden;
+    background: #030712;
+    color: #f3f4f6;
+  }
+
+  /* =====================================================
+     HERO
+  ===================================================== */
+
+  .help-support-hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 25px 20px 55px;
+    text-align: center;
+  }
+
+  .help-support-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 760px;
+  }
+
+  .help-support-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(124, 58, 237, 0.12);
+    filter: blur(90px);
+    pointer-events: none;
+  }
+
+  .help-support-glow-one {
+    top: -130px;
+    left: 15%;
+  }
+
+  .help-support-glow-two {
+    top: 0;
+    right: 10%;
+    opacity: 0.6;
+  }
+
+  .help-support-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 13px;
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.08);
+    color: #a78bfa;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .help-support-title {
+    margin: 18px 0 12px;
+    color: #f9fafb;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+  }
+
+  .help-support-title span {
+    display: block;
+    color: #8b5cf6;
+  }
+
+  .help-support-description {
+    max-width: 610px;
+    margin: 0 auto;
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* =====================================================
+     SEARCH
+  ===================================================== */
+
+  .help-support-search {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 100%;
+    max-width: 580px;
+    height: 52px;
+    margin: 28px auto 0;
+    padding: 0 17px;
+    border: 1px solid #374151;
+    border-radius: 11px;
+    background: rgba(17, 24, 39, 0.9);
+    color: #6b7280;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .help-support-search:focus-within {
+    border-color: #7c3aed;
+    box-shadow:
+      0 15px 40px rgba(0, 0, 0, 0.3),
+      0 0 0 3px rgba(124, 58, 237, 0.1);
+  }
+
+  .help-support-search input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #f3f4f6;
+    font-size: 12px;
+  }
+
+  .help-support-search input::placeholder {
+    color: #6b7280;
+  }
+
+  /* =====================================================
+     COMMON SECTION
+  ===================================================== */
+
+  .help-support-section {
+    position: relative;
+    z-index: 2;
+    max-width: 1050px;
+    margin: 0 auto 45px;
+  }
+
+  .help-support-section-heading {
+    margin-bottom: 18px;
+  }
+
+  .help-support-section-heading span {
+    display: block;
+    margin-bottom: 5px;
+    color: #8b5cf6;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .help-support-section-heading h2 {
+    margin: 0;
+    color: #f3f4f6;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  /* =====================================================
+     HELP CATEGORIES
+  ===================================================== */
+
+  .help-support-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+  }
+
+  .help-support-category {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 88px;
+    padding: 16px;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    background: #111827;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease,
+      background 0.3s ease;
+  }
+
+  .help-support-category:hover {
+    transform: translateY(-4px);
+    border-color: #374151;
+    background: #151e2d;
+  }
+
+  .help-support-category-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(124, 58, 237, 0.12);
+    color: #a78bfa;
+  }
+
+  .help-support-category-content {
+    flex: 1;
+  }
+
+  .help-support-category-content h3 {
+    margin: 0 0 4px;
+    color: #f3f4f6;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .help-support-category-content p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .help-support-category-arrow {
+    flex-shrink: 0;
+    color: #4b5563;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .help-support-category:hover .help-support-category-arrow {
+    color: #a78bfa;
+    transform: translateX(3px);
+  }
+
+  /* =====================================================
+     COMMON ISSUES
+  ===================================================== */
+
+  .help-support-issues {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+  }
+
+  .help-support-issue {
+    display: flex;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    background: rgba(17, 24, 39, 0.75);
+    transition:
+      transform 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  .help-support-issue:hover {
+    transform: translateY(-4px);
+    border-color: #374151;
+  }
+
+  .help-support-issue-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: rgba(124, 58, 237, 0.1);
+    color: #a78bfa;
+  }
+
+  .help-support-issue h3 {
+    margin: 0 0 6px;
+    color: #e5e7eb;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .help-support-issue p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+
+  /* =====================================================
+     FAQ
+  ===================================================== */
+
+  .help-support-faq-section {
+    max-width: 850px;
+  }
+
+  .help-support-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .help-support-faq {
+    overflow: hidden;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    background: #111827;
+    transition:
+      border-color 0.3s ease,
+      background 0.3s ease;
+  }
+
+  .help-support-faq:hover {
+    border-color: #374151;
+  }
+
+  .help-support-faq-open {
+    border-color: rgba(124, 58, 237, 0.4);
+    background: #131a2a;
+  }
+
+  .help-support-faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    padding: 16px 17px;
+    border: none;
+    background: transparent;
+    color: #e5e7eb;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .help-support-faq-icon {
+    flex-shrink: 0;
+    color: #6b7280;
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .help-support-faq-open .help-support-faq-icon {
+    transform: rotate(180deg);
+    color: #a78bfa;
+  }
+
+  .help-support-faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+  }
+
+  .help-support-faq-open .help-support-faq-answer {
+    grid-template-rows: 1fr;
+  }
+
+  .help-support-faq-answer p {
+    min-height: 0;
+    margin: 0;
+    padding: 0 17px;
+    overflow: hidden;
+    color: #9ca3af;
+    font-size: 10px;
+    line-height: 1.7;
+    transition: padding 0.35s ease;
+  }
+
+  .help-support-faq-open .help-support-faq-answer p {
+    padding: 0 17px 17px;
+  }
+
+  /* =====================================================
+     NO RESULTS
+  ===================================================== */
+
+  .help-support-no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    gap: 9px;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    background: #111827;
+    color: #6b7280;
+  }
+
+  .help-support-no-results p {
+    margin: 0;
+    font-size: 11px;
+  }
+
+  /* =====================================================
+     CONTACT
+  ===================================================== */
+
+  .help-support-contact {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 23px;
+    border: 1px solid rgba(124, 58, 237, 0.35);
+    border-radius: 15px;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(124, 58, 237, 0.1),
+        rgba(17, 24, 39, 0.95)
+      );
+  }
+
+  .help-support-contact-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    background: rgba(124, 58, 237, 0.15);
+    color: #a78bfa;
+  }
+
+  .help-support-contact-content {
+    flex: 1;
+  }
+
+  .help-support-contact-content span {
+    color: #8b5cf6;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .help-support-contact-content h2 {
+    margin: 4px 0 5px;
+    color: #f3f4f6;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .help-support-contact-content p {
+    max-width: 570px;
+    margin: 0;
+    color: #6b7280;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .help-support-contact-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .help-support-contact-button,
+  .help-support-email-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  .help-support-contact-button {
+    border: 1px solid #7c3aed;
+    background: #7c3aed;
+    color: white;
+  }
+
+  .help-support-contact-button:hover {
+    background: #8b5cf6;
+    border-color: #8b5cf6;
+  }
+
+  .help-support-email-button {
+    border: 1px solid #374151;
+    background: #111827;
+    color: #d1d5db;
+  }
+
+  .help-support-email-button:hover {
+    border-color: #4b5563;
+    background: #1f2937;
+    color: white;
+  }
+
+  .help-support-contact-button:active,
+  .help-support-email-button:active {
+    transform: scale(0.96);
+  }
+
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media (max-width: 1024px) {
+    .help-support-page {
+      padding-left: 4%;
+      padding-right: 4%;
+    }
+
+    .help-support-issues {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .help-support-contact {
+      align-items: flex-start;
+    }
+
+    .help-support-contact-actions {
+      flex-direction: column;
+    }
+
+    .help-support-contact-button,
+    .help-support-email-button {
+      width: 140px;
+    }
+  }
+
+  /* =====================================================
+     MOBILE
+  ===================================================== */
+
+  @media (max-width: 768px) {
+    .help-support-page {
+      padding: 25px 18px 50px;
+    }
+
+    .help-support-hero {
+      padding: 15px 0 40px;
+    }
+
+    .help-support-title {
+      font-size: 36px;
+    }
+
+    .help-support-description {
+      font-size: 12px;
+    }
+
+    .help-support-categories {
+      grid-template-columns: 1fr;
+    }
+
+    .help-support-issues {
+      grid-template-columns: 1fr;
+    }
+
+    .help-support-contact {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .help-support-contact-content {
+      width: 100%;
+    }
+
+    .help-support-contact-actions {
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .help-support-contact-button,
+    .help-support-email-button {
+      flex: 1;
+      width: auto;
+    }
+  }
+
+  /* =====================================================
+     SMALL MOBILE
+  ===================================================== */
+
+  @media (max-width: 480px) {
+    .help-support-page {
+      padding: 22px 12px 40px;
+    }
+
+    .help-support-title {
+      font-size: 31px;
+    }
+
+    .help-support-description {
+      font-size: 11px;
+    }
+
+    .help-support-search {
+      height: 48px;
+      margin-top: 22px;
+      padding: 0 14px;
+    }
+
+    .help-support-section {
+      margin-bottom: 35px;
+    }
+
+    .help-support-section-heading h2 {
+      font-size: 19px;
+    }
+
+    .help-support-category {
+      min-height: 78px;
+      padding: 13px;
+    }
+
+    .help-support-category-icon {
+      width: 38px;
+      height: 38px;
+    }
+
+    .help-support-category-content h3 {
+      font-size: 11px;
+    }
+
+    .help-support-category-content p {
+      font-size: 9px;
+    }
+
+    .help-support-faq-question {
+      padding: 14px;
+      font-size: 10px;
+    }
+
+    .help-support-faq-answer p {
+      font-size: 9px;
+    }
+
+    .help-support-contact-actions {
+      flex-direction: column;
+    }
+
+    .help-support-contact-button,
+    .help-support-email-button {
+      width: 100%;
+      flex: none;
+    }
+  }
+}
+
+
+/* =====================================================
+   SUBSCRIPTION PAGE
+===================================================== */
+
+@layer components {
+  .subscription-page {
+    position: relative;
+    min-height: 100vh;
+    padding: 45px 5% 70px;
+    overflow: hidden;
+    background: #030712;
+    color: #f3f4f6;
+  }
+
+  /* =====================================================
+     HERO
+  ===================================================== */
+
+  .subscription-hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 25px 20px 45px;
+  }
+
+  .subscription-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+  }
+
+  .subscription-hero-glow {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(124, 58, 237, 0.13);
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .subscription-hero-glow-one {
+    top: -100px;
+    left: 15%;
+  }
+
+  .subscription-hero-glow-two {
+    right: 10%;
+    top: 0;
+    background: rgba(139, 92, 246, 0.08);
+  }
+
+  .subscription-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 13px;
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.08);
+    color: #a78bfa;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .subscription-title {
+    margin: 18px 0 12px;
+    color: #f9fafb;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+  }
+
+  .subscription-title span {
+    display: block;
+    color: #8b5cf6;
+  }
+
+  .subscription-description {
+    max-width: 620px;
+    margin: 0 auto;
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* =====================================================
+     BILLING TOGGLE
+  ===================================================== */
+
+  .subscription-billing {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 28px;
+    padding: 4px;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    background: #111827;
+  }
+
+  .subscription-billing-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 105px;
+    justify-content: center;
+    padding: 9px 14px;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: #9ca3af;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  .subscription-billing-btn:hover {
+    color: #f3f4f6;
+  }
+
+  .subscription-billing-btn.active {
+    background: #7c3aed;
+    color: white;
+    box-shadow: 0 5px 20px rgba(124, 58, 237, 0.25);
+  }
+
+  .subscription-billing-btn:active {
+    transform: scale(0.97);
+  }
+
+  .subscription-save {
+    padding: 3px 6px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ddd6fe;
+    font-size: 9px;
+    font-weight: 700;
+  }
+
+  /* =====================================================
+     PLANS
+  ===================================================== */
+
+  .subscription-plans {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .subscription-card {
+    position: relative;
+    padding: 26px 23px;
+    border: 1px solid #1f2937;
+    border-radius: 16px;
+    background:
+      linear-gradient(
+        145deg,
+        rgba(17, 24, 39, 0.98),
+        rgba(3, 7, 18, 0.98)
+      );
+    overflow: hidden;
+    transition:
+      transform 0.4s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+
+  .subscription-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 58, 237, 0.5),
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .subscription-card:hover {
+    transform: translateY(-8px);
+    border-color: #374151;
+    box-shadow:
+      0 25px 60px rgba(0, 0, 0, 0.4),
+      0 0 35px rgba(124, 58, 237, 0.08);
+  }
+
+  .subscription-card:hover::before {
+    opacity: 1;
+  }
+
+  /* =====================================================
+     POPULAR PLAN
+  ===================================================== */
+
+  .subscription-card-popular {
+    border-color: rgba(124, 58, 237, 0.65);
+    box-shadow:
+      0 15px 50px rgba(124, 58, 237, 0.12),
+      inset 0 0 30px rgba(124, 58, 237, 0.025);
+  }
+
+  .subscription-card-popular:hover {
+    border-color: #8b5cf6;
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.45),
+      0 0 40px rgba(124, 58, 237, 0.14);
+  }
+
+  .subscription-popular-badge {
+    position: absolute;
+    top: 0;
+    right: 22px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 10px;
+    border-radius: 0 0 7px 7px;
+    background: #7c3aed;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  /* =====================================================
+     CARD TOP
+  ===================================================== */
+
+  .subscription-card-top {
+    min-height: 142px;
+  }
+
+  .subscription-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 17px;
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    border-radius: 11px;
+    background: rgba(124, 58, 237, 0.1);
+    color: #a78bfa;
+    transition:
+      transform 0.3s ease,
+      background 0.3s ease;
+  }
+
+  .subscription-card:hover .subscription-icon {
+    transform: rotate(-5deg) scale(1.05);
+    background: rgba(124, 58, 237, 0.18);
+  }
+
+  .subscription-plan-name {
+    margin: 0 0 6px;
+    color: #f9fafb;
+    font-size: 21px;
+    font-weight: 700;
+  }
+
+  .subscription-plan-description {
+    margin: 0;
+    color: #6b7280;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* =====================================================
+     PRICE
+  ===================================================== */
+
+  .subscription-price {
+    display: flex;
+    align-items: baseline;
+    margin: 18px 0;
+  }
+
+  .subscription-currency {
+    margin-right: 3px;
+    color: #d1d5db;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .subscription-price-value {
+    color: white;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .subscription-price-period {
+    margin-left: 5px;
+    color: #6b7280;
+    font-size: 10px;
+  }
+
+  /* =====================================================
+     PLAN BUTTON
+  ===================================================== */
+
+  .subscription-plan-button {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 15px;
+    border: 1px solid #374151;
+    border-radius: 9px;
+    background: #111827;
+    color: #e5e7eb;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.2s ease;
+  }
+
+  .subscription-plan-button:hover {
+    border-color: #4b5563;
+    background: #1f2937;
+    color: white;
+  }
+
+  .subscription-plan-button:active {
+    transform: scale(0.97);
+  }
+
+  .subscription-plan-button-primary {
+    border-color: #7c3aed;
+    background: #7c3aed;
+    color: white;
+    box-shadow: 0 8px 25px rgba(124, 58, 237, 0.2);
+  }
+
+  .subscription-plan-button-primary:hover {
+    border-color: #8b5cf6;
+    background: #8b5cf6;
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+  }
+
+  /* =====================================================
+     FEATURES
+  ===================================================== */
+
+  .subscription-divider {
+    height: 1px;
+    margin: 22px 0 18px;
+    background: #1f2937;
+  }
+
+  .subscription-features-title {
+    margin: 0 0 13px;
+    color: #d1d5db;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .subscription-features {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .subscription-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: #d1d5db;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .subscription-check,
+  .subscription-cross {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+  }
+
+  .subscription-check {
+    background: rgba(124, 58, 237, 0.14);
+    color: #a78bfa;
+  }
+
+  .subscription-cross {
+    background: rgba(107, 114, 128, 0.08);
+    color: #4b5563;
+  }
+
+  .subscription-feature-disabled {
+    color: #4b5563 !important;
+  }
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+
+  .subscription-footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    max-width: 700px;
+    margin: 35px auto 0;
+    padding: 17px 20px;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    background: rgba(17, 24, 39, 0.55);
+  }
+
+  .subscription-footer-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: rgba(124, 58, 237, 0.12);
+    color: #a78bfa;
+  }
+
+  .subscription-footer h3 {
+    margin: 0 0 3px;
+    color: #f3f4f6;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .subscription-footer p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media (max-width: 1024px) {
+    .subscription-page {
+      padding: 40px 4% 60px;
+    }
+
+    .subscription-plans {
+      gap: 15px;
+    }
+
+    .subscription-card {
+      padding: 23px 19px;
+    }
+
+    .subscription-plan-name {
+      font-size: 19px;
+    }
+
+    .subscription-price-value {
+      font-size: 34px;
+    }
+  }
+
+  /* =====================================================
+     MOBILE
+  ===================================================== */
+
+  @media (max-width: 768px) {
+    .subscription-page {
+      padding: 30px 18px 50px;
+    }
+
+    .subscription-hero {
+      padding: 15px 5px 35px;
+    }
+
+    .subscription-title {
+      font-size: 36px;
+      letter-spacing: -1px;
+    }
+
+    .subscription-description {
+      font-size: 12px;
+    }
+
+    .subscription-plans {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 15px;
+    }
+
+    .subscription-card {
+      padding: 23px 20px;
+    }
+
+    .subscription-card-popular {
+      order: -1;
+    }
+
+    .subscription-card-top {
+      min-height: auto;
+    }
+
+    .subscription-icon {
+      width: 42px;
+      height: 42px;
+    }
+
+    .subscription-footer {
+      margin-top: 25px;
+    }
+  }
+
+  /* =====================================================
+     SMALL MOBILE
+  ===================================================== */
+
+  @media (max-width: 480px) {
+    .subscription-page {
+      padding: 25px 12px 40px;
+    }
+
+    .subscription-hero {
+      padding-left: 2px;
+      padding-right: 2px;
+    }
+
+    .subscription-title {
+      font-size: 31px;
+    }
+
+    .subscription-description {
+      font-size: 11px;
+    }
+
+    .subscription-billing {
+      margin-top: 22px;
+    }
+
+    .subscription-billing-btn {
+      min-width: 95px;
+      padding: 8px 10px;
+      font-size: 11px;
+    }
+
+    .subscription-save {
+      display: none;
+    }
+
+    .subscription-card {
+      padding: 20px 17px;
+      border-radius: 13px;
+    }
+
+    .subscription-popular-badge {
+      right: 17px;
+    }
+
+    .subscription-price-value {
+      font-size: 32px;
+    }
+
+    .subscription-features {
+      gap: 10px;
+    }
+
+    .subscription-features li {
+      font-size: 9px;
+    }
+
+    .subscription-footer {
+      padding: 14px;
+    }
+  }
+}
+
+
+/* =====================================================
+   SEARCH PAGE START
+===================================================== */
+
+@layer components {
+
+  /* =====================================================
+     SEARCH RESULTS PAGE
+  ===================================================== */
+
+  .search-results-page {
+    @apply w-full min-h-screen py-8 pb-16;
+  }
+
+
+  /* =====================================================
+     SEARCH RESULTS HEADER
+  ===================================================== */
+
+  .search-results-header {
+    @apply w-full mb-8;
+  }
+
+  .search-results-label {
+    @apply inline-flex items-center gap-1.5 mb-2
+      text-[10px] font-bold uppercase tracking-[1px]
+      text-violet-400;
+  }
+
+  .search-results-title {
+    @apply m-0 text-[30px] font-extrabold leading-tight
+      tracking-[-0.5px] text-gray-50;
+  }
+
+  .search-results-description {
+    @apply max-w-2xl mt-2 mb-0
+      text-[11px] leading-relaxed text-gray-500;
+  }
+
+
+  /* =====================================================
+     SEARCH RESULTS SECTION
+  ===================================================== */
+
+  .search-results-section {
+    @apply w-full mb-11;
+  }
+
+  .search-results-section-header {
+    @apply flex items-center justify-between
+      w-full mb-[18px];
+  }
+
+  .search-results-heading {
+    @apply flex items-center gap-2;
+  }
+
+  .search-results-heading svg {
+    @apply text-violet-400;
+  }
+
+  .search-results-heading h2 {
+    @apply m-0 text-[18px] font-bold
+      leading-tight text-gray-100;
+  }
+
+  .search-results-section-count {
+    @apply inline-flex items-center justify-center
+      min-w-7 h-[25px] px-2
+      rounded-[7px]
+      border border-gray-800
+      bg-gray-900
+      text-[9px] font-semibold
+      text-gray-400;
+  }
+
+
+  /* =====================================================
+     SEARCH RESULTS LIST
+  ===================================================== */
+
+  .search-results-list {
+    @apply flex flex-wrap items-start
+      w-full gap-5;
+  }
+
+  .search-results-card {
+    @apply min-w-0;
+    flex: 0 0 calc(25% - 15px);
+  }
+
+
+  /* =====================================================
+     SEARCH EMPTY STATE
+  ===================================================== */
+
+  .search-results-empty {
+    @apply flex flex-col items-center justify-center
+      w-full min-h-[280px]
+      mt-4 px-6 py-9
+      rounded-[14px]
+      border border-gray-800
+      bg-gray-900
+      text-center;
+  }
+
+  .search-results-empty-icon {
+    @apply flex items-center justify-center
+      w-[58px] h-[58px]
+      mb-4
+      rounded-[14px]
+      border border-violet-500/20
+      bg-violet-500/10
+      text-violet-400;
+  }
+
+  .search-results-empty h2 {
+    @apply m-0 mb-2
+      text-[18px] font-bold
+      text-gray-100;
+  }
+
+  .search-results-empty p {
+    @apply max-w-md
+      m-0 mb-1
+      text-[11px] leading-relaxed
+      text-gray-400;
+  }
+
+  .search-results-empty > span {
+    @apply text-[9px] text-gray-600;
+  }
+
+
+  /* =====================================================
+     LARGE DESKTOP
+  ===================================================== */
+
+  @media (max-width: 1200px) {
+
+    .search-results-card {
+      flex: 0 0 calc(25% - 15px);
+    }
+
+  }
+
+
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media (max-width: 1024px) {
+
+    .search-results-page {
+      @apply py-7 pb-14;
+    }
+
+    .search-results-header {
+      @apply mb-7;
+    }
+
+    .search-results-title {
+      @apply text-[27px];
+    }
+
+    .search-results-section {
+      @apply mb-10;
+    }
+
+    .search-results-list {
+      @apply gap-4;
+    }
+
+    .search-results-card {
+      flex: 0 0 calc(33.333% - 10.67px);
+    }
+
+  }
+
+
+  /* =====================================================
+     MOBILE
+  ===================================================== */
+
+  @media (max-width: 768px) {
+
+    .search-results-page {
+      @apply py-6 pb-12;
+    }
+
+    .search-results-header {
+      @apply mb-7;
+    }
+
+    .search-results-label {
+      @apply text-[9px] tracking-[0.8px];
+    }
+
+    .search-results-title {
+      @apply text-2xl tracking-[-0.3px];
+    }
+
+    .search-results-description {
+      @apply text-[10px];
+    }
+
+    .search-results-section {
+      @apply mb-9;
+    }
+
+    .search-results-section-header {
+      @apply mb-[15px];
+    }
+
+    .search-results-heading {
+      @apply gap-[7px];
+    }
+
+    .search-results-heading h2 {
+      @apply text-base;
+    }
+
+    .search-results-section-count {
+      @apply min-w-[27px] h-6 text-[9px];
+    }
+
+    .search-results-list {
+      @apply gap-3.5;
+    }
+
+    .search-results-card {
+      flex: 0 0 calc(50% - 7px);
+    }
+
+    .search-results-empty {
+      @apply min-h-[240px] px-5 py-7;
+    }
+
+  }
+
+
+  /* =====================================================
+     SMALL MOBILE
+  ===================================================== */
+
+  @media (max-width: 480px) {
+
+    .search-results-page {
+      @apply py-5 pb-10;
+    }
+
+    .search-results-header {
+      @apply mb-6;
+    }
+
+    .search-results-label {
+      @apply text-[8px] tracking-[0.7px];
+    }
+
+    .search-results-title {
+      @apply text-[21px];
+    }
+
+    .search-results-description {
+      @apply text-[9px];
+    }
+
+    .search-results-section {
+      @apply mb-8;
+    }
+
+    .search-results-section-header {
+      @apply mb-3;
+    }
+
+    .search-results-heading {
+      @apply gap-1.5;
+    }
+
+    .search-results-heading h2 {
+      @apply text-[15px];
+    }
+
+    .search-results-section-count {
+      @apply min-w-[25px] h-[23px]
+        px-[7px]
+        text-[8px];
+    }
+
+    .search-results-list {
+      @apply gap-3;
+    }
+
+    .search-results-card {
+      flex: 0 0 100%;
+    }
+
+    .search-results-empty {
+      @apply min-h-[210px]
+        mt-2
+        px-4 py-6
+        rounded-xl;
+    }
+
+    .search-results-empty-icon {
+      @apply w-[50px] h-[50px]
+        mb-3.5
+        rounded-xl;
+    }
+
+    .search-results-empty h2 {
+      @apply text-base;
+    }
+
+    .search-results-empty p {
+      @apply text-[10px];
+    }
+
+    .search-results-empty > span {
+      @apply text-[9px];
+    }
+
+  }
+
+}
+
+
+/* =====================================================
+   SEARCH PAGE END
+===================================================== */

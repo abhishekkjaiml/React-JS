@@ -8,13 +8,13 @@ const AllMoviesPage = () => {
 
   const { pathname } = useLocation();
 
-  useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
-    }, [pathname]);
+  // useEffect(() => {
+  //     window.scrollTo({
+  //       top: 0,
+  //       left: 0,
+  //       behavior: "smooth",
+  //     });
+  //   }, [pathname]);
 
   return (
     <section className="flex flex-wrap gap-5 mt-5">

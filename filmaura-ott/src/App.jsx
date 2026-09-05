@@ -26,6 +26,11 @@ import StudiosTvShowsPage from "./pages/TvShows/StudiosTvShowsPage";
 import StreamMovies from "./pages/StreamMovies";
 import StreamTvShow from "./pages/StreamTvShow";
 import TvShowDetails from "./pages/TvShowDetails";
+import WatchlistPage from "./pages/WatchlistPage";
+import R_RatedMoviesPage from "./pages/Movies/R_RatedMoviesPage";
+import PG_RatedMoviesPage from "./pages/Movies/PG_RatedMoviesPage";
+import SubscriptionPage from "./pages/SubscriptionPage";
+import HelpSupportPage from "./pages/HelpSupportPage";
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -65,6 +70,8 @@ const App = () => {
               <Route path="upcoming" element={<UpcomingMoviesPage />} />
               <Route path="studios" element={<StudiosPage />} />
             </Route>
+            <Route path="movies/r_rated" element={<R_RatedMoviesPage />} />
+            <Route path="movies/pg_rated" element={<PG_RatedMoviesPage />} />
 
             <Route path="/shows" element={<TvShowPage />}>
               <Route path="all_shows" element={<AllTvShowsPage />} />
@@ -79,6 +86,9 @@ const App = () => {
             <Route path="movie/watch/:id" element={<StreamMovies />} />
             <Route path="show/:id" element={<TvShowDetails />} />
             <Route path="show/watch/:id" element={<TvShowDetails />} />
+            <Route path="/watchlist" element={<WatchlistPage />} />
+            <Route path="/help" element={<HelpSupportPage />} />
+            <Route path="/plans" element={<SubscriptionPage />} />
           </Routes>
         </main>
 

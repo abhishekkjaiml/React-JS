@@ -1,7 +1,7 @@
 import { Check, Play, Plus, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useTvSeriesWatchlist } from "../context/tvSeries-Watchlist-context";
-import { findMyTvSeriesInWatchlist } from "../utility/findInMyWishlist";
+import { findMyTvSeriesInWatchlist } from "../utility/findInMyWatchlist";
 
 const TVSerirsPageCard = ({ allTVSeries }) => {
   const navigate = useNavigate();
@@ -20,14 +20,14 @@ const TVSerirsPageCard = ({ allTVSeries }) => {
   const OnAddToMyWatchlistClick = (series) => {
     if (!isTvSeriesInMyWatchlist) {
       tvShowWatchlistDispatch({
-        type: "TV_SERIES_ADD_TO_WISHLIST",
+        type: "TV_SERIES_ADD_TO_WATCHLIST",
         payload: {
           series,
         },
       });
     } else {
       tvShowWatchlistDispatch({
-        type: "TV_SERIES_REMOVE_FROM_WISHLIST",
+        type: "TV_SERIES_REMOVE_FROM_WATCHLIST",
         payload: {
           id: allTVSeries._id,
         },

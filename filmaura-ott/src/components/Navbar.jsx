@@ -1,4 +1,10 @@
-import { Bell, ChevronDown, User } from "lucide-react";
+/* Navbar.jsx Page Start */
+
+import {
+  Bell,
+  ChevronDown,
+  User,
+} from "lucide-react";
 
 import SearchBar from "./SearchBar";
 
@@ -18,7 +24,9 @@ const Navbar = () => {
       ================================================= */}
 
       <div className="navbar-actions">
-        {/* ==================== NOTIFICATION ==================== */}
+        {/* =================================================
+            NOTIFICATION
+        ================================================= */}
 
         <button
           type="button"
@@ -30,16 +38,26 @@ const Navbar = () => {
           <span className="notification-dot" />
         </button>
 
-        {/* ==================== PROFILE ==================== */}
+        {/* =================================================
+            PROFILE
+        ================================================= */}
 
-        <button type="button" className="navbar-profile">
+        <button
+          type="button"
+          className="navbar-profile"
+        >
           <div className="navbar-avatar">
             <User size={18} />
           </div>
 
-          <span className="navbar-name">Abhishek</span>
+          <span className="navbar-name">
+            Abhishek
+          </span>
 
-          <ChevronDown size={17} className="navbar-chevron" />
+          <ChevronDown
+            size={17}
+            className="navbar-chevron"
+          />
         </button>
       </div>
     </header>
@@ -47,3 +65,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+/* Navbar.jsx Page End */

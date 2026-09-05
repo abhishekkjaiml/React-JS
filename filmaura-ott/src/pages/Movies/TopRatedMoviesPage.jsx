@@ -1,9 +1,15 @@
-import React from 'react'
+/* TopRatedMoviesPage.jsx Page Start */
+
+import AllRatedMoviesCard from "../../components/AllRatedMoviesCard";
 
 const TopRatedMoviesPage = () => {
   return (
-    <div>TopRatedMoviesPage</div>
-  )
-}
+    <main className="top-rated-movies-page">
+      <AllRatedMoviesCard />
+    </main>
+  );
+};
 
-export default TopRatedMoviesPage
+export default TopRatedMoviesPage;
+
+/* TopRatedMoviesPage.jsx Page End */

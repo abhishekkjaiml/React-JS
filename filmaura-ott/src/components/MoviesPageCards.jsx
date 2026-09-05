@@ -1,7 +1,7 @@
 import { Check, Play, Plus, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useMovieWatchlist } from "../context/movie-watchlist-context";
-import { findMyMoviesInWishlist } from "../utility/findInMyWishlist";
+import { findMyMoviesInWatchlist } from "../utility/findInMyWatchlist";
 
 const MoviesPageCards = ({ moviesPageItem }) => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const MoviesPageCards = ({ moviesPageItem }) => {
 
   const { movieWatchlist, movieWatchlistDispatch } = useMovieWatchlist();
 
-  const isMoviesInWishlist = findMyMoviesInWishlist(
+  const isMoviesInWatchlist = findMyMoviesInWatchlist(
     movieWatchlist,
     moviesPageItem._id,
   );
@@ -22,15 +22,15 @@ const MoviesPageCards = ({ moviesPageItem }) => {
   };
 
   const OnAddToMyWatchlistClick = (movie) => {
-    !isMoviesInWishlist
+    !isMoviesInWatchlist
       ? movieWatchlistDispatch({
-          type: "MOVIES_ADD_TO_WISHLIST",
+          type: "MOVIES_ADD_TO_WATCHLIST",
           payload: {
             movie,
           },
         })
       : movieWatchlistDispatch({
-          type: "MOVIES_REMOVE_FROM_WISHLIST",
+          type: "MOVIES_REMOVE_FROM_WATCHLIST",
           payload: {
             id: moviesPageItem._id,
           },
@@ -115,7 +115,7 @@ const MoviesPageCards = ({ moviesPageItem }) => {
 
             <span>{moviesPageItem.Runtime || "N/A"}</span>
 
-            <span>•</span>
+            {/* <span>•</span> */}
 
             {/* <span>
               {moviesPageItem.Language || "N/A"}
@@ -132,8 +132,19 @@ const MoviesPageCards = ({ moviesPageItem }) => {
 
           {/* Genre */}
 
+          {/* <p className="movies-card-genre">
+            {moviesPageItem.Genre `,`  || "Genre unavailable"}
+          </p> */}
+
           <p className="movies-card-genre">
-            {moviesPageItem.Genre || "Genre unavailable"}
+            {moviesPageItem.Genre?.length > 0 ? moviesPageItem.Genre?.map(
+              (genre, index) => (
+                <span key={genre}>
+                  {index > 0 && " • "}
+                  {genre}
+                </span>
+              )
+            ): "Genre unavailable"}
           </p>
 
           {/* Plot */}
@@ -168,7 +179,7 @@ const MoviesPageCards = ({ moviesPageItem }) => {
               aria-label="Add to My List"
               onClick={() => OnAddToMyWatchlistClick(moviesPageItem)}
             >
-              {!isMoviesInWishlist ? <Plus size={20} /> : <Check size={20} />}
+              {!isMoviesInWatchlist ? <Plus size={20} /> : <Check size={20} />}
             </button>
           </div>
         </div>

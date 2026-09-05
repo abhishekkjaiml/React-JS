@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import allMovies from "../db/Marvel/newMovies.json";
+import allMovies from "../db/Movies/all_movies.json"
 import trendingMovies from "../db/HomeTrandingMovies.json";
 
 import { useMovieWatchlist } from "../context/movie-watchlist-context";
-import { findMyMoviesInWishlist } from "../utility/findInMyWishlist";
+import { findMyMoviesInWatchlist } from "../utility/findInMyWatchlist";
 
 import { Play, Plus, Star, ArrowLeft, Check } from "lucide-react";
 
@@ -78,22 +78,22 @@ const MovieDetails = () => {
      WATCHLIST
   ===================================================== */
 
-  const isMoviesInWishlist = findMyMoviesInWishlist(
+  const isMoviesInWatchlist = findMyMoviesInWatchlist(
     movieWatchlist,
     moviesData._id,
   );
 
   const OnAddToMyWatchlistClick = (movie) => {
-    if (!isMoviesInWishlist) {
+    if (!isMoviesInWatchlist) {
       movieWatchlistDispatch({
-        type: "MOVIES_ADD_TO_WISHLIST",
+        type: "MOVIES_ADD_TO_WATCHLIST",
         payload: {
           movie,
         },
       });
     } else {
       movieWatchlistDispatch({
-        type: "MOVIES_REMOVE_FROM_WISHLIST",
+        type: "MOVIES_REMOVE_FROM_WATCHLIST",
         payload: {
           id: moviesData._id,
         },
@@ -200,13 +200,13 @@ const MovieDetails = () => {
 
             {/* Genre */}
 
-            <div className="movie-details-genre">
+            {/* <div className="movie-details-genre">
               {moviesData.Genre.split(",").map((genre, index) => (
                 <span key={`${genre}-${index}`}>{genre.trim()}</span>
               ))}
-            </div>
+            </div> */}
 
-            {/* <div className="movie-details-genre">
+            <div className="movie-details-genre">
               {
                 moviesData.Genre.map((genre, index) => (
                   <span key={genre || index}>
@@ -214,7 +214,7 @@ const MovieDetails = () => {
                   </span>
                 ))
               }
-            </div> */}
+            </div>
 
             {/* =================================================
                 ACTION BUTTONS
@@ -240,14 +240,14 @@ const MovieDetails = () => {
               <button
                 type="button"
                 className={`movie-details-list ${
-                  isMoviesInWishlist ? "movie-details-list-active" : ""
+                  isMoviesInWatchlist ? "movie-details-list-active" : ""
                 }`}
                 onClick={() => OnAddToMyWatchlistClick(moviesData)}
                 aria-label={
-                  isMoviesInWishlist ? "Remove from My List" : "Add to My List"
+                  isMoviesInWatchlist ? "Remove from My List" : "Add to My List"
                 }
               >
-                {isMoviesInWishlist ? <Check size={21} /> : <Plus size={21} />}
+                {isMoviesInWatchlist ? <Check size={21} /> : <Plus size={21} />}
               </button>
             </div>
           </div>

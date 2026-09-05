@@ -1,48 +1,58 @@
-import { Search, X } from "lucide-react";
+/* SearchBar.jsx Page Start */
 
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Search, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
-  const [search, setSearch] = useState("");
+
+  const [searchValue, setSearchValue] = useState("");
+
 
   /* =====================================================
      CLEAR SEARCH
   ===================================================== */
 
-  const clearSearch = () => {
-    setSearch("");
+  const handleClear = () => {
+    setSearchValue("");
+
+    if (window.location.pathname === "/search") {
+      navigate("/search");
+    }
   };
 
   return (
-    <div className="search-bar">
-      {/* ==================== SEARCH ICON ==================== */}
-
-      <Search size={19} className="search-icon" />
-
-      {/* ==================== INPUT ==================== */}
+    <form
+      className="search-bar"
+    >
+      <Search
+        size={18}
+        className="search-icon"
+      />
 
       <input
         type="text"
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
+        value={searchValue}
+        onChange={(event) =>
+          setSearchValue(event.target.value)
+        }
         placeholder="Search movies, shows and more..."
         className="search-input"
       />
 
-      {/* ==================== CLEAR ==================== */}
-
-      {search.length > 0 && (
+      {searchValue && (
         <button
           type="button"
           className="search-clear"
-          onClick={clearSearch}
-          aria-label="Clear search"
+          onClick={handleClear}
         >
           <X size={16} />
         </button>
       )}
-    </div>
+    </form>
   );
 };
 
 export default SearchBar;
+
+/* SearchBar.jsx Page End */

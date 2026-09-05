@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import allMovies from "../db/Marvel/newMovies.json";
+import allMovies from "../db/Movies/all_movies.json";
 import trendingMovies from "../db/HomeTrandingMovies.json";
 
 import {

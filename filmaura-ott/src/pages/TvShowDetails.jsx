@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import allSeries from "../db/Marvel/Series/moon_knight.json";
 import { useTvSeriesWatchlist } from "../context/tvSeries-Watchlist-context";
 
-import { findMyTvSeriesInWatchlist } from "../utility/findInMyWishlist";
+import { findMyTvSeriesInWatchlist } from "../utility/findInMyWatchlist";
 
 import { Play, Plus, Star, ArrowLeft, Check, ChevronRight } from "lucide-react";
 
@@ -12,13 +12,13 @@ const TvShowDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  }, [id]);
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  // }, [id]);
 
   const { tvShowWatchlist, tvShowWatchlistDispatch } = useTvSeriesWatchlist();
 
@@ -92,14 +92,14 @@ const TvShowDetails = () => {
   const handleWatchlist = () => {
     if (!isTvSeriesInMyWatchlist) {
       tvShowWatchlistDispatch({
-        type: "TV_SERIES_ADD_TO_WISHLIST",
+        type: "TV_SERIES_ADD_TO_WATCHLIST",
         payload: {
           series: tvShowData,
         },
       });
     } else {
       tvShowWatchlistDispatch({
-        type: "TV_SERIES_REMOVE_FROM_WISHLIST",
+        type: "TV_SERIES_REMOVE_FROM_WATCHLIST",
         payload: {
           id: tvShowData._id,
         },
@@ -298,7 +298,7 @@ const TvShowDetails = () => {
                 episode.EpisodeName || `Episode ${episodeNumber}`;
 
               const episodePoster =
-                episode.EpisodePoster || episode.Thumbnail || tvShowData.Poster;
+  episode.EpisodePoster?.[0] || tvShowData.Poster?.[0];
 
               return (
                 <article

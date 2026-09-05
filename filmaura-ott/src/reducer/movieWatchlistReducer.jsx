@@ -1,13 +1,13 @@
-const movieWishlistReducer = (state, { type, payload }) => {
+const movieWatchlistReducer = (state, { type, payload }) => {
     switch(type){
-        case 'MOVIES_ADD_TO_WISHLIST':
+        case 'MOVIES_ADD_TO_WATCHLIST':
             return{
                 ...state,
                 // movieWatchlist: [...state.movieWatchlist, payload.movieWatchlist]
                 movieWatchlist: [...state.movieWatchlist, payload.movie]
             }
 
-        case 'MOVIES_REMOVE_FROM_WISHLIST':
+        case 'MOVIES_REMOVE_FROM_WATCHLIST':
             return{
                 ...state,
                 movieWatchlist:state.movieWatchlist.filter((movies) => movies._id !== payload.id)
@@ -18,4 +18,4 @@ const movieWishlistReducer = (state, { type, payload }) => {
     }
 }
 
-export default movieWishlistReducer
+export default movieWatchlistReducer

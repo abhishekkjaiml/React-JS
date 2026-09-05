@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import HomeCarosalMovie from '../db/movieCarousel.json'
 import TrandingMovies from '../db/HomeTrandingMovies.json'
-import allMovies from '../db/Marvel/newMovies.json'
+import allMovies from '../db/Movies/all_movies.json'
 import allStudios from '../db/allStudios.json'
 import allSeries from '../db/Marvel/Series/moon_knight.json'
 

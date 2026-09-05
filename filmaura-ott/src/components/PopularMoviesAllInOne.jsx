@@ -4,12 +4,11 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { useMovies } from "../../context/movie-context";
-import MoviesPageCards from "../../components/MoviesPageCards";
+import { useMovies } from "../context/movie-context";
+import MoviesPageCards from "./MoviesPageCards";
 
 const PopularMoviesAllInOne = () => {
   const navigate = useNavigate();
-
   const { getallMovies } = useMovies();
 
   // =====================================================
@@ -24,46 +23,36 @@ const PopularMoviesAllInOne = () => {
   const transformersSliderRef = useRef(null);
   const menInBlackSliderRef = useRef(null);
 
-
   // =====================================================
   // Movie Collections
   // =====================================================
 
   const WizardingWorlds =
-    getallMovies?.filter(
-      (movie) => movie.Universe === "Wizarding World"
-    ) || [];
+    getallMovies?.filter((movie) => movie.Universe === "Wizarding World") || [];
 
   const JohnWickUniverse =
-    getallMovies?.filter(
-      (movie) => movie.Universe === "John Wick"
-    ) || [];
+    getallMovies?.filter((movie) => movie.Universe === "John Wick") || [];
 
   const SpiderManUniverse =
     getallMovies?.filter((movie) =>
-      movie.Title?.toLowerCase().includes("spider-man")
+      movie.Title?.toLowerCase().includes("spider-man"),
     ) || [];
 
   const FantasticFourAll =
     getallMovies?.filter((movie) =>
-      movie.Title?.toLowerCase().includes("fantastic four")
+      movie.Title?.toLowerCase().includes("fantastic four"),
     ) || [];
 
   const NextflixMovies =
     getallMovies?.filter((movie) =>
-      movie.StreamingPlatform?.includes("Netflix Originals")
+      movie.StreamingPlatform?.includes("Netflix Originals"),
     ) || [];
 
   const TransformersAllMovies =
-    getallMovies?.filter(
-      (movie) => movie.Universe === "Transformers"
-    ) || [];
+    getallMovies?.filter((movie) => movie.Universe === "Transformers") || [];
 
   const MenInBlackMovie =
-    getallMovies?.filter(
-      (movie) => movie.Universe === "Men in Black"
-    ) || [];
-
+    getallMovies?.filter((movie) => movie.Universe === "Men in Black") || [];
 
   // =====================================================
   // Slider Scroll
@@ -74,31 +63,20 @@ const PopularMoviesAllInOne = () => {
 
     const slider = sliderRef.current;
 
-    const firstCard = slider.querySelector(
-      ".popular-movie-card-item"
-    );
+    const firstCard = slider.querySelector(".popular-movie-card-item");
 
-    const cardWidth =
-      firstCard?.offsetWidth || 240;
+    const cardWidth = firstCard?.offsetWidth || 240;
 
     const gap =
-      window.innerWidth <= 480
-        ? 12
-        : window.innerWidth <= 768
-          ? 15
-          : 18;
+      window.innerWidth <= 480 ? 12 : window.innerWidth <= 768 ? 15 : 18;
 
     const scrollAmount = cardWidth + gap;
 
     slider.scrollBy({
-      left:
-        direction === "left"
-          ? -scrollAmount
-          : scrollAmount,
+      left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
   };
-
 
   // =====================================================
   // Mouse Drag Start
@@ -109,36 +87,14 @@ const PopularMoviesAllInOne = () => {
 
     if (!slider) return;
 
-    /*
-      Do not start drag when clicking a button,
-      link or interactive element inside the card.
-    */
+    slider.isDragging = true;
 
-    const interactiveElement =
-      event.target.closest(
-        "button, a, input, textarea, select"
-      );
+    slider.startX = event.pageX - slider.offsetLeft;
 
-    if (interactiveElement) {
-      slider.isMouseDown = false;
-      slider.isDragging = false;
-      return;
-    }
+    slider.startScrollLeft = slider.scrollLeft;
 
-    slider.isMouseDown = true;
-    slider.isDragging = false;
-
-    slider.startX =
-      event.pageX - slider.offsetLeft;
-
-    slider.startScrollLeft =
-      slider.scrollLeft;
-
-    slider.classList.add(
-      "popular-movies-slider-dragging"
-    );
+    slider.classList.add("popular-movies-slider-dragging");
   };
-
 
   // =====================================================
   // Mouse Drag Move
@@ -147,33 +103,16 @@ const PopularMoviesAllInOne = () => {
   const handleMouseMove = (event, sliderRef) => {
     const slider = sliderRef.current;
 
-    if (!slider?.isMouseDown) return;
-
-    const currentX =
-      event.pageX - slider.offsetLeft;
-
-    const distance =
-      currentX - slider.startX;
-
-    /*
-      Small movement means normal click.
-      Start dragging only after 5px movement.
-    */
-
-    if (Math.abs(distance) < 5) {
-      return;
-    }
-
-    slider.isDragging = true;
+    if (!slider?.isDragging) return;
 
     event.preventDefault();
 
-    const walk = distance * 1.4;
+    const currentX = event.pageX - slider.offsetLeft;
 
-    slider.scrollLeft =
-      slider.startScrollLeft - walk;
+    const walk = (currentX - slider.startX) * 1.4;
+
+    slider.scrollLeft = slider.startScrollLeft - walk;
   };
-
 
   // =====================================================
   // Mouse Drag End
@@ -184,40 +123,10 @@ const PopularMoviesAllInOne = () => {
 
     if (!slider) return;
 
-    slider.isMouseDown = false;
+    slider.isDragging = false;
 
-    slider.classList.remove(
-      "popular-movies-slider-dragging"
-    );
-
-    /*
-      Keep isDragging true for one event cycle
-      so click after drag can be blocked.
-    */
-
-    if (slider.isDragging) {
-      setTimeout(() => {
-        slider.isDragging = false;
-      }, 0);
-    }
+    slider.classList.remove("popular-movies-slider-dragging");
   };
-
-
-  // =====================================================
-  // Prevent Click After Drag
-  // =====================================================
-
-  const handleSliderClick = (event, sliderRef) => {
-    const slider = sliderRef.current;
-
-    if (!slider) return;
-
-    if (slider.isDragging) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  };
-
 
   // =====================================================
   // Reusable Movie Section
@@ -229,172 +138,91 @@ const PopularMoviesAllInOne = () => {
     label,
     description,
     sliderRef,
-    viewAllRoute
+    viewAllRoute,
   ) => {
     return (
       <section className="popular-movies-category">
-
         {/* =====================================================
            Section Header
         ===================================================== */}
 
         <div className="popular-movies-header">
-
           <div className="popular-movies-heading">
+            <span className="popular-movies-label">{label}</span>
 
-            <span className="popular-movies-label">
-              {label}
-            </span>
+            <h2 className="popular-movies-title">{title}</h2>
 
-            <h2 className="popular-movies-title">
-              {title}
-            </h2>
-
-            <p className="popular-movies-description">
-              {description}
-            </p>
-
+            <p className="popular-movies-description">{description}</p>
           </div>
-
 
           {/* =====================================================
              View All + Slider Arrows
           ===================================================== */}
 
           <div className="popular-movies-actions">
-
             <button
               type="button"
               className="popular-movies-view-all"
-              onClick={() =>
-                navigate(viewAllRoute)
-              }
+              onClick={() => navigate(viewAllRoute)}
             >
               View All
             </button>
 
-
             <div className="popular-movies-arrows">
-
               <button
                 type="button"
                 className="popular-movies-arrow"
-                onClick={() =>
-                  handleSliderScroll(
-                    sliderRef,
-                    "left"
-                  )
-                }
+                onClick={() => handleSliderScroll(sliderRef, "left")}
                 aria-label={`Previous ${title}`}
               >
                 <ChevronLeft size={18} />
               </button>
 
-
               <button
                 type="button"
                 className="popular-movies-arrow"
-                onClick={() =>
-                  handleSliderScroll(
-                    sliderRef,
-                    "right"
-                  )
-                }
+                onClick={() => handleSliderScroll(sliderRef, "right")}
                 aria-label={`Next ${title}`}
               >
                 <ChevronRight size={18} />
               </button>
-
             </div>
-
           </div>
-
         </div>
-
 
         {/* =====================================================
            Movies Slider
         ===================================================== */}
 
         {movies.length > 0 ? (
-
           <div
             ref={sliderRef}
             className="popular-movies-slider"
-
-            onMouseDown={(event) =>
-              handleMouseDown(
-                event,
-                sliderRef
-              )
-            }
-
-            onMouseMove={(event) =>
-              handleMouseMove(
-                event,
-                sliderRef
-              )
-            }
-
-            onMouseUp={() =>
-              handleMouseUp(sliderRef)
-            }
-
-            onMouseLeave={() =>
-              handleMouseUp(sliderRef)
-            }
-
-            onClick={(event) =>
-              handleSliderClick(
-                event,
-                sliderRef
-              )
-            }
+            onMouseDown={(event) => handleMouseDown(event, sliderRef)}
+            onMouseMove={(event) => handleMouseMove(event, sliderRef)}
+            onMouseUp={() => handleMouseUp(sliderRef)}
+            onMouseLeave={() => handleMouseUp(sliderRef)}
           >
-
             <div className="popular-movies-slider-track">
-
               {movies.map((moviesPageItem) => (
-
                 <div
                   key={moviesPageItem._id}
                   className="popular-movie-card-item"
                 >
-
-                  <MoviesPageCards
-                    moviesPageItem={
-                      moviesPageItem
-                    }
-                  />
-
+                  <MoviesPageCards moviesPageItem={moviesPageItem} />
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         ) : (
-
-          <div className="popular-movies-empty">
-            No {title} Found
-          </div>
-
+          <div className="popular-movies-empty">No {title} Found</div>
         )}
-
       </section>
     );
   };
 
-
-  // =====================================================
-  // Page
-  // =====================================================
-
   return (
     <section className="popular-movies-all-in-one">
-
       {/* =====================================================
          Wizarding World
       ===================================================== */}
@@ -405,9 +233,8 @@ const PopularMoviesAllInOne = () => {
         "Magical Collection",
         "Explore movies from the magical world of wizards and witches.",
         wizardingSliderRef,
-        "/movies/wizarding-world"
+        "/movies/wizarding-world",
       )}
-
 
       {/* =====================================================
          John Wick
@@ -419,9 +246,8 @@ const PopularMoviesAllInOne = () => {
         "Action Collection",
         "Enter the high-octane world of the legendary assassin.",
         johnWickSliderRef,
-        "/movies/john-wick"
+        "/movies/john-wick",
       )}
-
 
       {/* =====================================================
          Spider-Man
@@ -433,9 +259,8 @@ const PopularMoviesAllInOne = () => {
         "Marvel Collection",
         "Swing through the city with your friendly neighborhood Spider-Man.",
         spiderManSliderRef,
-        "/movies/spider-man"
+        "/movies/spider-man",
       )}
-
 
       {/* =====================================================
          Fantastic Four
@@ -447,9 +272,8 @@ const PopularMoviesAllInOne = () => {
         "Superhero Collection",
         "Discover the adventures of Marvel's first family of superheroes.",
         fantasticFourSliderRef,
-        "/movies/fantastic-four"
+        "/movies/fantastic-four",
       )}
-
 
       {/* =====================================================
          Netflix Originals
@@ -461,9 +285,8 @@ const PopularMoviesAllInOne = () => {
         "Netflix Collection",
         "Discover popular movies from Netflix Originals.",
         netflixSliderRef,
-        "/movies/netflix-originals"
+        "/movies/netflix-originals",
       )}
-
 
       {/* =====================================================
          Transformers
@@ -475,9 +298,8 @@ const PopularMoviesAllInOne = () => {
         "Robotic Collection",
         "Experience the epic battle between Autobots and Decepticons.",
         transformersSliderRef,
-        "/movies/transformers"
+        "/movies/transformers",
       )}
-
 
       {/* =====================================================
          Men in Black
@@ -489,9 +311,8 @@ const PopularMoviesAllInOne = () => {
         "Sci-Fi Collection",
         "Join the agents protecting Earth from extraterrestrial threats.",
         menInBlackSliderRef,
-        "/movies/men-in-black"
+        "/movies/men-in-black",
       )}
-
     </section>
   );
 };
