@@ -5,6 +5,7 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import { useNotes } from "../context/notesContext";
 import NotesCard from "../components/NotesCard";
+import { Forward, SendHorizontal } from "lucide-react";
 
 const HomePage = () => {
   const { notesDispatch, title, text, notes, id } = useNotes();
@@ -70,7 +71,7 @@ const HomePage = () => {
               <SellOutlinedIcon className="cursor-pointer hovertext-violet-600" />
 
               <button onClick={onAddBtnClick} className="border p-1.5 bg-violet-600 rounded text-white  absolute bottom-0.5 right-1 top-0.5 cursor-pointer hover:bg-violet-500 hover:text-violet-100">
-                <AddOutlinedIcon />
+                <Forward />
               </button>
             </div>
           </div>

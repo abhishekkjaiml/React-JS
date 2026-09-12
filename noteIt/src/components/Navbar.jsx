@@ -2,6 +2,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { Bell, Moon, UserRound } from 'lucide-react';
 
 const Navbar = () => {
   return (
@@ -33,7 +34,7 @@ const Navbar = () => {
         <button
           className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center cursor-pointer"
         >
-          <NotificationsNoneOutlinedIcon />
+          <Bell />
         </button>
 
         {/* Theme */}
@@ -41,7 +42,7 @@ const Navbar = () => {
         <button
           className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:bg-violet-600 hover:text-white transition-all duration-300 flex items-center justify-center cursor-pointer"
         >
-          <DarkModeOutlinedIcon />
+          <Moon />
         </button>
 
         {/* Profile */}
@@ -49,7 +50,7 @@ const Navbar = () => {
         <button
           className="w-10 h-10 rounded-full border border-slate-200 bg-white hover:bg-violet-600 hover:text-white flex items-center justify-center cursor-pointer"
         >
-          <AccountCircleOutlinedIcon />
+          <UserRound />
         </button>
 
       </div>

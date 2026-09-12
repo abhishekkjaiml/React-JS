@@ -20,6 +20,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import SingupPage from "./pages/auth/SingupPage";
 
 import ShopLayout from "./components/ShopLayout";
+import ProductDetails from "./components/ProductDetails";
 
 const App = () => {
   return (
@@ -101,6 +102,7 @@ const App = () => {
         <Route path="/auth/login" element={<LoginPage />} />
 
         <Route path="/auth/signup" element={<SingupPage />} />
+        <Route path="/shop/:id" element={<ProductDetails />} />
       </Routes>
 
       <Footer />

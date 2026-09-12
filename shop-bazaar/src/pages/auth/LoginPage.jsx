@@ -1,8 +1,11 @@
 import React from 'react'
+import Login from '../../components/Login'
 
 const LoginPage = () => {
   return (
-    <div>LoginPage</div>
+    <div  className='flex flex-wrap justify-center items-center p-10'>
+      <Login />
+    </div>
   )
 }
 
