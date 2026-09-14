@@ -182,7 +182,7 @@ const ProductDetails = () => {
     <main className="min-h-screen bg-background px-4 py-6 sm:px-6 lg:px-10">
       {" "}
       <div className="mx-auto max-w-7xl">
-        ```
+        
         {/* ================= BREADCRUMB ================= */}
         <div className="mb-7 flex flex-wrap items-center gap-2 text-sm">
           <button

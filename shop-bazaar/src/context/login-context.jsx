@@ -6,7 +6,10 @@ const LoginContext = createContext();
 const initialState = {
   email: "",
   password: "",
-  token: "",
+  token: {
+    access_token: localStorage.getItem('token') || '',
+    refresh_token: '',
+  },
 };
 
 const LoginProvider = ({ children }) => {
