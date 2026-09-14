@@ -5,8 +5,6 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
 
-    console.log(JSON.parse(localStorage.getItem('cart')))
-
     const initialState = {
         cart: JSON.parse(localStorage.getItem('cart')) || [],
     }

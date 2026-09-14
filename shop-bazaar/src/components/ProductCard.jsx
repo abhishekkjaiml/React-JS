@@ -32,12 +32,21 @@ const ProductCard = ({ product }) => {
   };
 
   const onWishlistClick = (product) => {
-    !isProductInWishlist
-      ? wishDispatch({
-          type: "ADD_TO_Wishlist",
-          payload: { product },
-        })
-      : navigate("/wishlist");
+    if (!isProductInWishlist) {
+      localStorage.setItem("wishlist", JSON.stringify([...wishlist, product]));
+      wishDispatch({
+        type: "ADD_TO_Wishlist",
+        payload: { product },
+      });
+    } else {
+      navigate("/wishlist");
+    }
+    // !isProductInWishlist
+    //   ? wishDispatch({
+    //       type: "ADD_TO_Wishlist",
+    //       payload: { product },
+    //     })
+    //   : navigate("/wishlist");
   };
 
   return (
