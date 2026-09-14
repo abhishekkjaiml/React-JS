@@ -19,13 +19,16 @@ const ProductCard = ({ product }) => {
   const isProductInCart = findProductInCart(cart, product.id);
   const isProductInWishlist = findProductInWishlist(wishlist, product.id);
 
-  const onCardClick = (product) => {
-    !isProductInCart
-      ? cartDispatch({
-          type: "ADD_TO_CART",
-          payload: { product },
-        })
-      : navigate("/cart");
+  const onCartClick = (product) => {
+    if (!isProductInCart) {
+      localStorage.setItem("cart", JSON.stringify([...cart, product]));
+      cartDispatch({
+        type: "ADD_TO_CART",
+        payload: { product },
+      });
+    } else {
+      navigate("/cart");
+    }
   };
 
   const onWishlistClick = (product) => {
@@ -39,9 +42,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="group w-50 overflow-hidden rounded-md border border-border bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-
-
-      <div  onClick={() => navigate(`/shop/${product.id}`)} >
+      <div onClick={() => navigate(`/shop/${product.id}`)}>
         {/* Product Image */}
         <div className="relative flex h-55 items-center justify-center bg-background-soft p-4">
           <img
@@ -101,7 +102,7 @@ const ProductCard = ({ product }) => {
 
         {/* Cart */}
         <button
-          onClick={() => onCardClick(product)}
+          onClick={() => onCartClick(product)}
           className="flex h-10 w-full items-center justify-center gap-2 rounded-md bg-primary text-sm font-semibold text-white transition-all duration-200 hover:bg-primary-dark"
         >
           {!isProductInCart ? (

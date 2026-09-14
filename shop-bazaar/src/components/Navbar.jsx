@@ -9,11 +9,15 @@ import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useLogin } from "../context/login-context";
+import { useCart } from "../context/cart-context";
+import { useWishlist } from "../context/wishlist-context";
 
 const Navbar = () => {
   const navigate = useNavigate();
 
   const { token, loginDispatch } = useLogin();
+  const { cart } = useCart()
+  const { wishlist } = useWishlist()
 
   const [isAccountDropDownOpen, setIsAccountDropDownOpen] = useState(false);
 

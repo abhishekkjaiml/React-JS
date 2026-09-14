@@ -5,14 +5,15 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
 
+    console.log(JSON.parse(localStorage.getItem('cart')))
+
     const initialState = {
-        cart: [],
-        wishlist: []
+        cart: JSON.parse(localStorage.getItem('cart')) || [],
     }
 
-    const [{cart, wishlist}, cartDispatch] = useReducer(cartReducer, initialState)
+    const [{cart}, cartDispatch] = useReducer(cartReducer, initialState)
     return(
-        <CartContext.Provider   value={{cart, wishlist, cartDispatch}}>
+        <CartContext.Provider   value={{cart, cartDispatch}}>
             { children }
         </CartContext.Provider>
     )
