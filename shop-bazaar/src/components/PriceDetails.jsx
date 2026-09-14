@@ -92,7 +92,7 @@ const PriceDetails = () => {
               Total Amount
             </p>
 
-            <p className="text-xl font-bold text-primary">
+            <p className="text-xl font-bold text-gray-800">
               ${totalAmount.toFixed(2)}
             </p>
 
@@ -103,7 +103,7 @@ const PriceDetails = () => {
 
           <button
             disabled={cart.length === 0}
-            className="flex h-11 w-full items-center justify-center gap-2 rounded-md bg-primary font-semibold text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-11 w-full items-center justify-center gap-2 rounded-md bg-gray-900 font-semibold text-white transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
             <ShoppingBagOutlinedIcon fontSize="small" />
 

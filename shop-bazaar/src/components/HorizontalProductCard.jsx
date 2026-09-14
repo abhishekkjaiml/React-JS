@@ -4,9 +4,11 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useCart } from "../context/cart-context";
+import { useParams } from "react-router-dom";
 
 const HorizontalProductCard = ({ product }) => {
 
+  const { id } = useParams()
   const { cartDispatch } = useCart()
   const [productQuantity, setProductQuantity] = useState(1);
 
@@ -26,6 +28,10 @@ const HorizontalProductCard = ({ product }) => {
       }
     })
   }
+
+  const onBuyNow = () => {
+    navigate(`shop/buy/${id}`)
+  };
 
   return (
     <div className="group flex w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-background shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
@@ -155,7 +161,8 @@ const HorizontalProductCard = ({ product }) => {
             </button>
 
             <button
-              className="flex h-9 items-center gap-1.5 rounded-md bg-primary px-4 text-sm font-semibold text-white transition hover:bg-primary-dark"
+              onClick={onBuyNow}
+              className="flex h-9 items-center gap-1.5 rounded-md bg-gray-900 px-4 text-sm font-semibold text-white transition hover:bg-gray-700"
             >
               <ShoppingBagOutlinedIcon fontSize="small" />
               Buy Now
