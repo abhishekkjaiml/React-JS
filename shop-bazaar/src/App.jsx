@@ -21,6 +21,7 @@ import SingupPage from "./pages/auth/SingupPage";
 
 import ShopLayout from "./components/ShopLayout";
 import ProductDetails from "./components/ProductDetails";
+import PlaceOrderPage from "./pages/PlaceOrderPage";
 
 const App = () => {
   return (
@@ -103,6 +104,7 @@ const App = () => {
 
         <Route path="/auth/signup" element={<SingupPage />} />
         <Route path="/shop/:id" element={<ProductDetails />} />
+        <Route path="/shop/buy/:id" element={<PlaceOrderPage />} />
       </Routes>
 
       <Footer />

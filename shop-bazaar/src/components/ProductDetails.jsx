@@ -175,7 +175,7 @@ const ProductDetails = () => {
     //   });
     // }
     
-    navigate(`shop/buy/${id}`)
+    navigate(`/shop/buy/${id}`)
   };
 
   return (
