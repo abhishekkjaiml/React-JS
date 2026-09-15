@@ -103,12 +103,35 @@ const ShopPage = () => {
             <ProductCard key={product.id} product={product} />
           ))
         ) : (
-          <div className="flex h-full w-full items-center justify-center  py-[35vh] px-[30vw]">
-            <p className="text-[20px] font-semibold text-text-primary">
-              {products.length === 0
-                ? "Products are loading..."
-                : "Products not found"}
-            </p>
+          <div className="flex h-full w-full items-center justify-center py-[35vh] px-[30vw]">
+            {products.length === 0 ? (
+              <div className="flex flex-col items-center justify-center text-center">
+                {/* ================= LOADING CIRCLE ================= */}
+
+                <div
+                  style={{
+                    width: "50px",
+                    height: "50px",
+                    border: "4px solid #e5e7eb",
+                    borderTop: "4px solid #ef4444",
+                    borderRadius: "50%",
+                    animation: "spin 0.8s linear infinite",
+                  }}
+                />
+
+                <p className="mt-5 text-[18px] font-semibold text-text-primary">
+                  Products are loading...
+                </p>
+
+                <p className="mt-1 text-sm text-text-muted">
+                  Please wait while we load the products.
+                </p>
+              </div>
+            ) : (
+              <p className="text-[20px] font-semibold text-text-primary">
+                Products not found
+              </p>
+            )}
           </div>
         )}
       </div>
@@ -170,6 +193,22 @@ const ShopPage = () => {
           </button>
         </div>
       )}
+
+      {/* ================= LOADING ANIMATION ================= */}
+
+      <style>
+        {`
+          @keyframes spin {
+            from {
+              transform: rotate(0deg);
+            }
+
+            to {
+              transform: rotate(360deg);
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };

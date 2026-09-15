@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -86,7 +87,9 @@ const PlaceOrderPage = () => {
 
   const deliveryCharge = 49;
 
-  const productPrice = orderProduct?.price ? orderProduct.price * quantity : 0;
+  const productPrice = orderProduct?.price
+    ? orderProduct.price * quantity
+    : 0;
 
   const totalAmount = productPrice + deliveryCharge;
 
@@ -136,19 +139,34 @@ const PlaceOrderPage = () => {
           {/* CHECKOUT PROGRESS */}
 
           <div className="mt-6 hidden items-center md:flex">
-            <CheckoutProgress number="1" label="Login" completed />
+            <CheckoutProgress
+              number="1"
+              label="Login"
+              completed
+            />
 
             <ProgressLine completed />
 
-            <CheckoutProgress number="2" label="Delivery" completed />
+            <CheckoutProgress
+              number="2"
+              label="Delivery"
+              completed
+            />
 
             <ProgressLine completed />
 
-            <CheckoutProgress number="3" label="Order Summary" active />
+            <CheckoutProgress
+              number="3"
+              label="Order Summary"
+              active
+            />
 
             <ProgressLine />
 
-            <CheckoutProgress number="4" label="Payment" />
+            <CheckoutProgress
+              number="4"
+              label="Payment"
+            />
           </div>
         </div>
       </header>
@@ -238,9 +256,12 @@ const PlaceOrderPage = () => {
                     </div>
 
                     <p className="mt-2 text-sm leading-6 text-text-secondary">
-                      House No. {user.address.houseNo}, {user.address.street},{" "}
-                      {user.address.area}, {user.address.city},{" "}
-                      {user.address.state}, {user.address.country}{" "}
+                      House No. {user.address.houseNo},{" "}
+                      {user.address.street},{" "}
+                      {user.address.area},{" "}
+                      {user.address.city},{" "}
+                      {user.address.state},{" "}
+                      {user.address.country}{" "}
                       <span className="font-bold text-text-primary">
                         - {user.address.pincode}
                       </span>
@@ -320,7 +341,7 @@ const PlaceOrderPage = () => {
 
                         <div className="mt-3 flex flex-wrap items-center gap-3">
                           <span className="text-xl font-bold text-text-primary">
-                            ₹{productPrice.toFixed(2)}
+                            ${productPrice.toFixed(2)}
                           </span>
 
                           {orderProduct.discountPercentage && (
@@ -460,7 +481,8 @@ const PlaceOrderPage = () => {
                   </h2>
 
                   <p className="mt-1 text-xs text-text-muted">
-                    {quantity} {quantity === 1 ? "item" : "items"} in your order
+                    {quantity} {quantity === 1 ? "item" : "items"} in your
+                    order
                   </p>
                 </div>
 
@@ -471,16 +493,20 @@ const PlaceOrderPage = () => {
                     label={`Price (${quantity} ${
                       quantity === 1 ? "item" : "items"
                     })`}
-                    value={`₹${productPrice.toFixed(2)}`}
+                    value={` $${productPrice.toFixed(2)}`}
                   />
 
                   <PriceRow
-                    icon={<LocalShippingOutlinedIcon fontSize="small" />}
+                    icon={
+                      <LocalShippingOutlinedIcon
+                        fontSize="small"
+                      />
+                    }
                     label="Delivery Charge"
                     value={
                       deliveryCharge === 0
                         ? "FREE"
-                        : `₹${deliveryCharge.toFixed(2)}`
+                        : ` $${deliveryCharge.toFixed(2)}`
                     }
                     valueClass={
                       deliveryCharge === 0
@@ -497,14 +523,17 @@ const PlaceOrderPage = () => {
                     </p>
 
                     <p className="text-xl font-bold text-primary">
-                      ₹{totalAmount.toFixed(2)}
+                       ${totalAmount.toFixed(2)}
                     </p>
                   </div>
 
                   {/* SAVINGS */}
 
                   <div className="flex items-center gap-2 rounded-lg bg-green-500/5 px-3 py-2.5">
-                    <Check size={15} className="text-green-600" />
+                    <Check
+                      size={15}
+                      className="text-green-600"
+                    />
 
                     <p className="text-xs font-semibold text-green-600">
                       Safe and secure checkout
@@ -573,7 +602,9 @@ const CheckoutSection = ({
         <div className="flex min-w-0 items-center gap-3">
           <span
             className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
-              completed ? "bg-green-500 text-white" : "bg-primary text-white"
+              completed
+                ? "bg-green-500 text-white"
+                : "bg-primary text-white"
             }`}
           >
             {completed ? <Check size={15} /> : number}
@@ -684,7 +715,9 @@ const PaymentSection = ({
 
               <span
                 className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
-                  isSelected ? "border-primary" : "border-border"
+                  isSelected
+                    ? "border-primary"
+                    : "border-border"
                 }`}
               >
                 {isSelected && (
@@ -714,7 +747,9 @@ const InfoItem = ({ icon, label, value }) => {
         </span>
       </div>
 
-      <p className="mt-2 text-sm font-semibold text-text-primary">{value}</p>
+      <p className="mt-2 text-sm font-semibold text-text-primary">
+        {value}
+      </p>
     </div>
   );
 };
@@ -723,16 +758,29 @@ const InfoItem = ({ icon, label, value }) => {
    PRICE ROW
 ===================================================== */
 
-const PriceRow = ({ icon, label, value, valueClass = "text-text-primary" }) => {
+const PriceRow = ({
+  icon,
+  label,
+  value,
+  valueClass = "text-text-primary",
+}) => {
   return (
     <div className="flex items-center justify-between gap-4">
       <div className="flex min-w-0 items-center gap-2">
-        {icon && <span className="shrink-0 text-text-muted">{icon}</span>}
+        {icon && (
+          <span className="shrink-0 text-text-muted">
+            {icon}
+          </span>
+        )}
 
-        <p className="truncate text-sm text-text-secondary">{label}</p>
+        <p className="truncate text-sm text-text-secondary">
+          {label}
+        </p>
       </div>
 
-      <p className={`shrink-0 text-sm font-semibold ${valueClass}`}>{value}</p>
+      <p className={`shrink-0 text-sm font-semibold ${valueClass}`}>
+        {value}
+      </p>
     </div>
   );
 };
@@ -754,8 +802,8 @@ const CheckoutProgress = ({
           completed
             ? "bg-green-500 text-white"
             : active
-              ? "bg-primary text-white"
-              : "bg-background text-text-muted ring-1 ring-border"
+            ? "bg-primary text-white"
+            : "bg-background text-text-muted ring-1 ring-border"
         }`}
       >
         {completed ? <Check size={13} /> : number}
@@ -763,7 +811,9 @@ const CheckoutProgress = ({
 
       <span
         className={`text-xs font-semibold ${
-          active || completed ? "text-text-primary" : "text-text-muted"
+          active || completed
+            ? "text-text-primary"
+            : "text-text-muted"
         }`}
       >
         {label}
@@ -775,7 +825,9 @@ const CheckoutProgress = ({
 const ProgressLine = ({ completed = false }) => {
   return (
     <div
-      className={`mx-4 h-px flex-1 ${completed ? "bg-green-500" : "bg-border"}`}
+      className={`mx-4 h-px flex-1 ${
+        completed ? "bg-green-500" : "bg-border"
+      }`}
     />
   );
 };
@@ -801,3 +853,4 @@ const LoadingProduct = () => {
 };
 
 export default PlaceOrderPage;
+
