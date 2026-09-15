@@ -22,6 +22,7 @@ import SingupPage from "./pages/auth/SingupPage";
 import ShopLayout from "./components/ShopLayout";
 import ProductDetails from "./components/ProductDetails";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
+import AccountPage from "./pages/auth/user/AccountPage";
 
 const App = () => {
   return (
@@ -103,6 +104,7 @@ const App = () => {
         <Route path="/auth/login" element={<LoginPage />} />
 
         <Route path="/auth/signup" element={<SingupPage />} />
+        <Route path="/account" element={<AccountPage />} />
         <Route path="/shop/:id" element={<ProductDetails />} />
         <Route path="/shop/buy/:id" element={<PlaceOrderPage />} />
       </Routes>
