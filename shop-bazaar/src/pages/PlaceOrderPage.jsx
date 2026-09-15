@@ -14,10 +14,18 @@ import {
   Banknote,
   Truck,
   Tag,
+  Plus,
+  Minus,
 } from "lucide-react";
+
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import PriceDetails from "../components/PriceDetails";
+import getTotalCartAmmount from "../utility/getTotalCartAmmount";
+import { useCart } from "../context/cart-context";
 
 const PlaceOrderPage = () => {
+  const { cart } = useCart();
+
   const users = [
     {
       id: 1,
@@ -64,6 +72,7 @@ const PlaceOrderPage = () => {
 
   const [orderProduct, setOrderProduct] = useState(null);
   const [selectedPayment, setSelectedPayment] = useState("cod");
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -81,6 +90,20 @@ const PlaceOrderPage = () => {
   }, [id]);
 
   const user = users[0];
+
+  const onAddQuantitybtnClick = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const onRemoveQuantitybtnClick = () => {
+    setQuantity((prev) => prev - 1);
+  };
+
+  const deliveryCharge = 49;
+  const productPrice = orderProduct?.price * quantity;
+  const totalAmount = deliveryCharge + productPrice;
+
+  // console.log(typeof(productPrice))
 
   return (
     <div className="min-h-screen bg-background">
@@ -280,10 +303,26 @@ const PlaceOrderPage = () => {
 
                     <div className="flex flex-1 flex-col justify-between">
                       <div>
-                        <div className="mb-2 flex items-start justify-between gap-3">
+                        <div className=" flex items-start justify-between gap-3">
                           <h3 className="line-clamp-2 text-base font-semibold text-text-primary">
                             {orderProduct.title}
                           </h3>
+                        </div>
+
+                        <div className=" flex items-center gap-2">
+                          <div className="flex items-center gap-1">
+                            <span className="text-lg text-rating">★</span>
+
+                            <span className="text-sm font-semibold text-text-primary">
+                              4.5
+                            </span>
+                          </div>
+
+                          <span className="text-text-light">|</span>
+
+                          <span className="text-sm text-text-muted">
+                            120 Reviews
+                          </span>
                         </div>
 
                         {orderProduct.category && (
@@ -298,7 +337,7 @@ const PlaceOrderPage = () => {
                         <div className="mt-3 flex items-center gap-3">
                           {orderProduct.price && (
                             <span className="text-lg font-bold text-text-primary">
-                              ${orderProduct.price}
+                              ${productPrice}
                             </span>
                           )}
 
@@ -313,8 +352,13 @@ const PlaceOrderPage = () => {
                       <div className="mt-4 flex flex-wrap items-center gap-3">
                         <div className="flex items-center gap-2 rounded-md border border-border px-3 py-1.5 text-xs text-text-secondary">
                           <span className="text-text-muted">Quantity</span>
-
-                          <span className="font-semibold">1</span>
+                          <button onClick={onRemoveQuantitybtnClick}>
+                            <Minus />
+                          </button>
+                          <span className="font-semibold">{quantity}</span>
+                          <button onClick={onAddQuantitybtnClick}>
+                            <Plus fontSize={"10"} />
+                          </button>
                         </div>
 
                         <div className="flex items-center gap-2 text-xs text-green-600">
@@ -380,8 +424,6 @@ const PlaceOrderPage = () => {
             {/* =================================================
             STEP 4 - PAYMENT
         ================================================= */}
-
-            
           </div>
 
           {/* =================================================
@@ -389,32 +431,7 @@ const PlaceOrderPage = () => {
       ================================================= */}
 
           <aside className="lg:sticky lg:top-24 lg:h-fit ">
-
             {/* PLACE ORDER */}
-
-            <section    className="mb-8">
-                <div className=" rounded-xl border border-border bg-background p-4 shadow-sm">
-              <div className="mb-4 flex items-start gap-3">
-                <ShieldCheck
-                  size={18}
-                  className="mt-0.5 shrink-0 text-green-500"
-                />
-
-                <p className="text-[11px] leading-5 text-text-muted">
-                  Safe and secure payments. Your payment information is
-                  protected with industry-standard encryption.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark active:scale-[0.99]"
-              >
-                <span>PLACE ORDER</span>
-                <ChevronRight size={17} />
-              </button>
-            </div>
-            </section>
 
             <section className="overflow-hidden rounded-xl border border-border bg-background shadow-sm">
               <div className="border-b border-border bg-background-soft px-5 py-4">
@@ -536,6 +553,101 @@ const PlaceOrderPage = () => {
                         : "border-border"
                     }`}
                   />
+                </button>
+              </div>
+            </section>
+
+            <section className="mb-8">
+              <div className=" rounded-xl border border-border bg-background p-4 shadow-sm">
+                <div className="border-b border-border px-5 py-4">
+                  <h2 className="text-lg font-bold text-text-primary">
+                    Price Details
+                  </h2>
+
+                  <p className="mt-1 text-xs text-text-muted">
+                    {orderProduct?.length}{" "}
+                    {orderProduct?.length === 1 ? "item" : "items"} in your cart
+                  </p>
+                </div>
+
+                {/* Details */}
+
+                <div className="p-5">
+                  <div className="flex flex-col gap-5">
+                    {/* Price */}
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm text-text-secondary">
+                        Price ({orderProduct?.length} items)
+                      </p>
+
+                      <p className="font-medium text-text-primary">
+                        ${productPrice.toFixed(2)}
+                      </p>
+                    </div>
+                  </div>
+                  {/* Delivery */}
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <LocalShippingOutlinedIcon
+                      fontSize="small"
+                      className="text-text-muted"
+                    />
+
+                    <p className="text-sm text-text-secondary">
+                      Delivery Charge
+                    </p>
+                  </div>
+
+                  {deliveryCharge === 0 ? (
+                    <span className="font-semibold text-success">FREE</span>
+                  ) : (
+                    <span className="font-medium text-text-primary">
+                      ${deliveryCharge.toFixed(2)}
+                    </span>
+                  )}
+                </div>
+
+                {/* Divider */}
+
+          <div className="border-t border-dashed border-border" />
+
+
+          {/* Total */}
+
+          <div className="flex items-center justify-between">
+
+            <p className="text-base font-bold text-text-primary">
+              Total Amount
+            </p>
+
+            <p className="text-xl font-bold text-gray-800">
+              ${totalAmount.toFixed(2)}
+            </p>
+
+          </div>
+                </div>
+
+                
+
+                <div className="mb-4 flex items-start gap-3">
+                  <ShieldCheck
+                    size={18}
+                    className="mt-0.5 shrink-0 text-green-500"
+                  />
+
+                  <p className="text-[11px] leading-5 text-text-muted">
+                    Safe and secure payments. Your payment information is
+                    protected with industry-standard encryption.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 text-sm font-semibold text-white transition hover:bg-primary-dark active:scale-[0.99]"
+                >
+                  <span>PLACE ORDER</span>
+                  <ChevronRight size={17} />
                 </button>
               </div>
             </section>
